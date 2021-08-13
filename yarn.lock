@@ -574,6 +574,13 @@ vue-router@^4.0.11:
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.14"
 
+vue-window-size@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/vue-window-size/-/vue-window-size-1.1.2.tgz#a92a1d7cdc260d08a6ac8a19a7993b85736a0bdd"
+  integrity sha512-7TBPWXjvn6Kwmbl1OAlI+O0wj2CSlryqeVPo5AnglW/nvuXxnW3ehRn42Epk2OjXNK/VhO99JsXciFhqyM2tFQ==
+  dependencies:
+    window-resize-subject "^1.5.0"
+
 vue@^3.0.5:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.2.tgz#11715cb71a02baefd0f6e6552dc623680eb1bf32"
@@ -589,6 +596,11 @@ vuex@^4.0.2:
   integrity sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.11"
+
+window-resize-subject@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/window-resize-subject/-/window-resize-subject-1.5.0.tgz#a866128119c3899a8c03cfd1b86decf883e595a4"
+  integrity sha512-r+zXdtumr1+De51Lb3P561K+3t6PvEVXq+dTaEhikNY8Hj0UuzkYL3v9jo5TLpPaL7s9gkaX3Sb643HqYT7uSA==
 
 yallist@^3.0.2:
   version "3.1.1"

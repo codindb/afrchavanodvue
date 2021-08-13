@@ -2,7 +2,17 @@
   <el-container>
     
     <el-header class="top-header">
-      <img class="logo-afr" :src="url" alt="logo afr chavanod">
+      <img class="logo-afr" :src="logoAfrUrl" alt="logo afr chavanod">
+      <el-container class="menu-container">
+        <el-button @click="drawer = true" type="primary" size="medium" icon="el-icon-s-fold" circle>
+        </el-button>
+        <el-drawer
+          v-model="drawer"
+          :with-header="true"
+          :direction="direction()">
+          <span>Hi there!</span>
+        </el-drawer>
+      </el-container>
     </el-header>
     
     <el-header class="bottom-header">
@@ -21,15 +31,38 @@
 // This starter template is using Vue 3 experimental <script setup> SFCs
 // Check out https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md
 
+import { ref, watch } from 'vue';
 import { useStore } from 'vuex'
 import { ElNotification } from 'element-plus';
+
+// Logo Url
+import logoAfrUrl from './assets/logoafr.jpg'
+
+// To handle responsiveness
+import { useWindowSize } from 'vue-window-size';
 
 const store = useStore()
 
 // Activation of notification system
 store.commit('notifications/SET_NOTIFIER', ElNotification)
 
-let url = 'src/assets/logoafr.jpg'
+// Initialize menu drawer
+let drawer = ref(false)
+
+// Initialize window size check
+const { width, height } = useWindowSize();
+
+// Handle drawer direction
+const direction = () => {
+  if(width.value <= 768) {
+    return "ttb"
+  } else {
+    return "rtl"
+  }
+}
+watch(width, () => {
+  direction()
+})
 
 
 </script>
@@ -63,6 +96,20 @@ body {
     float: left;
     height: 90px;
     padding: 5px;
+  }
+
+  .menu-container {
+    float: right;
+
+    .el-button {
+      margin: 7px !important;
+      i{
+        font-size: 40px;
+      }
+    }
+    .el-drawer__close {
+      font-size: 44px;
+    }
   }
 }
 
