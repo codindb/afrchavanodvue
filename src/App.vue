@@ -1,30 +1,27 @@
 <template>
-  <el-container>
-    
-    <el-header class="top-header">
-      <img class="logo-afr" :src="logoAfrUrl" alt="logo afr chavanod">
-      <el-container class="menu-container">
-        <el-button @click="drawer = true" type="primary" size="medium" icon="el-icon-s-fold" circle>
-        </el-button>
-        <el-drawer
-          v-model="drawer"
-          :with-header="true"
-          :direction="direction()">
-          <span>Hi there!</span>
-        </el-drawer>
-      </el-container>
-    </el-header>
-    
-    <el-header class="bottom-header">
-    </el-header>
 
-    <el-main>
-      <router-view></router-view>
-    </el-main>
+  <header class="top-header">
+    <router-link to="/"><img class="logo-afr" :src="logoAfrUrl" alt="logo afr chavanod"></router-link>
+    <div class="menu-container">
+      <el-button @click="drawer = true" type="primary" size="medium" icon="el-icon-s-fold" circle>
+      </el-button>
+      <el-drawer
+        v-model="drawer"
+        :with-header="true"
+        :direction="direction()">
+        <span>Hi there!</span>
+      </el-drawer>
+    </div>
+  </header>
 
-    <el-footer>Footer</el-footer>
+  <main class="main">
+    <router-view></router-view>
+  </main>
 
-  </el-container>
+  <footer class="footer">
+      <p> Made by codindb with vue js 3</p>
+  </footer>
+
 </template>
 
 <script setup>
@@ -69,40 +66,41 @@ watch(width, () => {
 
 <style lang="scss">
 
-// Variables
-$topHeaderHeight : 100px;
-$bottomHeaderHeight: 400px;
-
 body {
   margin:0
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  // min-height: 100vh;
+  flex-direction: column;
   // margin-top: 60px;
 }
 
-.top-header {
-  height: $topHeaderHeight !important;
+header {
+  height: $topHeaderHeight;
   position: fixed;
   width: 100%;
   background-color: white;
   z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
   .logo-afr {
     float: left;
     height: 90px;
-    padding: 5px;
+    padding: 5px 20px;
   }
 
   .menu-container {
     float: right;
 
     .el-button {
-      margin: 7px !important;
+      margin: 7px 20px !important;
       i{
         font-size: 40px;
       }
@@ -113,17 +111,17 @@ body {
   }
 }
 
-.bottom-header {
-  height: $bottomHeaderHeight !important;
+main {
+  margin-top: $topHeaderHeight;
+}
+
+footer {
+  background-color: #2c3e50;
+  color: #fff;
   position: fixed;
-	top: $topHeaderHeight;
+  bottom: 0;
   width: 100%;
-	background: linear-gradient(45deg, #98cbff, #98ffcb);
-  //background-image: url('./assets/appBarBackground.jpg');
+  z-index: 9;
 }
-.el-main {
-  position: relative;
-	top: $topHeaderHeight + $bottomHeaderHeight; 
-  background-color: white;
-}
+
 </style>

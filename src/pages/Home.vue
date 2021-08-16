@@ -1,7 +1,14 @@
 <template>
-   <div>
+
+   <div class="bottom-header">
+      <el-image :src="bottomHeaderImageUrl" fit="fill
+      ">
+      </el-image>
+   </div>
+
+   <div class="home-body">
       <el-empty v-if="strapiData.areNewsLoading" description="Chargement..."></el-empty>
-      <el-carousel :initial-index="2" trigger="click" :interval="4000" type="card" height="200px">
+      <el-carousel :initial-index="2" trigger="click" :interval="4000" type="card" height="350px">
          <el-carousel-item v-for="item in strapiData.news" :key="item.id">
             <div>
                <img :src="item.photo.url" class="image">
@@ -15,26 +22,29 @@
       <p>Illum fugiat, doloribus, soluta voluptatum quam illo porro id dolorem deserunt inventore ullam sequi, neque provident dignissimos? Adipisci a libero quisquam illo eos earum facere, unde expedita harum quis alias!</p>
       <p>Blanditiis dicta beatae harum reiciendis eligendi, animi quia veniam odio placeat quisquam, odit numquam ad corporis, quas pariatur maiores tenetur dolore repellendus necessitatibus reprehenderit fugit sit consequatur? Reprehenderit, ex! Fuga!</p>
       <p>Inventore quis nobis hic? Error, magnam id! Distinctio non quibusdam delectus exercitationem asperiores est assumenda similique minus. Et cum accusantium recusandae placeat error, sint quod sapiente quis porro eum ducimus?</p>
-      <p>Laudantium, modi voluptatum repellat esse debitis iste libero accusantium nulla corrupti quae tempora nemo molestiae. Earum ea similique reprehenderit neque, voluptates suscipit ullam, autem exercitationem ducimus alias illo eos numquam?</p>
-      <p>Earum aperiam repudiandae laudantium quae ratione pariatur, cumque quidem aspernatur modi sapiente nulla explicabo ducimus asperiores vel. Inventore consequuntur veniam eveniet nobis neque numquam accusamus. Incidunt dolores vel rem deleniti.</p>
-      <p>Vitae at et molestiae vero repellendus ipsum debitis maxime velit similique mollitia ut quia aliquam corrupti, nemo officia repellat tempore incidunt eveniet voluptate. Delectus quia sint laudantium fuga illo reprehenderit!</p>
+      <p>TOTO</p>
    </div>
+   
 </template>
 
 <script setup>
    import { ref } from 'vue'
    import { useStore } from 'vuex'
 
+   // Logo Url
+   import bottomHeaderImageUrl from '../assets/appBarBackground.jpg'
+
    const store = useStore()
 
    const strapiData = store.state.strapiData
 
-   const sendNotification = () => {
-      store.dispatch('notifications/sendSuccess', {
-         title: "Bravo",
-         message: "Site AFR Chavanod v1"
-      });
-   }
+   // const sendNotification = () => {
+   //    store.dispatch('notifications/sendSuccess', {
+   //       title: "Bravo",
+   //       message: "Site AFR Chavanod v1"
+   //    });
+   // }
+
    const loadNews = async () => {
       try {
          await store.dispatch('strapiData/fetchAllNews')
@@ -52,6 +62,33 @@
 
 <style lang="scss" scoped>
 
+   .bottom-header {
+      height: $bottomHeaderHeight;
+      width: 100%;
+      position: fixed;
+      top: $topHeaderHeight;
+	   // background: linear-gradient(45deg, #98cbff, #98ffcb);
+      .el-image{
+         width: 100%;
+         height: 100%;
+      }
+   }
+
+   .home-body {
+      position: relative;
+      top: $bottomHeaderHeight;
+      background-color: white;
+   }
+   .el-carousel {
+      margin: 50px 0;
+      padding-left: 6%;
+      .el-carousel__item {
+         width: 40%;
+         border-radius: 30px;
+         background-color: white;
+         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      }
+   }
 
 
 </style>
