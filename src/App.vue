@@ -1,9 +1,8 @@
 <template>
-  <el-container>
-    
+  <el-container class="base-container">
     <el-header class="top-header">
-      <img class="logo-afr" :src="logoAfrUrl" alt="logo afr chavanod">
-      <el-container class="menu-container">
+      <router-link to="/"><img class="logo-afr" :src="logoAfrUrl" alt="logo afr chavanod"></router-link>
+      <div class="menu-container">
         <el-button @click="drawer = true" type="primary" size="medium" icon="el-icon-s-fold" circle>
         </el-button>
         <el-drawer
@@ -12,18 +11,16 @@
           :direction="direction()">
           <span>Hi there!</span>
         </el-drawer>
-      </el-container>
-    </el-header>
-    
-    <el-header class="bottom-header">
+      </div>
     </el-header>
 
-    <el-main>
+    <el-main class="main">
       <router-view></router-view>
     </el-main>
 
-    <el-footer>Footer</el-footer>
-
+    <el-footer class="footer">
+        <p> Made by codindb with vue js 3</p>
+    </el-footer>
   </el-container>
 </template>
 
@@ -69,40 +66,43 @@ watch(width, () => {
 
 <style lang="scss">
 
-// Variables
-$topHeaderHeight : 100px;
-$bottomHeaderHeight: 400px;
-
 body {
   margin:0
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  flex-direction: column;
   // margin-top: 60px;
 }
 
+.base-container {
+  min-height: 100vh;
+}
 .top-header {
   height: $topHeaderHeight !important;
   position: fixed;
   width: 100%;
   background-color: white;
   z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; //#
 
   .logo-afr {
     float: left;
     height: 90px;
-    padding: 5px;
+    padding: 5px 20px;
   }
 
   .menu-container {
     float: right;
 
     .el-button {
-      margin: 7px !important;
+      margin: 7px 20px !important;
       i{
         font-size: 40px;
       }
@@ -113,17 +113,17 @@ body {
   }
 }
 
-.bottom-header {
-  height: $bottomHeaderHeight !important;
-  position: fixed;
-	top: $topHeaderHeight;
-  width: 100%;
-	background: linear-gradient(45deg, #98cbff, #98ffcb);
-  //background-image: url('./assets/appBarBackground.jpg');
-}
-.el-main {
+.main {
   position: relative;
-	top: $topHeaderHeight + $bottomHeaderHeight; 
-  background-color: white;
+  top: $topHeaderHeight;
+  padding: 0 !important;
 }
+
+footer {
+  background-color: #2c3e50;
+  color: #fff;
+  z-index: 9;
+  height: $topHeaderHeight !important;
+}
+
 </style>
