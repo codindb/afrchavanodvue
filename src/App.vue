@@ -1,27 +1,27 @@
 <template>
+  <el-container class="base-container">
+    <el-header class="top-header">
+      <router-link to="/"><img class="logo-afr" :src="logoAfrUrl" alt="logo afr chavanod"></router-link>
+      <div class="menu-container">
+        <el-button @click="drawer = true" type="primary" size="medium" icon="el-icon-s-fold" circle>
+        </el-button>
+        <el-drawer
+          v-model="drawer"
+          :with-header="true"
+          :direction="direction()">
+          <span>Hi there!</span>
+        </el-drawer>
+      </div>
+    </el-header>
 
-  <header class="top-header">
-    <router-link to="/"><img class="logo-afr" :src="logoAfrUrl" alt="logo afr chavanod"></router-link>
-    <div class="menu-container">
-      <el-button @click="drawer = true" type="primary" size="medium" icon="el-icon-s-fold" circle>
-      </el-button>
-      <el-drawer
-        v-model="drawer"
-        :with-header="true"
-        :direction="direction()">
-        <span>Hi there!</span>
-      </el-drawer>
-    </div>
-  </header>
+    <el-main class="main">
+      <router-view></router-view>
+    </el-main>
 
-  <main class="main">
-    <router-view></router-view>
-  </main>
-
-  <footer class="footer">
-      <p> Made by codindb with vue js 3</p>
-  </footer>
-
+    <el-footer class="footer">
+        <p> Made by codindb with vue js 3</p>
+    </el-footer>
+  </el-container>
 </template>
 
 <script setup>
@@ -77,18 +77,20 @@ body {
   text-align: center;
   color: #2c3e50;
   display: flex;
-  // min-height: 100vh;
   flex-direction: column;
   // margin-top: 60px;
 }
 
-header {
-  height: $topHeaderHeight;
+.base-container {
+  min-height: 100vh;
+}
+.top-header {
+  height: $topHeaderHeight !important;
   position: fixed;
   width: 100%;
   background-color: white;
   z-index: 10;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; //#
 
   .logo-afr {
     float: left;
@@ -111,17 +113,17 @@ header {
   }
 }
 
-main {
-  margin-top: $topHeaderHeight;
+.main {
+  position: relative;
+  top: $topHeaderHeight;
+  padding: 0 !important;
 }
 
 footer {
   background-color: #2c3e50;
   color: #fff;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
   z-index: 9;
+  height: $topHeaderHeight !important;
 }
 
 </style>
