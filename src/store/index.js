@@ -1,10 +1,10 @@
 import { createStore, createLogger } from 'vuex'
-import StrapiDataModule from './modules/strapiData.js'
+import ApiDataModule from './modules/apiData.js'
 import NotificationsModule from './modules/notifications.js'
 
 const store = createStore({
   modules: {
-    strapiData: StrapiDataModule,
+    apiData: ApiDataModule,
     notifications: NotificationsModule
   },
   // plugins: import.meta.env.MODE !== 'production' ? [createLogger()] : []

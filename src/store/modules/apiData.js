@@ -1,4 +1,4 @@
-import * as StrapiApiService from '../../services/StrapiApiService.js'
+import * as ApiService from '../../services/ApiService.js'
 
 export default {
    namespaced: true,
@@ -20,7 +20,7 @@ export default {
       async fetchAllNews ({ commit }) {
          commit('SET_ARE_NEWS_LOADING', true)
          try {
-            const allNews = await StrapiApiService.getAllNews()
+            const allNews = await ApiService.getAllNews()
             commit('SET_NEWS', allNews)
             commit('SET_ARE_NEWS_LOADING', false)
          } catch (e) {

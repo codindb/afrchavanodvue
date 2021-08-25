@@ -6,17 +6,17 @@
    </div>
    <h2>Actualités</h2>
    <div class="newsCards">
-      <el-empty v-if="strapiData.areNewsLoading" description="Chargement..."></el-empty>
+      <el-empty v-if="apiData.areNewsLoading" description="Chargement..."></el-empty>
 
       <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="380px">
-         <el-carousel-item v-for="item in strapiData.news" :key="item">
+         <el-carousel-item v-for="item in apiData.news" :key="item">
                <el-image :src="item.photo.url" fit="fill" class="image"></el-image>
                <div class="newsTitle"> {{ item.titre }}</div>
          </el-carousel-item>
       </el-carousel>
 
       <el-carousel class="mobile-carousel" v-if="displayMobile()" ref="carousel" indicator-position="outside" arrow="always" trigger="click" :interval="4000" height="250px">
-         <el-carousel-item v-for="item in strapiData.news" :key="item">
+         <el-carousel-item v-for="item in apiData.news" :key="item">
                <el-image :src="item.photo.url" fit="fill" class="image"></el-image>
                <div class="newsTitle"> {{ item.titre }}</div>
          </el-carousel-item>
@@ -65,7 +65,7 @@
 
    const store = useStore()
 
-   const strapiData = store.state.strapiData
+   const apiData = store.state.apiData
 
    const carousel = ref("")
    
@@ -108,7 +108,7 @@
 
    const loadNews = async () => {
       try {
-         await store.dispatch('strapiData/fetchAllNews')
+         await store.dispatch('apiData/fetchAllNews')
       } catch(e) {
          store.dispatch('notifications/sendError', {
          title: "Erreur",
