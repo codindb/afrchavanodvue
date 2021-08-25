@@ -10,7 +10,7 @@
 
       <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="380px">
          <el-carousel-item v-for="item in apiData.news" :key="item">
-               <el-image :src="JSON.parse(item.photo)[0].url" fit="fill" class="image"></el-image>
+               <el-image :src="item.photo.url" fit="fill" class="image"></el-image>
                <div class="newsTitle"> {{ item.titre }}</div>
          </el-carousel-item>
       </el-carousel>
