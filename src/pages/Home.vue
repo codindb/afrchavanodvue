@@ -1,9 +1,14 @@
 <template>
 
    <div class="bottom-header">
-      <el-image :src="bottomHeaderImage" :fit="imageFill()"></el-image>
+      <!-- <el-image :src="bottomHeaderImage" :fit="imageFill()"></el-image> -->
+      <div>
+         <h2 class="bottom-header-title">Les Inscriptions pour les Activités et Ateliers 2021/2022 sont ouvertes</h2>
+         <p class="bottom-header-desc">Pour plus d'informations consultez les pages dédiées aux activités/ateliers</p>
+      </div>
+      <el-button round>Je m'inscris!</el-button>
    </div>
-   <h2>Actualités</h2>
+   <el-image :src="news1" class="news-logo"></el-image>
    <div class="newsCards">
       <el-empty v-if="apiData.areNewsLoading" description="Chargement..."></el-empty>
 
@@ -85,6 +90,8 @@
    // Images imports
    import bottomHeaderImage from '../assets/appBarBackground.jpg'
    import sectionLogo from '../assets/afrChavanod.png'
+   import news1 from '../assets/news1.png'
+   import news2 from '../assets/news2.png'
 
    const store = useStore()
 
@@ -146,29 +153,59 @@
 
 <style lang="scss" scoped>
 
-   h2 {
-      color: black;
-      font-size: 60px
-   }
-   @media screen and (max-width: 768px) {
-      h2 {
-         font-size: 40px
-      }
-   }
-
    .bottom-header {
+	   /* for positioning */
       height: $bottomHeaderHeightDesktop;
       width: 100%;
       top: $topHeaderHeight;
-	   // background: linear-gradient(45deg, #98cbff, #98ffcb);
-      .el-image{
-         width: 100%;
-         height: 100%;
+	   background: linear-gradient(45deg, #98cbff, #98ffcb);
+      /* for content alignment */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+
+      .bottom-header-title {
+         font-size: 40px;
+         margin-bottom: 10px;
+         text-align: center;
       }
+      .bottom-header-desc {
+         font-size: 26px;
+         text-align: center;
+      }
+      .el-button {
+         font-size: 26px;
+         padding: 8px 40px;
+      }
+      // .el-image{
+      //    width: 100%;
+      //    height: 100%;
+      // }
    }
    @media screen and (max-width: 768px) {
       .bottom-header {
          height: $bottomHeaderHeightMobile;
+         .bottom-header-title {
+            font-size: 20px;
+         }
+         .bottom-header-desc {
+            font-size: 16px;
+         }
+         .el-button {
+            font-size: 16px;
+            padding: 8px 40px;
+         }
+      }
+   }
+
+   .news-logo {
+      padding-top: 20px;
+      width: 25%;
+   }
+   @media screen and (max-width: 768px) {
+      .news-logo {
+         width: 80%;
       }
    }
 
