@@ -9,7 +9,7 @@
       <el-empty v-if="apiData.areNewsLoading" description="Chargement..."></el-empty>
 
       <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="380px">
-         <el-carousel-item v-for="item in apiData.news" :key="item">
+         <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
                <router-link :to="{ name: 'actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
                <div class="newsTitle"> {{ item.titre }}</div>
          </el-carousel-item>
@@ -17,7 +17,7 @@
 
       <el-carousel class="mobile-carousel" v-if="displayMobile()" ref="carousel" indicator-position="outside" arrow="always" trigger="click" :interval="4000" height="250px">
          <el-carousel-item v-for="item in apiData.news" :key="item">
-               <el-image :src="item.photo" fit="fill" class="image"></el-image>
+               <router-link :to="{ name: 'actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
                <div class="newsTitle"> {{ item.titre }}</div>
          </el-carousel-item>
       </el-carousel>
@@ -53,9 +53,6 @@
 <script setup>
    import { ref, watch , onMounted} from 'vue'
    import { useStore } from 'vuex'
-   // import { ElCarousel } from 'element-plus'
-
-   import Card from '../components/Card.vue'
 
    // To handle responsiveness
    import { useWindowSize } from 'vue-window-size';
