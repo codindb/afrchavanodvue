@@ -3,7 +3,7 @@
     <el-header class="top-header">
       <router-link to="/"><img class="logo-afr" :src="logoAfrUrl" alt="logo afr chavanod"></router-link>
       <div class="menu-container">
-        <el-button @click="drawer = true" type="primary" size="medium" icon="el-icon-s-fold" circle>
+        <el-button @click="drawer = true" size="medium" icon="el-icon-s-fold">
         </el-button>
         <el-drawer
           v-model="drawer"
@@ -102,9 +102,19 @@ body {
     float: right;
 
     .el-button {
-      margin: 7px 20px !important;
+      margin: 7px 0 !important;
+      border: none;
+      color: black;
+      &:hover {
+        color: black;
+        background: none;
+      }
+      &:focus {
+        color: black;
+        background: none;
+      }
       i{
-        font-size: 40px;
+        font-size: 60px;
       }
     }
     .el-drawer__close {
