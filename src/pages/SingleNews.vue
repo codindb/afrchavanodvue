@@ -3,6 +3,7 @@
       <el-empty v-if="apiData.areNewsLoading" description="Chargement..."></el-empty>
       <h2>{{ apiData.singleNews.titre }}</h2>
    </div>
+   <div class="bottomGap"></div>
 </template>
 
 <script setup>

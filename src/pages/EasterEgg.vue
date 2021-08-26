@@ -7,6 +7,7 @@
     <div v-if="success" style="color: green;">Le chargement est terminé.</div>
     <div v-if="error" style="color: red;">{{error}}</div>
   </div>
+  <div class="bottomGap"></div>
 </template>
 
 <script lang="ts">
