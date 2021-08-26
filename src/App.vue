@@ -19,7 +19,7 @@
     </el-main>
 
     <el-footer class="footer">
-        <p> Made by <router-link to="/onenagros">codindb</router-link> with vue js 3</p>
+        <p> Made by codindb with vue js 3</p>
     </el-footer>
   </el-container>
 </template>
