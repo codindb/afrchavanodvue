@@ -4,6 +4,7 @@ import * as VueRouter from 'vue-router'
 import HomePage from '../pages/Home.vue'
 const NotFoundPage = () => import('../pages/NotFound.vue') // Lazy Loading of Pages when using this syntax
 const EasterEggPage= () => import('../pages/EasterEgg.vue') // Lazy Loading of Pages when using this syntax
+const SingleNewsPage= () => import('../pages/SingleNews.vue') // Lazy Loading of Pages when using this syntax
 
 const routes = [
    {
@@ -17,6 +18,11 @@ const routes = [
       //       component: HomePage
       //    }
       // ]
+   }, 
+   {
+      path: '/actualites/:id',
+      name: 'actualite',
+      component: SingleNewsPage,
    },
    { 
       path: '/onenagros',
