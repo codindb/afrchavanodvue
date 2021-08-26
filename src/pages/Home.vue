@@ -10,14 +10,14 @@
 
       <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="380px">
          <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
-               <router-link :to="{ name: 'actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
+               <router-link :to="{ name: 'Actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
                <div class="newsTitle"> {{ item.titre }}</div>
          </el-carousel-item>
       </el-carousel>
 
       <el-carousel class="mobile-carousel" v-if="displayMobile()" ref="carousel" indicator-position="outside" arrow="always" trigger="click" :interval="4000" height="250px">
          <el-carousel-item v-for="item in apiData.news" :key="item">
-               <router-link :to="{ name: 'actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
+               <router-link :to="{ name: 'Actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
                <div class="newsTitle"> {{ item.titre }}</div>
          </el-carousel-item>
       </el-carousel>
@@ -46,7 +46,7 @@
       <p>Inventore quis nobis hic? Error, magnam id! Distinctio non quibusdam delectus exercitationem asperiores est assumenda similique minus. Et cum accusantium recusandae placeat error, sint quod sapiente quis porro eum ducimus?</p>
       <p>TOTO</p>
    </div>
-   <div class="divider"></div>
+   <div class="bottomGap"></div>
    
 </template>
 
@@ -57,7 +57,7 @@
    // To handle responsiveness
    import { useWindowSize } from 'vue-window-size';
 
-   // Logo Url
+   // Bottom header image Url
    import bottomHeaderImageUrl from '../assets/appBarBackground.jpg'
 
    const store = useStore()
@@ -165,10 +165,5 @@
          background: linear-gradient(0deg, rgba(0,0,0,1) -20%, rgba(255,255,255,0) 100%);
       }
    }
-
-   .divider{
-      height: 100px;
-   }
-
 
 </style>
