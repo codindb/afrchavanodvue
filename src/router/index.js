@@ -21,7 +21,7 @@ const routes = [
    }, 
    {
       path: '/actualites/:id',
-      name: 'actualite',
+      name: 'Actualite',
       component: SingleNewsPage,
    },
    { 
@@ -45,6 +45,10 @@ const routes = [
  const router = VueRouter.createRouter({
    history: VueRouter.createWebHistory(),
    routes,
+   // always scroll to top when using router links
+   scrollBehavior(to, from, savedPosition) {
+      return { top: 0 }
+    },
  });
  
  export default router;
