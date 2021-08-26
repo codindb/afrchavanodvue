@@ -1,7 +1,7 @@
 <template>
 
    <div class="bottom-header">
-      <el-image :src="bottomHeaderImageUrl" :fit="imageFill()"></el-image>
+      <el-image :src="bottomHeaderImage" :fit="imageFill()"></el-image>
    </div>
    <h2>Actualités</h2>
    <div class="newsCards">
@@ -22,12 +22,15 @@
       </el-carousel>
       
    </div>
-   <h2>L'association</h2>
+   <el-image :src="sectionLogo" class="section-logo"></el-image>
    <div class="sections">
       <el-row justify="space-around">
          <el-col :span="20" :md="10">
             <el-collapse>
-            <el-collapse-item title="🧩 ACTIVITES">
+            <el-collapse-item>
+               <template #title>
+                  <span>🧩</span> ACTIVITES
+               </template>
                <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
                <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
             </el-collapse-item>
@@ -35,7 +38,32 @@
          </el-col>
          <el-col :span="20" :md="10">
             <el-collapse>
-            <el-collapse-item title="🔥 ATELIERS">
+            <el-collapse-item>
+               <template #title>
+                  <span>🎟</span> ATELIERS
+               </template>
+               <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
+               <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
+            </el-collapse-item>
+            </el-collapse>
+         </el-col>
+         <el-col :span="20" :md="10">
+            <el-collapse>
+            <el-collapse-item>
+               <template #title>
+                  <span>🚸</span> ENFANTS
+               </template>
+               <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
+               <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
+            </el-collapse-item>
+            </el-collapse>
+         </el-col>
+         <el-col :span="20" :md="10">
+            <el-collapse>
+            <el-collapse-item>
+               <template #title>
+                  <span>👥</span> L'AFR
+               </template>
                <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
                <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
             </el-collapse-item>
@@ -54,8 +82,9 @@
    // To handle responsiveness
    import { useWindowSize } from 'vue-window-size';
 
-   // Bottom header image Url
-   import bottomHeaderImageUrl from '../assets/appBarBackground.jpg'
+   // Images imports
+   import bottomHeaderImage from '../assets/appBarBackground.jpg'
+   import sectionLogo from '../assets/afrChavanod.png'
 
    const store = useStore()
 
@@ -123,7 +152,6 @@
    }
    @media screen and (max-width: 768px) {
       h2 {
-         color: black;
          font-size: 40px
       }
    }
@@ -174,23 +202,24 @@
       }
    }
 
+   .section-logo {
+      margin: 30px 0;
+   }
+   @media screen and (min-width: 768px) {
+      .section-logo {
+         width: 40%;
+      }
+   }
+
    .sections {
       margin-bottom: 30px;
 
       .el-col {
-         margin: 10px 0;
+         margin: 30px 0;
       }
-
       @media screen and (max-width: 768px) {
-         .el-collapse {
-            --el-collapse-header-height: 100px !important;
-            .el-collapse-item {
-               >:first-child {
-                  >:first-child {
-                     font-size: 30px !important;
-                  }
-               }
-            }
+         .el-col {
+            margin: 10px 0;
          }
       }
 
@@ -203,12 +232,12 @@
             >:first-child {
                >:first-child {
                   border-radius: 20px;
-                  font-size: 46px;
+                  font-size: 50px;
                   font-weight: bold;
                   display: block;
-                  >:nth-child(1) {
-                     margin: 0 -12% 0 10%;
-                     //display: none;
+                  span {
+                     font-size: 65px;
+                     padding-right: 8px;
                   }
                }
             }
@@ -216,6 +245,21 @@
                border-radius: 20px;
             }
             
+         }
+      }
+      @media screen and (max-width: 768px) {
+         .el-collapse {
+            --el-collapse-header-height: 100px !important;
+            .el-collapse-item {
+               >:first-child {
+                  >:first-child {
+                     font-size: 30px !important;
+                  }
+                  span {
+                     font-size: 46px !important;
+                  }
+               }
+            }
          }
       }
    }
