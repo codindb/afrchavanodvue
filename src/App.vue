@@ -19,7 +19,7 @@
     </el-main>
 
     <el-footer class="footer">
-        <p> Made by codindb with vue js 3</p>
+        <p> Made by codindb with Vue.js</p>
     </el-footer>
   </el-container>
 </template>
