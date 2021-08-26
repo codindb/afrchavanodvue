@@ -23,27 +23,25 @@
       
    </div>
    <h2>L'association</h2>
-   <div class="content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, consequuntur optio. Dicta velit voluptates suscipit magni consequatur ipsum, molestiae quis repudiandae quam debitis repellat eligendi exercitationem, ea impedit placeat perferendis.</p>
-      <p>Ipsum repudiandae natus suscipit itaque odio quod sit. Itaque debitis mollitia, nostrum corrupti, numquam vel libero praesentium ullam, laudantium soluta ex autem perferendis voluptates saepe iusto eius sunt delectus. Sed!</p>
-      <p>Architecto accusantium, odio tempora ab adipisci quae atque sed modi error doloribus possimus ducimus deleniti. Reprehenderit, minus est? Harum, sint delectus quas cumque eveniet nulla rem consectetur eius consequuntur voluptate?</p>
-      <p>Maiores facilis impedit omnis quas! Quisquam praesentium natus, nihil iure et harum necessitatibus, eius facilis exercitationem sapiente perspiciatis distinctio ut! Quibusdam unde architecto perspiciatis veniam, magni sint aliquam voluptatibus iure?</p>
-      <p>Illum fugiat, doloribus, soluta voluptatum quam illo porro id dolorem deserunt inventore ullam sequi, neque provident dignissimos? Adipisci a libero quisquam illo eos earum facere, unde expedita harum quis alias!</p>
-      <p>Blanditiis dicta beatae harum reiciendis eligendi, animi quia veniam odio placeat quisquam, odit numquam ad corporis, quas pariatur maiores tenetur dolore repellendus necessitatibus reprehenderit fugit sit consequatur? Reprehenderit, ex! Fuga!</p>
-      <p>Inventore quis nobis hic? Error, magnam id! Distinctio non quibusdam delectus exercitationem asperiores est assumenda similique minus. Et cum accusantium recusandae placeat error, sint quod sapiente quis porro eum ducimus?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, consequuntur optio. Dicta velit voluptates suscipit magni consequatur ipsum, molestiae quis repudiandae quam debitis repellat eligendi exercitationem, ea impedit placeat perferendis.</p>
-      <p>Ipsum repudiandae natus suscipit itaque odio quod sit. Itaque debitis mollitia, nostrum corrupti, numquam vel libero praesentium ullam, laudantium soluta ex autem perferendis voluptates saepe iusto eius sunt delectus. Sed!</p>
-      <p>Architecto accusantium, odio tempora ab adipisci quae atque sed modi error doloribus possimus ducimus deleniti. Reprehenderit, minus est? Harum, sint delectus quas cumque eveniet nulla rem consectetur eius consequuntur voluptate?</p>
-      <p>Maiores facilis impedit omnis quas! Quisquam praesentium natus, nihil iure et harum necessitatibus, eius facilis exercitationem sapiente perspiciatis distinctio ut! Quibusdam unde architecto perspiciatis veniam, magni sint aliquam voluptatibus iure?</p>
-      <p>Illum fugiat, doloribus, soluta voluptatum quam illo porro id dolorem deserunt inventore ullam sequi, neque provident dignissimos? Adipisci a libero quisquam illo eos earum facere, unde expedita harum quis alias!</p>
-      <p>Blanditiis dicta beatae harum reiciendis eligendi, animi quia veniam odio placeat quisquam, odit numquam ad corporis, quas pariatur maiores tenetur dolore repellendus necessitatibus reprehenderit fugit sit consequatur? Reprehenderit, ex! Fuga!</p>
-      <p>Inventore quis nobis hic? Error, magnam id! Distinctio non quibusdam delectus exercitationem asperiores est assumenda similique minus. Et cum accusantium recusandae placeat error, sint quod sapiente quis porro eum ducimus?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, consequuntur optio. Dicta velit voluptates suscipit magni consequatur ipsum, molestiae quis repudiandae quam debitis repellat eligendi exercitationem, ea impedit placeat perferendis.</p>
-      <p>Ipsum repudiandae natus suscipit itaque odio quod sit. Itaque debitis mollitia, nostrum corrupti, numquam vel libero praesentium ullam, laudantium soluta ex autem perferendis voluptates saepe iusto eius sunt delectus. Sed!</p>
-      <p>Architecto accusantium, odio tempora ab adipisci quae atque sed modi error doloribus possimus ducimus deleniti. Reprehenderit, minus est? Harum, sint delectus quas cumque eveniet nulla rem consectetur eius consequuntur voluptate?</p>
-      <p>Maiores facilis impedit omnis quas! Quisquam praesentium natus, nihil iure et harum necessitatibus, eius facilis exercitationem sapiente perspiciatis distinctio ut! Quibusdam unde architecto perspiciatis veniam, magni sint aliquam voluptatibus iure?</p>
-      <p>Illum fugiat, doloribus, soluta voluptatum quam illo porro id dolorem deserunt inventore ullam sequi, neque provident dignissimos? Adipisci a libero quisquam illo eos earum facere, unde expedita harum quis alias!</p>
-      <p>Blanditiis dicta beatae harum reiciendis eligendi, animi quia veniam odio placeat quisquam, odit numquam ad corporis, quas pariatur maiores tenetur dolore repellendus necessitatibus reprehenderit fugit sit consequatur? Reprehenderit, ex! Fuga!</p>
-      <p>Inventore quis nobis hic? Error, magnam id! Distinctio non quibusdam delectus exercitationem asperiores est assumenda similique minus. Et cum accusantium recusandae placeat error, sint quod sapiente quis porro eum ducimus?</p>
-      <p>TOTO</p>
+   <div class="sections">
+      <el-row justify="space-around">
+         <el-col :span="20" :md="10">
+            <el-collapse>
+            <el-collapse-item title="🧩 ACTIVITES">
+               <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
+               <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
+            </el-collapse-item>
+            </el-collapse>
+         </el-col>
+         <el-col :span="20" :md="10">
+            <el-collapse>
+            <el-collapse-item title="🔥 ATELIERS">
+               <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
+               <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
+            </el-collapse-item>
+            </el-collapse>
+         </el-col>
+      </el-row>
    </div>
    <div class="bottomGap"></div>
    
@@ -121,7 +119,13 @@
 
    h2 {
       color: black;
-      font-size: 30px
+      font-size: 60px
+   }
+   @media screen and (max-width: 768px) {
+      h2 {
+         color: black;
+         font-size: 40px
+      }
    }
 
    .bottom-header {
@@ -167,6 +171,52 @@
          color: white;
          background: rgb(0,0,0);
          background: linear-gradient(0deg, rgba(0,0,0,1) -20%, rgba(255,255,255,0) 100%);
+      }
+   }
+
+   .sections {
+      margin-bottom: 30px;
+
+      .el-col {
+         margin: 10px 0;
+      }
+
+      @media screen and (max-width: 768px) {
+         .el-collapse {
+            --el-collapse-header-height: 100px !important;
+            .el-collapse-item {
+               >:first-child {
+                  >:first-child {
+                     font-size: 30px !important;
+                  }
+               }
+            }
+         }
+      }
+
+      .el-collapse {
+         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+         border-radius: 20px;
+         --el-collapse-border-color: none;
+         --el-collapse-header-height: 180px;
+         .el-collapse-item {
+            >:first-child {
+               >:first-child {
+                  border-radius: 20px;
+                  font-size: 46px;
+                  font-weight: bold;
+                  display: block;
+                  >:nth-child(1) {
+                     margin: 0 -12% 0 10%;
+                     //display: none;
+                  }
+               }
+            }
+            >:nth-child(2) {
+               border-radius: 20px;
+            }
+            
+         }
       }
    }
 
