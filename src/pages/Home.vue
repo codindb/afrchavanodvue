@@ -1,8 +1,7 @@
 <template>
 
    <div class="bottom-header">
-      <el-image :src="bottomHeaderImageUrl" :fit="imageFill()">
-      </el-image>
+      <el-image :src="bottomHeaderImageUrl" :fit="imageFill()"></el-image>
    </div>
    <h2>Actualités</h2>
    <div class="newsCards">
@@ -126,13 +125,18 @@
    }
 
    .bottom-header {
-      height: $bottomHeaderHeight;
+      height: $bottomHeaderHeightDesktop;
       width: 100%;
       top: $topHeaderHeight;
 	   // background: linear-gradient(45deg, #98cbff, #98ffcb);
       .el-image{
          width: 100%;
          height: 100%;
+      }
+   }
+   @media screen and (max-width: 768px) {
+      .bottom-header {
+         height: $bottomHeaderHeightMobile;
       }
    }
 
