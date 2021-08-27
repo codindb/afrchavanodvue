@@ -64,8 +64,12 @@
                <template #title>
                   <span>🚸</span> ENFANTS
                </template>
-               <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
-               <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
+               <div class="kids">
+                  <!-- <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" > -->
+                     <h3>Activité Enfants</h3>
+                     <h3>Centre de loisirs</h3>
+                  <!-- </router-link> -->
+               </div>
             </el-collapse-item>
             </el-collapse>
          </el-col>
@@ -75,8 +79,14 @@
                <template #title>
                   <span>👥</span> L'AFR
                </template>
-               <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
-               <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
+               <div class="afr-info">
+                  <!-- <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" > -->
+                     <h3>Mission</h3>
+                     <h3>L'équipe</h3>
+                     <h3>FAQ</h3>
+                     <h3>Contact</h3>
+                  <!-- </router-link> -->
+               </div>
             </el-collapse-item>
             </el-collapse>
          </el-col>
@@ -312,7 +322,7 @@
             >:nth-child(2) {
                border-radius: 20px;
             }
-            .activity, .workshop {
+            .activity, .workshop, .kids, .afr-info {
                a{
                   text-decoration: none;
                }
@@ -335,7 +345,7 @@
                      font-size: 46px !important;
                   }
                }
-               .activity, .workshop {
+               .activity, .workshop, .kids, .afr-info {
                   h3 {
                      font-size: 26px
                   }

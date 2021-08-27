@@ -32,6 +32,38 @@
                   </a>
                </div>
             </el-collapse-item>
+            <el-collapse-item>
+               <template #title>
+                  <span>🚸</span> ENFANTS
+               </template>
+               <div class="kids">
+                  <a @click="drawer = false" :href="'/notfound'">
+                     <p>Activité Enfants</p>
+                  </a>
+                  <a @click="drawer = false" :href="'/onenagros'">
+                     <p>Centre de loisirs</p>
+                  </a>
+               </div>
+            </el-collapse-item>
+            <el-collapse-item>
+               <template #title>
+                  <span>👥</span> L'AFR
+               </template>
+               <div class="afr-info">
+                  <a @click="drawer = false" :href="'/notfound'">
+                     <p>Mission</p>
+                  </a>
+                  <a @click="drawer = false" :href="'/notfound'">
+                     <p>L'équipe</p>
+                  </a>
+                  <a @click="drawer = false" :href="'/notfound'">
+                     <p>FAQ</p>
+                  </a>
+                  <a @click="drawer = false" :href="'/notfound'">
+                     <p>Contact</p>
+                  </a>
+               </div>
+            </el-collapse-item>
             </el-collapse>
           </div>
         </el-drawer>
@@ -182,7 +214,7 @@ body {
               display: block;
             }
         }
-        .activity, .workshop {
+        .activity, .workshop, .kids, .afr-info {
             a{
               text-decoration: none;
             }
