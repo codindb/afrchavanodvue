@@ -17,8 +17,6 @@ const router = useRouter()
 
 const apiData = store.state.apiData
 
-console.log(apiData);
-
 const loadSingleNews = async () => {
    try {
       await store.dispatch('apiData/fetchSingleNews', {id: route.params.id})
