@@ -22,7 +22,7 @@
       <el-carousel class="mobile-carousel" v-if="displayMobile()" ref="carousel" indicator-position="outside" arrow="always" trigger="click" :interval="4000" height="250px">
          <el-carousel-item v-for="item in apiData.news" :key="item">
                <router-link :to="{ name: 'Actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
-               <div class="newsTitle"> {{ item.titre }}</div>
+               <div class="newsTitle">{{ item.titre }}</div>
          </el-carousel-item>
       </el-carousel>
       
@@ -36,8 +36,7 @@
                <template #title>
                   <span>🧩</span> ACTIVITES
                </template>
-               <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
-               <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
+               <h3 v-for="activity in apiData.activities" :key="activity">{{ activity.titre}}</h3>
             </el-collapse-item>
             </el-collapse>
          </el-col>
@@ -91,7 +90,6 @@
    import bottomHeaderImage from '../assets/appBarBackground.jpg'
    import sectionLogo from '../assets/afrChavanod.png'
    import news1 from '../assets/news1.png'
-   import news2 from '../assets/news2.png'
 
    const store = useStore()
 
@@ -148,6 +146,19 @@
       }
    }
    loadNews()
+   
+   const loadActivities = async () => {
+      try {
+         await store.dispatch('apiData/fetchAllActivities')
+      } catch(e) {
+         store.dispatch('notifications/sendError', {
+         title: "Erreur",
+         message: "Impossible de charger les données",
+         duration: 5000
+         });
+      }
+   }
+   loadActivities()
 
 </script>
 

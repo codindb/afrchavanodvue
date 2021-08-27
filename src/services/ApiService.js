@@ -19,3 +19,15 @@ export async function getSingleNews (id) {
    const res = await instance.get('/actualites/' + id)
    return res.data
 }
+
+// Get all Activities
+export async function getAllActivities () {
+   const res = await instance.get('/activites')
+   return res.data
+}
+
+// Get one Activity
+export async function getSingleActivity (id) {
+   const res = await instance.get('/activites/' + id)
+   return res.data
+}
