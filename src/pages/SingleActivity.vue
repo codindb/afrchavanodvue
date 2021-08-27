@@ -2,6 +2,7 @@
    <div>
       <el-empty v-if="apiData.areActivitiesLoading" description="Chargement..."></el-empty>
       <h2>{{ apiData.singleActivity.titre }}</h2>
+      <el-image :src="apiData.singleActivity.photo.url"></el-image>
       <h4>{{ apiData.singleActivity.description_courte }}</h4>
       <p>{{ apiData.singleActivity.description_complete }}</p>
    </div>

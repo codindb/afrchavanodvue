@@ -24,11 +24,11 @@
             </el-collapse-item>
             <el-collapse-item>
                <template #title>
-                  <span>🧩</span> ACTIVITES
+                  <span>🎟</span> ATELIERS
                </template>
-               <div class="activity" v-for="activity in apiData.activities" :key="activity">
-                  <a @click="drawer = false" :href="'/activites/' + activity.id">
-                     <p>{{ activity.titre }}</p>
+               <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
+                  <a @click="drawer = false" :href="'/ateliers/' + workshop.id">
+                     <p>{{ workshop.titre }}</p>
                   </a>
                </div>
             </el-collapse-item>
@@ -104,6 +104,15 @@ const loadActivities = async () => {
 }
 loadActivities()
 
+const loadWorkshops = async () => {
+  try {
+      await store.dispatch('apiData/fetchAllWorkshops')
+  } catch(e) {
+      console.warn(e);
+  }
+}
+loadWorkshops()
+
 </script>
 
 <style lang="scss">
@@ -173,7 +182,7 @@ body {
               display: block;
             }
         }
-        .activity {
+        .activity, .workshop {
             a{
               text-decoration: none;
             }

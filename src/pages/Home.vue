@@ -50,8 +50,11 @@
                <template #title>
                   <span>🎟</span> ATELIERS
                </template>
-               <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
-               <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
+               <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
+                  <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" >
+                     <h3>{{ workshop.titre }}</h3>
+                  </router-link>
+               </div>
             </el-collapse-item>
             </el-collapse>
          </el-col>
@@ -163,6 +166,19 @@
       }
    }
    loadActivities()
+   
+   const loadWorkshops = async () => {
+      try {
+         await store.dispatch('apiData/fetchAllWorkshops')
+      } catch(e) {
+         store.dispatch('notifications/sendError', {
+         title: "Erreur",
+         message: "Impossible de charger les données",
+         duration: 5000
+         });
+      }
+   }
+   loadWorkshops()
 
 </script>
 
@@ -296,7 +312,7 @@
             >:nth-child(2) {
                border-radius: 20px;
             }
-            .activity {
+            .activity, .workshop {
                a{
                   text-decoration: none;
                }
@@ -319,7 +335,7 @@
                      font-size: 46px !important;
                   }
                }
-               .activity {
+               .activity, .workshop {
                   h3 {
                      font-size: 26px
                   }

@@ -40,6 +40,18 @@ export default {
       CLEAR_SINGLE_ACTIVITY (state) {
          state.singleActivity = null
       },
+      SET_WORKSHOPS (state, workshops) {
+        state.workshops = workshops
+      },
+      SET_ARE_WORKSHOPS_LOADING (state, bool) {
+        state.areWorkshopsLoading = bool
+      },
+      SET_SINGLE_WORKSHOP (state, singleWorkshop) {
+         state.singleWorkshop = singleWorkshop
+      },
+      CLEAR_SINGLE_WORKSHOP (state) {
+         state.singleWorkshop = null
+      },
     },
    actions: {
       async fetchAllNews ({ commit }) {
@@ -87,6 +99,29 @@ export default {
             commit('SET_ARE_ACTIVITIES_LOADING', false)
             throw e
          }
-      }
+      },
+      async fetchAllWorkshops ({ commit }) {
+         commit('SET_ARE_WORKSHOPS_LOADING', true)
+         try {
+            const allActivities = await ApiService.getAllWorkshops()
+            commit('SET_WORKSHOPS', allActivities)
+            commit('SET_ARE_WORKSHOPS_LOADING', false)
+         } catch (e) {
+            commit('SET_ARE_WORKSHOPS_LOADING', false)
+            throw e
+         }
+      },
+      async fetchSingleWorkshop ({ commit}, id) {
+         commit('CLEAR_SINGLE_WORKSHOP')
+         commit('SET_ARE_WORKSHOPS_LOADING', true)
+         try {
+            const singleActivity = await ApiService.getSingleWorkshop(id.id)
+            commit('SET_SINGLE_WORKSHOP', singleActivity)
+            commit('SET_ARE_WORKSHOPS_LOADING', false)
+         } catch (e) {
+            commit('SET_ARE_WORKSHOPS_LOADING', false)
+            throw e
+         }
+      },
    }
 }

@@ -31,3 +31,15 @@ export async function getSingleActivity (id) {
    const res = await instance.get('/activites/' + id)
    return res.data
 }
+
+// Get all Workshops
+export async function getAllWorkshops () {
+   const res = await instance.get('/ateliers')
+   return res.data
+}
+
+// Get one Workshop
+export async function getSingleWorkshop (id) {
+   const res = await instance.get('/ateliers/' + id)
+   return res.data
+}
