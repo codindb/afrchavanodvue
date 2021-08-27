@@ -2,6 +2,8 @@
    <div>
       <el-empty v-if="apiData.areNewsLoading" description="Chargement..."></el-empty>
       <h2>{{ apiData.singleNews.titre }}</h2>
+      <el-image :src="apiData.singleNews.photo.url"></el-image>
+      <p>{{ apiData.singleNews.description }}</p>
    </div>
    <div class="bottomGap"></div>
 </template>

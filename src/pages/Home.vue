@@ -36,7 +36,11 @@
                <template #title>
                   <span>🧩</span> ACTIVITES
                </template>
-               <h3 v-for="activity in apiData.activities" :key="activity">{{ activity.titre}}</h3>
+               <div v-for="activity in apiData.activities" :key="activity">
+                  <router-link :to="{ name: 'Activite', params: {id: activity.id } }" >
+                     <h3> {{ activity.titre }} </h3>
+                  </router-link>
+               </div>
             </el-collapse-item>
             </el-collapse>
          </el-col>

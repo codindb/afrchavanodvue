@@ -5,6 +5,7 @@ import HomePage from '../pages/Home.vue'
 const NotFoundPage = () => import('../pages/NotFound.vue') // Lazy Loading of Pages when using this syntax
 const EasterEggPage= () => import('../pages/EasterEgg.vue') // Lazy Loading of Pages when using this syntax
 const SingleNewsPage= () => import('../pages/SingleNews.vue') // Lazy Loading of Pages when using this syntax
+const SingleActivityPage= () => import('../pages/SingleActivity.vue') // Lazy Loading of Pages when using this syntax
 
 const routes = [
    {
@@ -23,6 +24,11 @@ const routes = [
       path: '/actualites/:id',
       name: 'Actualite',
       component: SingleNewsPage,
+   },
+   {
+      path: '/activites/:id',
+      name: 'Activite',
+      component: SingleActivityPage,
    },
    { 
       path: '/onenagros',
