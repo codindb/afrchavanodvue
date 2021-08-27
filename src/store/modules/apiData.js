@@ -18,6 +18,9 @@ export default {
       },
       SET_SINGLE_NEWS (state, singleNews) {
          state.singleNews = singleNews
+      },
+      CLEAR_SINGLE_NEWS (state) {
+         state.singleNews = null
       }
     },
    actions: {
@@ -32,7 +35,8 @@ export default {
             throw e
          }
       },
-      async fetchSingleNews ({ commit }, id) {
+      async fetchSingleNews ({ commit}, id) {
+         commit('CLEAR_SINGLE_NEWS')
          commit('SET_ARE_NEWS_LOADING', true)
          try {
             const singleNews = await ApiService.getSingleNews(id.id)
