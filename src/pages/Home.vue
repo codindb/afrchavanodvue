@@ -36,9 +36,9 @@
                <template #title>
                   <span>🧩</span> ACTIVITES
                </template>
-               <div v-for="activity in apiData.activities" :key="activity">
+               <div class="activity" v-for="activity in apiData.activities" :key="activity">
                   <router-link :to="{ name: 'Activite', params: {id: activity.id } }" >
-                     <h3> {{ activity.titre }} </h3>
+                     <h3>{{ activity.titre }}</h3>
                   </router-link>
                </div>
             </el-collapse-item>
@@ -239,7 +239,7 @@
       }
       .mobile-carousel {
          .newsTitle {
-            font-size: 30px;
+            font-size: 24px;
          }
       }
       .newsTitle {
@@ -296,7 +296,15 @@
             >:nth-child(2) {
                border-radius: 20px;
             }
-            
+            .activity {
+               a{
+                  text-decoration: none;
+               }
+               h3 {
+                  color: black;
+                  font-size: 36px;
+               }
+            }
          }
       }
       @media screen and (max-width: 768px) {
@@ -309,6 +317,11 @@
                   }
                   span {
                      font-size: 46px !important;
+                  }
+               }
+               .activity {
+                  h3 {
+                     font-size: 26px
                   }
                }
             }
