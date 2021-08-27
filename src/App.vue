@@ -17,9 +17,9 @@
                   <span>🧩</span> ACTIVITES
                </template>
                <div class="activity" v-for="activity in apiData.activities" :key="activity">
-                  <router-link  @click="drawer = false" :to="{ name: 'Activite', params: {id: activity.id } }" >
+                  <a @click="drawer = false" :href="'/activites/' + activity.id">
                      <p>{{ activity.titre }}</p>
-                  </router-link>
+                  </a>
                </div>
             </el-collapse-item>
             <el-collapse-item>
@@ -27,9 +27,9 @@
                   <span>🧩</span> ACTIVITES
                </template>
                <div class="activity" v-for="activity in apiData.activities" :key="activity">
-                  <router-link @click="drawer = false" :to="{ name: 'Activite', params: {id: activity.id } }" >
+                  <a @click="drawer = false" :href="'/activites/' + activity.id">
                      <p>{{ activity.titre }}</p>
-                  </router-link>
+                  </a>
                </div>
             </el-collapse-item>
             </el-collapse>
