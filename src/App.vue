@@ -104,13 +104,12 @@ body {
     .el-button {
       margin: 7px 0 !important;
       border: none;
-      color: black;
       &:hover {
-        color: black;
+        color: #606266;
         background: none;
       }
       &:focus {
-        color: black;
+        color: #606266;
         background: none;
       }
       i{
