@@ -200,7 +200,7 @@
    }
 
    .news-logo {
-      padding-top: 20px;
+      padding: 20px;
       width: 25%;
    }
    @media screen and (max-width: 768px) {
@@ -244,7 +244,7 @@
    }
    @media screen and (min-width: 768px) {
       .section-logo {
-         width: 40%;
+         width: 30%;
       }
    }
 
