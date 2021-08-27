@@ -8,8 +8,32 @@
         <el-drawer
           v-model="drawer"
           :with-header="true"
-          :direction="direction()">
-          <span>Hi there!</span>
+          :direction="direction()"
+          :size="drawerSize()">
+          <div class="drawer-content">
+            <el-collapse>
+            <el-collapse-item>
+               <template #title>
+                  <span>🧩</span> ACTIVITES
+               </template>
+               <div class="activity" v-for="activity in apiData.activities" :key="activity">
+                  <router-link  @click="drawer = false" :to="{ name: 'Activite', params: {id: activity.id } }" >
+                     <p>{{ activity.titre }}</p>
+                  </router-link>
+               </div>
+            </el-collapse-item>
+            <el-collapse-item>
+               <template #title>
+                  <span>🧩</span> ACTIVITES
+               </template>
+               <div class="activity" v-for="activity in apiData.activities" :key="activity">
+                  <router-link @click="drawer = false" :to="{ name: 'Activite', params: {id: activity.id } }" >
+                     <p>{{ activity.titre }}</p>
+                  </router-link>
+               </div>
+            </el-collapse-item>
+            </el-collapse>
+          </div>
         </el-drawer>
       </div>
     </el-header>
@@ -40,6 +64,8 @@ import { useWindowSize } from 'vue-window-size';
 
 const store = useStore()
 
+const apiData = store.state.apiData
+
 // Activation of notification system
 store.commit('notifications/SET_NOTIFIER', ElNotification)
 
@@ -49,7 +75,7 @@ let drawer = ref(false)
 // Initialize window size check
 const { width, height } = useWindowSize();
 
-// Handle drawer direction
+// Handle drawer direction and size
 const direction = () => {
   if(width.value <= 768) {
     return "ttb"
@@ -57,10 +83,26 @@ const direction = () => {
     return "rtl"
   }
 }
+const drawerSize = () => {
+  if(width.value <= 768) {
+         return "auto"
+      } else {
+         return "30%"
+      }
+}
 watch(width, () => {
   direction()
+  drawerSize()
 })
 
+const loadActivities = async () => {
+  try {
+      await store.dispatch('apiData/fetchAllActivities')
+  } catch(e) {
+      console.warn(e);
+  }
+}
+loadActivities()
 
 </script>
 
@@ -118,6 +160,30 @@ body {
     }
     .el-drawer__close {
       font-size: 44px;
+    }
+  }
+  .drawer-content {
+    .el-collapse {
+      --el-collapse-header-height: 50px;
+      .el-collapse-item {
+        >:first-child {
+            >:first-child {
+              font-size: 30px;
+              font-weight: bold;
+              display: block;
+            }
+        }
+        .activity {
+            a{
+              text-decoration: none;
+            }
+            p {
+              color: black;
+              font-size: 26px;
+              margin: 5px 0;
+            }
+        }
+      }
     }
   }
 }
