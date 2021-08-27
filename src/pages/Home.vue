@@ -1,5 +1,6 @@
 <template>
 
+   <el-affix :offset="100">
    <div class="bottom-header">
       <!-- <el-image :src="bottomHeaderImage" :fit="imageFill()"></el-image> -->
       <div>
@@ -8,76 +9,80 @@
       </div>
       <el-button round>Je m'inscris!</el-button>
    </div>
-   <el-image :src="news1" class="news-logo"></el-image>
-   <div class="newsCards">
-      <el-empty v-if="apiData.areNewsLoading" description="Chargement..."></el-empty>
+   </el-affix>
+   <div>
 
-      <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="380px">
-         <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
-               <router-link :to="{ name: 'Actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
-               <div class="newsTitle"> {{ item.titre }}</div>
-         </el-carousel-item>
-      </el-carousel>
+      <el-image :src="news1" class="news-logo"></el-image>
+      <div class="newsCards">
+         <el-empty v-if="apiData.areNewsLoading" description="Chargement..."></el-empty>
 
-      <el-carousel class="mobile-carousel" v-if="displayMobile()" ref="carousel" indicator-position="outside" arrow="always" trigger="click" :interval="4000" height="250px">
-         <el-carousel-item v-for="item in apiData.news" :key="item">
-               <router-link :to="{ name: 'Actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
-               <div class="newsTitle">{{ item.titre }}</div>
-         </el-carousel-item>
-      </el-carousel>
-      
-   </div>
-   <el-image :src="sectionLogo" class="section-logo"></el-image>
-   <div class="sections">
-      <el-row justify="space-around">
-         <el-col :span="20" :md="10">
-            <el-collapse>
-            <el-collapse-item>
-               <template #title>
-                  <span>🧩</span> ACTIVITES
-               </template>
-               <div class="activity" v-for="activity in apiData.activities" :key="activity">
-                  <router-link :to="{ name: 'Activite', params: {id: activity.id } }" >
-                     <h3>{{ activity.titre }}</h3>
-                  </router-link>
-               </div>
-            </el-collapse-item>
-            </el-collapse>
-         </el-col>
-         <el-col :span="20" :md="10">
-            <el-collapse>
-            <el-collapse-item>
-               <template #title>
-                  <span>🎟</span> ATELIERS
-               </template>
-               <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
-               <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
-            </el-collapse-item>
-            </el-collapse>
-         </el-col>
-         <el-col :span="20" :md="10">
-            <el-collapse>
-            <el-collapse-item>
-               <template #title>
-                  <span>🚸</span> ENFANTS
-               </template>
-               <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
-               <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
-            </el-collapse-item>
-            </el-collapse>
-         </el-col>
-         <el-col :span="20" :md="10">
-            <el-collapse>
-            <el-collapse-item>
-               <template #title>
-                  <span>👥</span> L'AFR
-               </template>
-               <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
-               <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
-            </el-collapse-item>
-            </el-collapse>
-         </el-col>
-      </el-row>
+         <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="380px">
+            <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
+                  <router-link :to="{ name: 'Actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
+                  <div class="newsTitle"> {{ item.titre }}</div>
+            </el-carousel-item>
+         </el-carousel>
+
+         <el-carousel class="mobile-carousel" v-if="displayMobile()" ref="carousel" indicator-position="outside" arrow="always" trigger="click" :interval="4000" height="250px">
+            <el-carousel-item v-for="item in apiData.news" :key="item">
+                  <router-link :to="{ name: 'Actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
+                  <div class="newsTitle">{{ item.titre }}</div>
+            </el-carousel-item>
+         </el-carousel>
+         
+      </div>
+      <el-image :src="sectionLogo" class="section-logo"></el-image>
+      <div class="sections">
+         <el-row justify="space-around">
+            <el-col :span="20" :md="10">
+               <el-collapse>
+               <el-collapse-item>
+                  <template #title>
+                     <span>🧩</span> ACTIVITES
+                  </template>
+                  <div class="activity" v-for="activity in apiData.activities" :key="activity">
+                     <router-link :to="{ name: 'Activite', params: {id: activity.id } }" >
+                        <h3>{{ activity.titre }}</h3>
+                     </router-link>
+                  </div>
+               </el-collapse-item>
+               </el-collapse>
+            </el-col>
+            <el-col :span="20" :md="10">
+               <el-collapse>
+               <el-collapse-item>
+                  <template #title>
+                     <span>🎟</span> ATELIERS
+                  </template>
+                  <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
+                  <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
+               </el-collapse-item>
+               </el-collapse>
+            </el-col>
+            <el-col :span="20" :md="10">
+               <el-collapse>
+               <el-collapse-item>
+                  <template #title>
+                     <span>🚸</span> ENFANTS
+                  </template>
+                  <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
+                  <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
+               </el-collapse-item>
+               </el-collapse>
+            </el-col>
+            <el-col :span="20" :md="10">
+               <el-collapse>
+               <el-collapse-item>
+                  <template #title>
+                     <span>👥</span> L'AFR
+                  </template>
+                  <div>Cohérence avec la vraie vie: en accord avec les processus habituels de la vie réelle, conforme aux langages et habitudes des utilisateurs;</div>
+                  <div>Cohérence au sein de l'interface: tout les éléments doivent être cohérents entre eux et suivre les mêmes règles, par exemple: le style global, les icônes, la position des éléments, etc.</div>
+               </el-collapse-item>
+               </el-collapse>
+            </el-col>
+         </el-row>
+      </div>
    </div>
    <div class="bottomGap"></div>
    
@@ -167,12 +172,15 @@
 </script>
 
 <style lang="scss" scoped>
-
+   .el-affix {
+      :first-child {
+         z-index: 0;
+      }
+   }
    .bottom-header {
 	   /* for positioning */
       height: $bottomHeaderHeightDesktop;
       width: 100%;
-      top: $topHeaderHeight;
 	   background: linear-gradient(45deg, #98cbff, #98ffcb);
       /* for content alignment */
       display: flex;
