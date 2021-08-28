@@ -235,8 +235,8 @@ body {
   padding: 0 !important;
 }
 .bottomGap{
-      height: 100px;
-   }
+  height: 100px;
+}
 
 footer {
   background-color: #2c3e50;
