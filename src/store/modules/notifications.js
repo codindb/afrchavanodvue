@@ -34,7 +34,7 @@ export default {
      */
     sendCustom ({ state, dispatch }, options) {
       const element = state.notifier({
-        offset: 50,
+        offset: 110,
         duration: 2000,
         ...options
       })
