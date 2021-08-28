@@ -4,14 +4,14 @@
         <el-image :src="logo" ></el-image>
     </div>
     <div class="kaamelott">
-        <el-image :src="kaamelott" ></el-image>  
+        <el-image :src="kaamelott"></el-image>  
     </div>
-    <div class="quote">
-        <p>{{ quote }}</p>
-        <el-button @click="refreshQuote()" :loading="loading" type="info" round>
+    <el-container class="quote" direction="vertical">
+        <p v-loading="loading">{{ quote }}</p>
+        <el-button @click="refreshQuote()" type="info" round>
             Nouvelle citation
         </el-button>
-    </div>
+    </el-container>
   </div>
   <div class="bottomGap"></div>
 </template>
@@ -33,13 +33,15 @@
         }
         },
         methods: {
-        refreshQuote() {
-            this.loading = true;
-            axios.get('https://kaamelott.hotentic.com/api/random').then((resp) => {
-            this.quote = resp.data.citation.citation;
-            this.loading = false;
-            });
-        }
+            refreshQuote() {
+                this.loading = true;
+                setTimeout(() => {
+                    axios.get('https://kaamelott.hotentic.com/api/random').then((resp) => {
+                    this.quote = resp.data.citation.citation;
+                    this.loading = false;
+                    });
+                }, 500);
+            }
         },
         created() {
         this.refreshQuote();
@@ -53,9 +55,14 @@
         padding: 50px;
     }
     .quote {
-        padding-bottom: 100px
+        padding-bottom: 50px;
+        align-items: center;
+        .el-button {
+        width: 200px;
+    }
     }
     .kaamelott {
         margin-top: -150px
     }
+    
 </style>
