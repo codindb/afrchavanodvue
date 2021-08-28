@@ -6,7 +6,7 @@
          <h2 class="bottom-header-title">Les Inscriptions pour les Activités et Ateliers 2021/2022 sont ouvertes</h2>
          <p class="bottom-header-desc">Pour plus d'informations consultez les pages dédiées aux activités/ateliers</p>
       </div>
-      <el-button round>Je m'inscris!</el-button>
+      <router-link :to="{ name: 'OnEnAGros' }"><el-button round>Je m'inscris!</el-button></router-link>
    </div>
    <el-image :src="news1" class="news-logo"></el-image>
    <div class="newsCards">
