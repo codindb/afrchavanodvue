@@ -9,9 +9,7 @@
       <router-link :to="{ name: 'OnEnAGros' }"><el-button round>Je m'inscris!</el-button></router-link>
    </div>
    <el-image :src="news1" class="news-logo"></el-image>
-   <div class="newsCards">
-      <el-empty v-if="apiData.areNewsLoading" description="Chargement..."></el-empty>
-
+   <div class="newsCards" v-loading="apiData.areNewsLoading">
       <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="380px">
          <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
                <router-link :to="{ name: 'Actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
@@ -25,14 +23,13 @@
                <div class="newsTitle">{{ item.titre }}</div>
          </el-carousel-item>
       </el-carousel>
-      
    </div>
    <el-image :src="sectionLogo" class="section-logo"></el-image>
    <div class="sections">
       <el-row justify="space-around">
          <el-col :span="20" :md="10">
             <el-collapse>
-            <el-collapse-item>
+            <el-collapse-item v-loading="apiData.areActivitiesLoading">
                <template #title>
                   <span>🧩</span> ACTIVITES
                </template>
@@ -46,7 +43,7 @@
          </el-col>
          <el-col :span="20" :md="10">
             <el-collapse>
-            <el-collapse-item>
+            <el-collapse-item v-loading="apiData.areWorshopsLoading">
                <template #title>
                   <span>🎟</span> ATELIERS
                </template>

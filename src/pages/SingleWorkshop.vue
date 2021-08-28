@@ -1,6 +1,6 @@
 <template>
-   <div>
-      <el-empty v-if="apiData.areWorkshopsLoading" description="Chargement..."></el-empty>
+   <el-empty v-if="apiData.areWorkshopsLoading" description="Chargement..."></el-empty>
+   <div v-else>
       <h2>{{ apiData.singleWorkshop.titre }}</h2>
       <el-image :src="apiData.singleWorkshop.photo.url"></el-image>
       <p>{{ apiData.singleWorkshop.description }}</p>
