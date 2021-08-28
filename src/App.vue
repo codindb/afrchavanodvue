@@ -177,8 +177,8 @@ body {
 
   .logo-afr {
     float: left;
-    height: 90px;
-    padding: 5px 20px;
+    height: 80px;
+    padding: 10px 0;
   }
 
   .menu-container {
