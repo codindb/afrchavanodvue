@@ -234,9 +234,6 @@ body {
   top: $topHeaderHeight;
   padding: 0 !important;
 }
-.bottomGap{
-  height: 100px;
-}
 
 footer {
   background-color: #2c3e50;
@@ -244,5 +241,46 @@ footer {
   z-index: 9;
   height: $topHeaderHeight !important;
 }
+
+
+// GLOBAL STYLE //
+  .fixed-header {
+    position: fixed;
+    width: 100%;
+    z-index: 0;
+
+    h2 {
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+    }
+    @media screen and (max-width: 768px) {
+      h2 {
+          font-size: 30px;
+      }
+    }
+  }
+  .page-header {
+    // for positioning
+    height: 200px !important;
+
+    // for content
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .overlapping {
+    background-color: white;
+    border-radius: 30px;
+    z-index: 1;
+  }
+  .page-main {
+    margin-top: 170px;
+  }
+  .bottomGap{
+    height: 100px;
+  }
+
+
 
 </style>

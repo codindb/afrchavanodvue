@@ -1,14 +1,14 @@
 <template>
    <el-container>
-    <el-header class="bottom-header">
+    <el-header class="bottom-header fixed-header">
       <div>
-         <h2 class="bottom-header-title">Les Inscriptions pour les Activités et Ateliers 2021/2022 sont ouvertes</h2>
+         <h3 class="bottom-header-title">Les Inscriptions pour les Activités et Ateliers 2021/2022 sont ouvertes</h3>
          <p class="bottom-header-desc">Pour plus d'informations consultez les pages dédiées aux activités/ateliers</p>
       </div>
       <router-link :to="{ name: 'OnEnAGros' }"><el-button round>Je m'inscris!</el-button></router-link>
     </el-header>
     
-    <el-main>
+    <el-main class="overlapping">
       <el-image :src="news" class="news-logo"></el-image>
       <div class="newsCards" v-loading="apiData.areNewsLoading">
          <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="380px">
@@ -195,10 +195,7 @@
    .bottom-header {
 	   /* for positioning */
       height: $bottomHeaderHeightDesktop;
-      width: 100%;
 	   background: linear-gradient(45deg, #98cbff, #98ffcb);
-      position: fixed;
-      z-index: -1;
 
       /* for content alignment */
       display: flex;
@@ -236,10 +233,8 @@
       }
    }
    .el-main {
-      background-color: white;
       margin-top: ($bottomHeaderHeightDesktop - 30px);
       padding: 0 !important;
-      border-radius: 30px;
       @media screen and (max-width: 768px) {
          margin-top: ($bottomHeaderHeightMobile - 30px);
       }
