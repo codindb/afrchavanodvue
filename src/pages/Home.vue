@@ -9,7 +9,7 @@
     </el-header>
     
     <el-main>
-      <el-image :src="news1" class="news-logo"></el-image>
+      <el-image :src="news" class="news-logo"></el-image>
       <div class="newsCards" v-loading="apiData.areNewsLoading">
          <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="380px">
             <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
@@ -104,7 +104,7 @@
 
    // Images imports
    import sectionLogo from '../assets/afrChavanod.png'
-   import news1 from '../assets/news1.png'
+   import news from '../assets/actualites.png'
 
    const store = useStore()
 
@@ -203,12 +203,12 @@
       /* for content alignment */
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
+      justify-content: center;
       align-items: center;
 
       .bottom-header-title {
          font-size: 40px;
-         margin-bottom: 10px;
+         margin-top: 0;
          text-align: center;
       }
       .bottom-header-desc {
@@ -237,9 +237,11 @@
    }
    .el-main {
       background-color: white;
-      margin-top: $bottomHeaderHeightDesktop;
+      margin-top: ($bottomHeaderHeightDesktop - 30px);
+      padding: 0 !important;
+      border-radius: 30px;
       @media screen and (max-width: 768px) {
-         margin-top: $bottomHeaderHeightMobile;
+         margin-top: ($bottomHeaderHeightMobile - 30px);
       }
       .news-logo {
          padding: 20px;
