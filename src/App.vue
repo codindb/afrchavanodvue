@@ -1,7 +1,7 @@
 <template>
   <el-container class="base-container">
     <el-header class="top-header">
-      <router-link to="/"><img class="logo-afr" :src="logoAfrUrl" alt="logo afr chavanod"></router-link>
+      <a href="/"><img class="logo-afr" :src="logoAfr" alt="logo afr chavanod"></a>
       <div class="menu-container">
         <el-button @click="drawer = true" size="medium" icon="el-icon-s-fold">
         </el-button>
@@ -89,7 +89,7 @@ import { useStore } from 'vuex'
 import { ElNotification } from 'element-plus';
 
 // Logo Url
-import logoAfrUrl from './assets/logoafr.jpg'
+import logoAfr from './assets/logoafr.jpg'
 
 // To handle responsiveness
 import { useWindowSize } from 'vue-window-size';
