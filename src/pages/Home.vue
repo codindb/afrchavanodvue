@@ -195,7 +195,7 @@
    .bottom-header {
 	   /* for positioning */
       height: $bottomHeaderHeightDesktop;
-	   background: linear-gradient(45deg, #98cbff, #98ffcb);
+	   background: linear-gradient(180deg, #98cbff, #ffffff);
 
       /* for content alignment */
       display: flex;
@@ -205,7 +205,7 @@
 
       .bottom-header-title {
          font-size: 40px;
-         margin-top: -80px;
+         margin-top: -50px;
          text-align: center;
       }
       .bottom-header-desc {
@@ -215,6 +215,7 @@
       .el-button {
          font-size: 26px;
          padding: 8px 40px;
+         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
       }
    }
    @media screen and (max-width: 768px) {
