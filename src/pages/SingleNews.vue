@@ -44,5 +44,4 @@ loadSingleNews()
 .el-header {
    background: linear-gradient(90deg, #f87f15, #0775eb);
 }
-
 </style>
