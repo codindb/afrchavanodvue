@@ -1,14 +1,14 @@
 <template>
    <el-container>
       <el-header class="fixed-header page-header">
-         <h2>{{ apiData.singleActivity.titre }}</h2>
+         <h2 v-if="apiData.singleActivity">{{ apiData.singleActivity.titre }}</h2>
       </el-header>
 
       <el-empty v-if="apiData.areActivitiesLoading" description="Chargement..."></el-empty>
       <el-main class="overlapping page-main" v-else>
-         <el-image :src="apiData.singleActivity.photo.url"></el-image>
+         <el-image v-if="apiData.singleActivity" :src="apiData.singleActivity.photo.url"></el-image>
          <h3>Description</h3>
-         <p>{{ apiData.singleActivity.description_complete }}</p>
+         <p v-if="apiData.singleActivity">{{ apiData.singleActivity.description_complete }}</p>
          <h3>Horaires</h3>
          <p>le Lundi de 12h à 14h</p>
          <h3>Tarif</h3>

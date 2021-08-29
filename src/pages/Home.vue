@@ -97,10 +97,10 @@
       width="90%"
       destroy-on-close
       center>
-      <div class="news-dialog-content">
-         <h2>Toto</h2>
-         <el-image :src="news"></el-image>
-         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt dolores quae sint expedita minima facere in laborum, necessitatibus ex sed. Commodi animi accusamus omnis ab deleniti non rerum ipsa magni.</p>
+      <div v-loading="apiData.areNewsLoading" class="news-dialog-content">
+         <h2 v-if="apiData.singleNews">{{ apiData.singleNews.titre }}</h2>
+         <el-image v-if="apiData.singleNews" :src="apiData.singleNews.photo.url"></el-image>
+         <p v-if="apiData.singleNews">{{ apiData.singleNews.description }}</p>
       </div>
    </el-dialog>
    </el-container>

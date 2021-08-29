@@ -1,13 +1,13 @@
 <template>
    <el-container>
       <el-header class="fixed-header page-header">
-         <h2>{{ apiData.singleWorkshop.titre }}</h2>
+         <h2 v-if="apiData.singleWorkshop">{{ apiData.singleWorkshop.titre }}</h2>
       </el-header>
 
       <el-empty v-if="apiData.areWorkshopsLoading" description="Chargement..."></el-empty>
       <el-main class="overlapping page-main" v-else>
-         <el-image :src="apiData.singleWorkshop.photo.url"></el-image>
-         <p>{{ apiData.singleWorkshop.description }}</p>
+         <el-image v-if="apiData.singleWorkshop" :src="apiData.singleWorkshop.photo.url"></el-image>
+         <p v-if="apiData.singleWorkshop">{{ apiData.singleWorkshop.description }}</p>
          <div class="bottomGap"></div>
       </el-main>
    </el-container>
