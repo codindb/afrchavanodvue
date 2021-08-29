@@ -205,7 +205,7 @@
 
       .bottom-header-title {
          font-size: 40px;
-         margin-top: 0;
+         margin-top: -50px;
          text-align: center;
       }
       .bottom-header-desc {
