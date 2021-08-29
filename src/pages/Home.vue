@@ -98,9 +98,9 @@
       destroy-on-close
       center>
       <div class="news-dialog-content">
-         <h2>{{ apiData.singleNews.titre }}</h2>
-         <el-image :src="apiData.singleNews.photo.url"></el-image>
-         <p>{{ apiData.singleNews.description }}</p>
+         <h2>Toto</h2>
+         <el-image :src="news"></el-image>
+         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt dolores quae sint expedita minima facere in laborum, necessitatibus ex sed. Commodi animi accusamus omnis ab deleniti non rerum ipsa magni.</p>
       </div>
    </el-dialog>
    </el-container>
@@ -169,6 +169,7 @@
    }
    loadNews()
 
+   // For the news dialog
    const loadSingleNews = async (itemId) => {
       try {
          await store.dispatch('apiData/fetchSingleNews', {id: itemId})
