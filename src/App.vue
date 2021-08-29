@@ -273,7 +273,7 @@ footer {
     background-color: white;
     border-radius: 30px;
     z-index: 1;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px -19px 38px, rgba(0, 0, 0, 0.22) 0px -15px 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px -30px 30px, rgba(0, 0, 0, 0.22) 0px -15px 12px;
   }
   .page-main {
     margin-top: 170px;
