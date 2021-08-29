@@ -13,14 +13,14 @@
       <div class="newsCards" v-loading="apiData.areNewsLoading">
          <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="380px">
             <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
-                  <router-link :to="{ name: 'Actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
+                  <el-image :src="item.photo.url" @click="newsDialogVisible = true; loadSingleNews(item.id)" fit="fill" class="image"></el-image>
                   <div class="newsTitle"> {{ item.titre }}</div>
             </el-carousel-item>
          </el-carousel>
 
          <el-carousel class="mobile-carousel" v-if="displayMobile()" ref="carousel" indicator-position="outside" arrow="always" trigger="click" :interval="4000" height="250px">
             <el-carousel-item v-for="item in apiData.news" :key="item">
-                  <router-link :to="{ name: 'Actualite', params: {id: item.id } }" ><el-image :src="item.photo.url" fit="fill" class="image"></el-image></router-link>
+                  <el-image :src="item.photo.url" @click="newsDialogVisible = true; loadSingleNews(item.id)" fit="fill" class="image"></el-image>
                   <div class="newsTitle">{{ item.titre }}</div>
             </el-carousel-item>
          </el-carousel>
@@ -92,6 +92,17 @@
       </div>
       <div class="bottomGap"></div>
     </el-main>
+    <el-dialog
+      v-model="newsDialogVisible"
+      width="90%"
+      destroy-on-close
+      center>
+      <div class="news-dialog-content">
+         <h2>{{ apiData.singleNews.titre }}</h2>
+         <el-image :src="apiData.singleNews.photo.url"></el-image>
+         <p>{{ apiData.singleNews.description }}</p>
+      </div>
+   </el-dialog>
    </el-container>
 </template>
 
@@ -112,9 +123,13 @@
 
    const carousel = ref("")
    
+   // To fix a carousel display issue
    onMounted(() => {
       carousel.value.setActiveItem(0)
     });
+
+   // To handle news dialog
+   const newsDialogVisible = ref(false)
     
 
    // Initialize window size check
@@ -128,18 +143,9 @@
          return false
       }
    }
-   // Handle bottom header image fill
-   const imageFill = () => {
-      if(width.value <= 768) {
-         return "cover"
-      } else {
-         return "fill"
-      }
-   }
 
    watch(width, () => {
       displayMobile()
-      imageFill()
    })
 
    // const sendNotification = () => {
@@ -149,6 +155,7 @@
    //    });
    // }
 
+   // For the carousel display
    const loadNews = async () => {
       try {
          await store.dispatch('apiData/fetchAllNews')
@@ -161,7 +168,19 @@
       }
    }
    loadNews()
-   
+
+   const loadSingleNews = async (itemId) => {
+      try {
+         await store.dispatch('apiData/fetchSingleNews', {id: itemId})
+      } catch(e) {
+         store.dispatch('notifications/sendError', {
+         title: "Erreur",
+         message: "Impossible de charger les données",
+         duration: 3000
+         });
+      }
+   }
+   // For the activities collapse
    const loadActivities = async () => {
       try {
          await store.dispatch('apiData/fetchAllActivities')
@@ -175,6 +194,7 @@
    }
    loadActivities()
    
+   // for the workshops collapse
    const loadWorkshops = async () => {
       try {
          await store.dispatch('apiData/fetchAllWorkshops')
@@ -276,6 +296,21 @@
             color: white;
             background: rgb(0,0,0);
             background: linear-gradient(0deg, rgba(0,0,0,1) -20%, rgba(255,255,255,0) 130%);
+         }
+      }
+      .el-dialog {
+         .news-dialog-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @media screen and (min-width: 768px) {
+               h2 {
+                  font-size: 40px;
+               }
+               p {
+                  font-size: 30px
+               }
+            }
          }
       }
 
