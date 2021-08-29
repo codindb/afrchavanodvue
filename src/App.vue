@@ -253,7 +253,7 @@ footer {
       color: white;
       font-size: 40px;
       font-weight: bold;
-      margin-top: -30px;
+      margin-top: -50px;
     }
     @media screen and (max-width: 768px) {
       h2 {
@@ -263,7 +263,7 @@ footer {
   }
   .page-header {
     // for positioning
-    height: 200px !important;
+    height: 230px !important;
 
     // for content
     display: flex;

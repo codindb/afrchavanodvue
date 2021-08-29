@@ -38,7 +38,7 @@ loadSingleWorkshop()
 <style lang="scss" scoped>
 
 .el-header {
-   background: linear-gradient(90deg, #39ab2a, #f87f15);
+   background: linear-gradient(180deg, #1081c5, #ffffff);
 }
 
 </style>
