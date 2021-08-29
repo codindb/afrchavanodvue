@@ -274,7 +274,7 @@
             width: 100%;
             color: white;
             background: rgb(0,0,0);
-            background: linear-gradient(0deg, rgba(0,0,0,1) -20%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(0deg, rgba(0,0,0,1) -20%, rgba(255,255,255,0) 130%);
          }
       }
 
