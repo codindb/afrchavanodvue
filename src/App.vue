@@ -18,7 +18,10 @@
                </template>
                <div class="activity" v-for="activity in apiData.activities" :key="activity">
                   <a @click="drawer = false" :href="'/activites/' + activity.id">
-                     <p>{{ activity.titre }}</p>
+                  <div class="title">
+                    <el-image :src="activity.icone.url"></el-image>
+                    <p>{{ activity.titre }}</p>
+                  </div>
                   </a>
                </div>
             </el-collapse-item>
@@ -28,7 +31,10 @@
                </template>
                <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
                   <a @click="drawer = false" :href="'/ateliers/' + workshop.id">
-                     <p>{{ workshop.titre }}</p>
+                    <div class="title">
+                      <el-image :src="workshop.icone.url"></el-image>
+                      <p>{{ workshop.titre }}</p>
+                    </div>
                   </a>
                </div>
             </el-collapse-item>
@@ -119,7 +125,7 @@ const drawerSize = () => {
   if(width.value <= 768) {
          return "auto"
       } else {
-         return "30%"
+         return "40%"
       }
 }
 watch(width, () => {
@@ -223,14 +229,23 @@ body {
             }
         }
         .activity, .workshop, .kids, .afr-info {
-            a{
-              text-decoration: none;
+          a{
+            text-decoration: none;
+          }
+          p {
+            color: black;
+            font-size: 20px;
+            margin: 5px 0;
+          }
+          .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .el-image {
+              height: 26px;
+              margin-right: 5px;
             }
-            p {
-              color: black;
-              font-size: 26px;
-              margin: 5px 0;
-            }
+          }
         }
       }
     }
@@ -299,7 +314,7 @@ footer {
           font-size: 24px;
       }
       h3 {
-        font-size: 30px;
+        font-size: 32px;
       }
     }
 
