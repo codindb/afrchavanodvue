@@ -76,4 +76,10 @@ a {
    width: 5%;
    margin: 50px auto;
 }
+@media screen and (max-width: 768px) {
+   .hr {
+      width: 15%;
+      margin: 30px auto;
+   }
+}
 </style>
