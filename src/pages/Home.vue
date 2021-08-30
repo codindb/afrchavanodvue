@@ -36,7 +36,10 @@
                   </template>
                   <div class="activity" v-for="activity in apiData.activities" :key="activity">
                      <router-link :to="{ name: 'Activite', params: {id: activity.id } }" >
-                        <h3>{{ activity.titre }}</h3>
+                        <div class="title">
+                           <el-image :src="activity.icone.url"></el-image>
+                           <p>{{ activity.titre }}</p>
+                        </div>
                      </router-link>
                   </div>
                </el-collapse-item>
@@ -50,7 +53,10 @@
                   </template>
                   <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
                      <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" >
-                        <h3>{{ workshop.titre }}</h3>
+                        <div class="title">
+                           <el-image :src="workshop.icone.url"></el-image>
+                           <p>{{ workshop.titre }}</p>
+                        </div>
                      </router-link>
                   </div>
                </el-collapse-item>
@@ -63,9 +69,9 @@
                      <span>🚸</span> ENFANTS
                   </template>
                   <div class="kids">
-                        <h3>Activité Enfants</h3>
+                        <p>ACTIVITE ENFANTS</p>
                      <router-link :to="{ name: 'UnderConstruction'}">
-                        <h3>🚧 Centre de loisirs 🚧</h3>
+                        <p>🚧 CENTRE DE LOISIRS 🚧</p>
                      </router-link>
                   </div>
                </el-collapse-item>
@@ -78,12 +84,12 @@
                      <span>👥</span> L'AFR
                   </template>
                   <div class="afr-info">
-                        <h3>Mission</h3>
-                        <h3>L'équipe</h3>
+                        <p>MISSION</p>
+                        <p>L'EQUIPE</p>
                      <router-link :to="{ name: 'UnderConstruction' }" >
-                        <h3>🚧 FAQ 🚧</h3>
+                        <p>🚧 FAQ 🚧</p>
                      </router-link>
-                        <h3>Contact</h3>
+                        <p>CONTACT</p>
                   </div>
                </el-collapse-item>
                </el-collapse>
@@ -100,7 +106,7 @@
       <div v-loading="apiData.areNewsLoading" class="news-dialog-content">
          <h2 v-if="apiData.singleNews">{{ apiData.singleNews.titre }}</h2>
          <el-image v-if="apiData.singleNews" :src="apiData.singleNews.photo.url"></el-image>
-         <p v-if="apiData.singleNews">{{ apiData.singleNews.description }}</p>
+         <div v-if="apiData.singleNews" v-html="markdownToHtml(apiData.singleNews.description)"></div>
       </div>
    </el-dialog>
    </el-container>
@@ -109,6 +115,9 @@
 <script setup>
    import { ref, watch , onMounted} from 'vue'
    import { useStore } from 'vuex'
+
+   // To parse markdown from api (rich text fields) into html
+   import marked from 'marked'
 
    // To handle responsiveness
    import { useWindowSize } from 'vue-window-size';
@@ -131,6 +140,10 @@
    // To handle news dialog
    const newsDialogVisible = ref(false)
     
+   // method used by marked to parse markdown
+   const markdownToHtml = (markdown) => {
+      return marked(markdown)
+   }
 
    // Initialize window size check
    const { width, height } = useWindowSize();
@@ -362,9 +375,19 @@
                   a{
                      text-decoration: none;
                   }
-                  h3 {
+                  p {
                      color: black;
-                     font-size: 36px;
+                     font-size: 30px;
+                     margin: 5px 0;
+                  }
+                  .title {
+                     display: flex;
+                     align-items: center;
+                     justify-content: center;
+                     .el-image {
+                     height: 30px;
+                     margin-right: 5px;
+                     }
                   }
                }
             }
@@ -382,8 +405,14 @@
                      }
                   }
                   .activity, .workshop, .kids, .afr-info {
-                     h3 {
-                        font-size: 26px
+                     p {
+                        font-size: 18px;
+                     }
+                     .title {
+                        .el-image {
+                           height: 24px;
+                           margin-right: 5px;
+                        }
                      }
                   }
                }
