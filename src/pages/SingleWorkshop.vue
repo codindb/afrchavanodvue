@@ -4,7 +4,7 @@
          <h2 v-if="apiData.singleWorkshop">{{ apiData.singleWorkshop.titre }}</h2>
       </el-header>
 
-      <el-main class="overlapping page-main" v-else>
+      <el-main class="overlapping page-main">
          <div v-loading="apiData.areWorkshopsLoading">
             <el-image v-if="apiData.singleWorkshop" :src="apiData.singleWorkshop.photo.url"></el-image>
             <p v-if="apiData.singleWorkshop">{{ apiData.singleWorkshop.description }}</p>
