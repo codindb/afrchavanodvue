@@ -243,6 +243,7 @@ body {
             justify-content: center;
             .el-image {
               height: 26px;
+              width: auto;
               margin-right: 5px;
             }
           }
