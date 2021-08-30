@@ -234,7 +234,7 @@ body {
           }
           p {
             color: black;
-            font-size: 20px;
+            font-size: 24px;
             margin: 5px 0;
           }
           .title {

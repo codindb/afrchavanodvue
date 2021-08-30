@@ -406,7 +406,7 @@
                   }
                   .activity, .workshop, .kids, .afr-info {
                      p {
-                        font-size: 18px;
+                        font-size: 20px;
                      }
                      .title {
                         .el-image {
