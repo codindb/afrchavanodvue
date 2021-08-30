@@ -67,18 +67,4 @@ loadSingleActivity()
 .el-header {
    background: linear-gradient(180deg,  #f08b17, #ffffff);
 }
-a {
-   text-decoration: none;
-   color: #2c3e50;
-}
-.hr {
-   width: 5%;
-   margin: 50px auto;
-}
-@media screen and (max-width: 768px) {
-   .hr {
-      width: 15%;
-      margin: 30px auto;
-   }
-}
 </style>
