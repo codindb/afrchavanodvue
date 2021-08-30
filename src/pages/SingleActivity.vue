@@ -4,19 +4,20 @@
          <h2 v-if="apiData.singleActivity">{{ apiData.singleActivity.titre }}</h2>
       </el-header>
 
-      <el-empty v-if="apiData.areActivitiesLoading" description="Chargement..."></el-empty>
-      <el-main class="overlapping page-main" v-else>
-         <el-image v-if="apiData.singleActivity" :src="apiData.singleActivity.photo.url"></el-image>
-         <h3>Description</h3>
-         <p v-if="apiData.singleActivity">{{ apiData.singleActivity.description_complete }}</p>
-         <h3>Horaires</h3>
-         <p>le Lundi de 12h à 14h</p>
-         <h3>Tarif</h3>
-         <p>100€ / trimestre</p>
-         <h3>Contact</h3>
-         <p><strong>Responsable d'activité: </strong>Toto</p>
-         <p><strong>E-mail: </strong>toto@afr.com</p>
-         <p><strong>Téléphone: </strong><a href="tel:+33 6 12 34 56 78">0612345678</a></p>
+      <el-main class="overlapping page-main">
+         <div v-loading="apiData.areActivitiesLoading">
+            <el-image v-if="apiData.singleActivity" :src="apiData.singleActivity.photo.url"></el-image>
+            <h3>Description</h3>
+            <p v-if="apiData.singleActivity">{{ apiData.singleActivity.description_complete }}</p>
+            <h3>Horaires</h3>
+            <p>le Lundi de 12h à 14h</p>
+            <h3>Tarif</h3>
+            <p>100€ / trimestre</p>
+            <h3>Contact</h3>
+            <p><strong>Responsable d'activité: </strong>Toto</p>
+            <p><strong>E-mail: </strong>toto@afr.com</p>
+            <p><strong>Téléphone: </strong><a href="tel:+33 6 12 34 56 78">0612345678</a></p>
+         </div>
          <div class="bottomGap"></div>
       </el-main>
    </el-container>

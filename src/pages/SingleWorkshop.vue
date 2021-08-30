@@ -4,10 +4,11 @@
          <h2 v-if="apiData.singleWorkshop">{{ apiData.singleWorkshop.titre }}</h2>
       </el-header>
 
-      <el-empty v-if="apiData.areWorkshopsLoading" description="Chargement..."></el-empty>
       <el-main class="overlapping page-main" v-else>
-         <el-image v-if="apiData.singleWorkshop" :src="apiData.singleWorkshop.photo.url"></el-image>
-         <p v-if="apiData.singleWorkshop">{{ apiData.singleWorkshop.description }}</p>
+         <div v-loading="apiData.areWorkshopsLoading">
+            <el-image v-if="apiData.singleWorkshop" :src="apiData.singleWorkshop.photo.url"></el-image>
+            <p v-if="apiData.singleWorkshop">{{ apiData.singleWorkshop.description }}</p>
+         </div>
          <div class="bottomGap"></div>
       </el-main>
    </el-container>

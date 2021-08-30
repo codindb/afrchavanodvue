@@ -12,7 +12,7 @@
           :size="drawerSize()">
           <div class="drawer-content">
             <el-collapse>
-            <el-collapse-item>
+            <el-collapse-item v-loading="apiData.areActivitiesLoading">
                <template #title>
                   <span>🧩</span> ACTIVITES
                </template>
@@ -22,7 +22,7 @@
                   </a>
                </div>
             </el-collapse-item>
-            <el-collapse-item>
+            <el-collapse-item v-loading="apiData.areWorkshopsLoading">
                <template #title>
                   <span>🎟</span> ATELIERS
                </template>
@@ -199,6 +199,14 @@ body {
         font-size: 60px;
       }
     }
+    @media screen and (max-width: 768px) {
+      .el-button {
+          margin: 15px 0 !important;
+          i{
+          font-size: 50px;
+        }
+      }
+    }
     .el-drawer__close {
       font-size: 44px;
     }
@@ -251,7 +259,7 @@ footer {
 
     h2 {
       color: white;
-      font-size: 40px;
+      font-size: 46px;
       font-weight: bold;
       margin-top: -20px;
     }
@@ -283,6 +291,14 @@ footer {
     height: 100px;
   }
 
+  @media screen and (min-width: 768px) {
+      p {
+          font-size: 24px;
+      }
+      h3 {
+        font-size: 30px;
+      }
+    }
 
 
 </style>
