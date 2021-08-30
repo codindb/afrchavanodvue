@@ -5,7 +5,7 @@
       </el-header>
 
       <el-main class="overlapping page-main">
-         <div v-loading="apiData.areActivitiesLoading">
+         <div class="overlapping-content" v-loading="apiData.areActivitiesLoading">
             <el-image v-if="apiData.singleActivity" :src="apiData.singleActivity.photo.url"></el-image>
             <h3>Description</h3>
             <p v-if="apiData.singleActivity">{{ apiData.singleActivity.description_complete }}</p>

@@ -283,6 +283,9 @@ footer {
     border-radius: 30px;
     z-index: 1;
     box-shadow: rgba(0, 0, 0, 0.19) 0px -15px 20px, rgba(0, 0, 0, 0.23) 0px -6px 6px;
+    .overlapping-content {
+      min-height: 300px;
+    }
   }
   .page-main {
     margin-top: 170px;
