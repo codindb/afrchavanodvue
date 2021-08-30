@@ -27,7 +27,6 @@
             <div v-if="apiData.singleActivity">
                <p v-if="apiData.singleActivity.adhesion">Nécessite l’adhésion ‘Familles Rurales’ : 22 € par famille</p>
             </div>
-            <!-- <p><strong>Téléphone: </strong><a href="tel:+33 6 12 34 56 78">0612345678</a></p> -->
          </div>
          <div class="bottomGap"></div>
       </el-main>
