@@ -78,7 +78,7 @@
                         </router-link>
                      </div>
                      <router-link :to="{ name: 'UnderConstruction'}">
-                        <p>🚧 CENTRE DE LOISIRS 🚧</p>
+                        <p>🚧 Centre de Loisirs 🚧</p>
                      </router-link>
                   </div>
                </el-collapse-item>
