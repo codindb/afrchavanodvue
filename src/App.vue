@@ -52,7 +52,7 @@
                     </a>
                   </div>
                   <a @click="drawer = false" :href="'/construction'">
-                     <p>🚧 Centre de loisirs 🚧</p>
+                     <p>Centre de loisirs</p>
                   </a>
                </div>
             </el-collapse-item>
@@ -61,16 +61,16 @@
                   <span>👥</span> L'AFR
                </template>
                <div class="afr-info">
-                  <a @click="drawer = false" :href="'/notfound'">
+                  <a @click="drawer = false" :href="'/construction'">
                      <p>Mission</p>
                   </a>
-                  <a @click="drawer = false" :href="'/notfound'">
+                  <a @click="drawer = false" :href="'/construction'">
                      <p>L'équipe</p>
                   </a>
                   <a @click="drawer = false" :href="'/construction'">
-                     <p>🚧 FAQ 🚧</p>
+                     <p>FAQ</p>
                   </a>
-                  <a @click="drawer = false" :href="'/notfound'">
+                  <a @click="drawer = false" :href="'/construction'">
                      <p>Contact</p>
                   </a>
                </div>

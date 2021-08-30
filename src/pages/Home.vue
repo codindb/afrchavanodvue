@@ -78,7 +78,7 @@
                         </router-link>
                      </div>
                      <router-link :to="{ name: 'UnderConstruction'}">
-                        <p>🚧 Centre de Loisirs 🚧</p>
+                        <p>Centre de Loisirs</p>
                      </router-link>
                   </div>
                </el-collapse-item>
@@ -91,12 +91,17 @@
                      <span>👥</span> L'AFR
                   </template>
                   <div class="afr-info">
-                        <p>MISSION</p>
-                        <p>L'EQUIPE</p>
                      <router-link :to="{ name: 'UnderConstruction' }" >
-                        <p>🚧 FAQ 🚧</p>
+                        <p>Mission</p>
+                     </router-link><router-link :to="{ name: 'UnderConstruction' }" >
+                        <p>L'équipe</p>
                      </router-link>
-                        <p>CONTACT</p>
+                     <router-link :to="{ name: 'UnderConstruction' }" >
+                        <p>FAQ</p>
+                     </router-link>
+                     <router-link :to="{ name: 'UnderConstruction' }" >
+                        <p>Contact</p>
+                     </router-link>
                   </div>
                </el-collapse-item>
                </el-collapse>
