@@ -301,6 +301,20 @@ footer {
     box-shadow: rgba(0, 0, 0, 0.19) 0px -15px 20px, rgba(0, 0, 0, 0.23) 0px -6px 6px;
     .overlapping-content {
       min-height: 300px;
+      a {
+        text-decoration: none;
+        color: #2c3e50;
+      }
+      .hr {
+        width: 5%;
+        margin: 50px auto;
+      }
+      @media screen and (max-width: 768px) {
+        .hr {
+            width: 15%;
+            margin: 30px auto;
+        }
+      }
     }
   }
   .page-main {
