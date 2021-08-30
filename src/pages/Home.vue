@@ -386,7 +386,7 @@
                      justify-content: center;
                      .el-image {
                      height: 30px;
-                     width: auto;
+                     width: 30px;
                      margin-right: 5px;
                      }
                   }
@@ -412,6 +412,7 @@
                      .title {
                         .el-image {
                            height: 24px;
+                           width: 24px;
                         }
                      }
                   }
