@@ -15,7 +15,9 @@ export default {
        singleWorkshop: null, 
        kidsActivities: null,
        areKidsActivitiesLoading: false,
-       singleKidsActivity: null, 
+       singleKidsActivity: null,
+       bottomHeaderInfo: null,
+       isBottomHeaderInfoLoading: false, 
      }
    },
    mutations: {
@@ -66,6 +68,15 @@ export default {
       },
       CLEAR_SINGLE_KIDS_ACTIVITY (state) {
          state.singleKidsActivity = null
+      },
+      SET_BOTTOMHEADER_INFO (state, bottomHeaderInfo) {
+        state.bottomHeaderInfo = bottomHeaderInfo
+      },
+      SET_IS_BOTTOMHEADER_INFO_LOADING (state, bool) {
+        state.isBottomHeaderInfoLoading = bool
+      },
+      CLEAR_BOTTOMHEADER_INFO (state) {
+         state.bottomHeaderInfo = null
       },
     },
    actions: {
@@ -158,6 +169,18 @@ export default {
             commit('SET_ARE_KIDS_ACTIVITIES_LOADING', false)
          } catch (e) {
             commit('SET_ARE_KIDS_ACTIVITIES_LOADING', false)
+            throw e
+         }
+      },
+      async fetchBottomHeaderInfo ({ commit }) {
+         commit('CLEAR_BOTTOMHEADER_INFO')
+         commit('SET_IS_BOTTOMHEADER_INFO_LOADING', true)
+         try {
+            const bottomHeaderInfo = await ApiService.getBottomHeaderInfo()
+            commit('SET_BOTTOMHEADER_INFO', bottomHeaderInfo)
+            commit('SET_IS_BOTTOMHEADER_INFO_LOADING', false)
+         } catch (e) {
+            commit('SET_IS_BOTTOMHEADER_INFO_LOADING', false)
             throw e
          }
       },

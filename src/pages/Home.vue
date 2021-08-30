@@ -1,11 +1,11 @@
 <template>
    <el-container>
     <el-header class="bottom-header fixed-header">
-      <div>
-         <h3 class="bottom-header-title">Les Inscriptions pour les Activités et Ateliers 2021/2022 sont ouvertes</h3>
-         <p class="bottom-header-desc">Pour plus d'informations consultez les pages dédiées aux activités/ateliers</p>
+      <div v-loading="apiData.isBottomHeaderInfoLoading">
+         <h3 class="bottom-header-title" v-if="apiData.bottomHeaderInfo">{{ apiData.bottomHeaderInfo.titre }}</h3>
+         <p class="bottom-header-desc" v-if="apiData.bottomHeaderInfo">{{ apiData.bottomHeaderInfo.sous_titre }}</p>
       </div>
-      <router-link :to="{ name: 'OnEnAGros' }"><el-button round>Je m'inscris!</el-button></router-link>
+      <router-link :to="{ name: 'OnEnAGros' }"><el-button v-if="apiData.bottomHeaderInfo && apiData.bottomHeaderInfo.bouton_lien" round>Je m'inscris!</el-button></router-link>
     </el-header>
     
     <el-main class="overlapping">
@@ -69,7 +69,14 @@
                      <span>🚸</span> ENFANTS
                   </template>
                   <div class="kids">
-                        <p>ACTIVITE ENFANTS</p>
+                     <div class="kids" v-for="kidsActivity in apiData.kidsActivities" :key="kidsActivity">
+                        <router-link :to="{ name: 'Enfants', params: {id: kidsActivity.id } }" >
+                           <div class="title">
+                              <el-image :src="kidsActivity.icone.url"></el-image>
+                              <p>{{ kidsActivity.titre }}</p>
+                           </div>
+                        </router-link>
+                     </div>
                      <router-link :to="{ name: 'UnderConstruction'}">
                         <p>🚧 CENTRE DE LOISIRS 🚧</p>
                      </router-link>
@@ -225,6 +232,34 @@
       }
    }
    loadWorkshops()
+   
+   // for the kids activities collapse
+   const loadKidsActivities = async () => {
+      try {
+         await store.dispatch('apiData/fetchAllKidsActivities')
+      } catch(e) {
+         store.dispatch('notifications/sendError', {
+         title: "Erreur",
+         message: "Impossible de charger les données",
+         duration: 5000
+         });
+      }
+   }
+   loadKidsActivities()
+
+    // for the bottom header
+   const loadBottomHeaderInfo = async () => {
+      try {
+         await store.dispatch('apiData/fetchBottomHeaderInfo')
+      } catch(e) {
+         store.dispatch('notifications/sendError', {
+         title: "Erreur",
+         message: "Impossible de charger les données",
+         duration: 5000
+         });
+      }
+   }
+   loadBottomHeaderInfo()
 
 </script>
 
