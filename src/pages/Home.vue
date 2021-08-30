@@ -63,10 +63,10 @@
                      <span>🚸</span> ENFANTS
                   </template>
                   <div class="kids">
-                     <!-- <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" > -->
                         <h3>Activité Enfants</h3>
-                        <h3>Centre de loisirs</h3>
-                     <!-- </router-link> -->
+                     <router-link :to="{ name: 'UnderConstruction'}">
+                        <h3>🚧 Centre de loisirs 🚧</h3>
+                     </router-link>
                   </div>
                </el-collapse-item>
                </el-collapse>
@@ -78,12 +78,12 @@
                      <span>👥</span> L'AFR
                   </template>
                   <div class="afr-info">
-                     <!-- <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" > -->
                         <h3>Mission</h3>
                         <h3>L'équipe</h3>
-                        <h3>FAQ</h3>
+                     <router-link :to="{ name: 'UnderConstruction' }" >
+                        <h3>🚧 FAQ 🚧</h3>
+                     </router-link>
                         <h3>Contact</h3>
-                     <!-- </router-link> -->
                   </div>
                </el-collapse-item>
                </el-collapse>

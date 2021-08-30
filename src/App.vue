@@ -56,8 +56,8 @@
                   <a @click="drawer = false" :href="'/notfound'">
                      <p>L'équipe</p>
                   </a>
-                  <a @click="drawer = false" :href="'/notfound'">
-                     <p>FAQ</p>
+                  <a @click="drawer = false" :href="'/construction'">
+                     <p>🚧 FAQ 🚧</p>
                   </a>
                   <a @click="drawer = false" :href="'/notfound'">
                      <p>Contact</p>
