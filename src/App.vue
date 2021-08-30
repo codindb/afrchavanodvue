@@ -43,9 +43,14 @@
                   <span>🚸</span> ENFANTS
                </template>
                <div class="kids">
-                  <a @click="drawer = false" :href="'/notfound'">
-                     <p>Activité Enfants</p>
-                  </a>
+                  <div class="kids" v-for="kidActivity in apiData.kidsActivities" :key="kidActivity">
+                    <a @click="drawer = false" :href="'/enfants/' + kidActivity.id">
+                      <div class="title">
+                        <el-image :src="kidActivity.icone.url"></el-image>
+                        <p>{{ kidActivity.titre }}</p>
+                      </div>
+                    </a>
+                  </div>
                   <a @click="drawer = false" :href="'/construction'">
                      <p>🚧 Centre de loisirs 🚧</p>
                   </a>
@@ -150,6 +155,15 @@ const loadWorkshops = async () => {
   }
 }
 loadWorkshops()
+
+const loadKidsActivities = async () => {
+  try {
+      await store.dispatch('apiData/fetchAllKidsActivities')
+  } catch(e) {
+      console.warn(e);
+  }
+}
+loadKidsActivities()
 
 </script>
 

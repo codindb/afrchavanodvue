@@ -13,6 +13,9 @@ export default {
        workshops: null,
        areWorkshopsLoading: false,
        singleWorkshop: null, 
+       kidsActivities: null,
+       areKidsActivitiesLoading: false,
+       singleKidsActivity: null, 
      }
    },
    mutations: {
@@ -51,6 +54,18 @@ export default {
       },
       CLEAR_SINGLE_WORKSHOP (state) {
          state.singleWorkshop = null
+      },
+      SET_KIDS_ACTIVITIES (state, kidsActivities) {
+        state.kidsActivities = kidsActivities
+      },
+      SET_ARE_KIDS_ACTIVITIES_LOADING (state, bool) {
+        state.areKidsActivitiesLoading = bool
+      },
+      SET_SINGLE_KIDS_ACTIVITY (state, singleKidsActivity) {
+         state.singleKidsActivity = singleKidsActivity
+      },
+      CLEAR_SINGLE_KIDS_ACTIVITY (state) {
+         state.singleKidsActivity = null
       },
     },
    actions: {
@@ -103,8 +118,8 @@ export default {
       async fetchAllWorkshops ({ commit }) {
          commit('SET_ARE_WORKSHOPS_LOADING', true)
          try {
-            const allActivities = await ApiService.getAllWorkshops()
-            commit('SET_WORKSHOPS', allActivities)
+            const allWorshops = await ApiService.getAllWorkshops()
+            commit('SET_WORKSHOPS', allWorshops)
             commit('SET_ARE_WORKSHOPS_LOADING', false)
          } catch (e) {
             commit('SET_ARE_WORKSHOPS_LOADING', false)
@@ -115,11 +130,34 @@ export default {
          commit('CLEAR_SINGLE_WORKSHOP')
          commit('SET_ARE_WORKSHOPS_LOADING', true)
          try {
-            const singleActivity = await ApiService.getSingleWorkshop(id.id)
-            commit('SET_SINGLE_WORKSHOP', singleActivity)
+            const singleWorkshop = await ApiService.getSingleWorkshop(id.id)
+            commit('SET_SINGLE_WORKSHOP', singleWorkshop)
             commit('SET_ARE_WORKSHOPS_LOADING', false)
          } catch (e) {
             commit('SET_ARE_WORKSHOPS_LOADING', false)
+            throw e
+         }
+      },
+      async fetchAllKidsActivities ({ commit }) {
+         commit('SET_ARE_KIDS_ACTIVITIES_LOADING', true)
+         try {
+            const allKidsActivities = await ApiService.getAllKidsActivities()
+            commit('SET_KIDS_ACTIVITIES', allKidsActivities)
+            commit('SET_ARE_KIDS_ACTIVITIES_LOADING', false)
+         } catch (e) {
+            commit('SET_ARE_KIDS_ACTIVITIES_LOADING', false)
+            throw e
+         }
+      },
+      async fetchSingleKidsActivity ({ commit}, id) {
+         commit('CLEAR_SINGLE_KIDS_ACTIVITY')
+         commit('SET_ARE_KIDS_ACTIVITIES_LOADING', true)
+         try {
+            const singleKidsActivity = await ApiService.getSingleKidsActivity(id.id)
+            commit('SET_SINGLE_KIDS_ACTIVITY', singleKidsActivity)
+            commit('SET_ARE_KIDS_ACTIVITIES_LOADING', false)
+         } catch (e) {
+            commit('SET_ARE_KIDS_ACTIVITIES_LOADING', false)
             throw e
          }
       },

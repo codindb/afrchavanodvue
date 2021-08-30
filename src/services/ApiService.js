@@ -43,3 +43,15 @@ export async function getSingleWorkshop (id) {
    const res = await instance.get('/ateliers/' + id)
    return res.data
 }
+
+// Get all Kids Activities
+export async function getAllKidsActivities () {
+   const res = await instance.get('/enfants')
+   return res.data
+}
+
+// Get one Kids activity
+export async function getSingleKidsActivity (id) {
+   const res = await instance.get('/enfants/' + id)
+   return res.data
+}
