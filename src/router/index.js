@@ -3,6 +3,7 @@ import * as VueRouter from 'vue-router'
 // Pages 
 import HomePage from '../pages/Home.vue'
 const NotFoundPage = () => import('../pages/NotFound.vue') // Lazy Loading of Pages when using this syntax
+const UnderConstructionPage = () => import('../pages/UnderConstruction.vue') // Lazy Loading of Pages when using this syntax
 const EasterEggPage= () => import('../pages/EasterEgg.vue') // Lazy Loading of Pages when using this syntax
 const SingleActivityPage= () => import('../pages/SingleActivity.vue') // Lazy Loading of Pages when using this syntax
 const SingleWorkshopPage= () => import('../pages/SingleWorkshop.vue') // Lazy Loading of Pages when using this syntax
@@ -39,6 +40,11 @@ const routes = [
       path: '/notfound',
       name: 'NotFound',
       component: NotFoundPage
+    },
+    {
+      path: '/construction',
+      name: 'UnderConstruction',
+      component: UnderConstructionPage
     },
     {
       path: '/:wrongPath(.*)',

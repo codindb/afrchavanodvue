@@ -40,8 +40,8 @@
                   <a @click="drawer = false" :href="'/notfound'">
                      <p>Activité Enfants</p>
                   </a>
-                  <a @click="drawer = false" :href="'/onenagros'">
-                     <p>Centre de loisirs</p>
+                  <a @click="drawer = false" :href="'/construction'">
+                     <p>🚧 Centre de loisirs 🚧</p>
                   </a>
                </div>
             </el-collapse-item>
