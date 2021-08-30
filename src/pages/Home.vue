@@ -107,6 +107,10 @@
          <h2 v-if="apiData.singleNews">{{ apiData.singleNews.titre }}</h2>
          <el-image v-if="apiData.singleNews" :src="apiData.singleNews.photo.url"></el-image>
          <div v-if="apiData.singleNews" v-html="markdownToHtml(apiData.singleNews.description)"></div>
+         <div v-if="apiData.singleNews">
+            <el-button round v-if="apiData.singleNews.bouton_lien && apiData.singleNews.activite"><a :href="'/activites/' + apiData.singleNews.activite.id">{{ apiData.singleNews.activite.titre }}</a></el-button>
+            <el-button round v-if="apiData.singleNews.bouton_lien && apiData.singleNews.atelier"><a :href="'/ateliers/' + apiData.singleNews.atelier.id">{{ apiData.singleNews.atelier.titre }}</a></el-button>
+         </div>
       </div>
    </el-dialog>
    </el-container>
@@ -318,12 +322,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            .el-button {
+               font-size: 14px;
+               padding: 8px 40px;
+               box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+               a {
+                  text-decoration: none;
+                  color: #2c3e50;
+               }
+            }
             @media screen and (min-width: 768px) {
                h2 {
                   font-size: 40px;
                }
                p {
                   font-size: 30px
+               }
+               .el-button {
+                  font-size: 24px;
                }
             }
          }
