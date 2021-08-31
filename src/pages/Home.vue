@@ -2,8 +2,8 @@
    <el-container>
     <el-header class="bottom-header fixed-header">
       <div v-loading="apiData.isBottomHeaderInfoLoading">
-         <h3 class="bottom-header-title" v-if="apiData.bottomHeaderInfo">{{ apiData.bottomHeaderInfo.titre }}</h3>
-         <p class="bottom-header-desc" v-if="apiData.bottomHeaderInfo">{{ apiData.bottomHeaderInfo.sous_titre }}</p>
+         <div class="bottom-header-title" v-if="apiData.bottomHeaderInfo" v-html="markdownToHtml(apiData.bottomHeaderInfo.titre)"></div>
+         <div class="bottom-header-desc" v-if="apiData.bottomHeaderInfo" v-html="markdownToHtml(apiData.bottomHeaderInfo.sous_titre)"></div>
       </div>
       <router-link :to="{ name: 'OnEnAGros' }"><el-button v-if="apiData.bottomHeaderInfo && apiData.bottomHeaderInfo.bouton_lien" round>Je m'inscris!</el-button></router-link>
     </el-header>
@@ -47,7 +47,7 @@
             </el-col>
             <el-col :span="20" :md="10">
                <el-collapse>
-               <el-collapse-item v-loading="apiData.areWorshopsLoading">
+               <el-collapse-item v-loading="apiData.areWorkshopsLoading">
                   <template #title>
                      <span>🎟</span> ATELIERS
                   </template>
@@ -64,7 +64,7 @@
             </el-col>
             <el-col :span="20" :md="10">
                <el-collapse>
-               <el-collapse-item>
+               <el-collapse-item v-loading="apiData.areKidsActivitiesLoading || isKidsCampLoading">
                   <template #title>
                      <span>🚸</span> ENFANTS
                   </template>
@@ -298,13 +298,11 @@
       align-items: center;
 
       .bottom-header-title {
-         font-size: 40px;
          margin-top: -50px;
          text-align: center;
       }
       .bottom-header-desc {
          font-size: 26px;
-         text-align: center;
       }
       .el-button {
          font-size: 26px;
@@ -316,7 +314,7 @@
       .bottom-header {
          height: $bottomHeaderHeightMobile;
          .bottom-header-title {
-            font-size: 20px;
+            margin-top: -40px;
          }
          .bottom-header-desc {
             font-size: 16px;
