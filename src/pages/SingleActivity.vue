@@ -65,6 +65,6 @@ loadSingleActivity()
 
 <style lang="scss" scoped>
 .el-header {
-   background: linear-gradient(180deg,  #f08b17, #ffffff);
+   background: linear-gradient(180deg,  #0081C8, #ffffff);
 }
 </style>
