@@ -94,8 +94,8 @@
                      <span>👥</span> L'AFR
                   </template>
                   <div class="afr-info">
-                     <router-link :to="{ name: 'UnderConstruction' }" >
-                        <p>Mission</p>
+                     <router-link :to="{ name: 'Mission' }" >
+                        <p v-if="apiData.mission">{{ apiData.mission.titre }}</p>
                      </router-link><router-link :to="{ name: 'UnderConstruction' }" >
                         <p>L'équipe</p>
                      </router-link>
@@ -267,6 +267,20 @@
       }
    }
    loadKidsCamp()
+
+   // for the afr collapse
+   const loadMission = async () => {
+      try {
+         await store.dispatch('apiData/fetchMission')
+      } catch(e) {
+         store.dispatch('notifications/sendError', {
+         title: "Erreur",
+         message: "Impossible de charger la mission",
+         duration: 5000
+         });
+      }
+   }
+   loadMission()
 
     // for the bottom header
    const loadBottomHeaderInfo = async () => {

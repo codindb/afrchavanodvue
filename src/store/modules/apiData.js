@@ -20,6 +20,8 @@ export default {
        isBottomHeaderInfoLoading: false,
        kidsCamp: null,
        isKidsCampLoading: false, 
+       mission: null,
+       isMissionLoading: false, 
      }
    },
    mutations: {
@@ -99,6 +101,17 @@ export default {
        },
        CLEAR_KIDSCAMP (state) {
           state.kidsCamp = null
+       },
+       
+      // MISSION
+      SET_MISSION (state, mission) {
+         state.mission = mission
+       },
+       SET_IS_MISSION_LOADING (state, bool) {
+         state.isMissionLoading = bool
+       },
+       CLEAR_MISSION (state) {
+          state.mission = null
        },
     },
    actions: {
@@ -227,6 +240,19 @@ export default {
             commit('SET_IS_KIDSCAMP_LOADING', false)
          } catch (e) {
             commit('SET_IS_KIDSCAMP_LOADING', false)
+            throw e
+         }
+      },
+      
+      // MISSION
+      async fetchMission ({ commit }) {
+         commit('SET_IS_MISSION_LOADING', true)
+         try {
+            const mission = await ApiService.getMission()
+            commit('SET_MISSION', mission)
+            commit('SET_IS_MISSION_LOADING', false)
+         } catch (e) {
+            commit('SET_IS_MISSION_LOADING', false)
             throw e
          }
       },

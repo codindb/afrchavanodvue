@@ -64,8 +64,8 @@
                   <span>👥</span> L'AFR
                </template>
                <div class="afr-info">
-                  <a @click="drawer = false" :href="'/construction'">
-                     <p>Mission</p>
+                  <a @click="drawer = false" :href="'/mission'">
+                     <p v-if="apiData.mission">{{ apiData.mission.titre }}</p>
                   </a>
                   <a @click="drawer = false" :href="'/construction'">
                      <p>L'équipe</p>
@@ -177,6 +177,15 @@ const loadKidsCamp = async () => {
 }
 loadKidsCamp()
 
+const loadMission = async () => {
+  try {
+      await store.dispatch('apiData/fetchMission')
+  } catch(e) {
+      console.warn(e);
+  }
+}
+loadMission()
+
 </script>
 
 <style lang="scss">
@@ -260,7 +269,7 @@ body {
           }
           p {
             color: black;
-            font-size: 24px;
+            font-size: 22px;
             margin: 5px 0;
           }
           .title {
@@ -283,6 +292,16 @@ body {
   position: relative;
   top: $topHeaderHeight;
   padding: 0 !important;
+  .mission {
+    min-height: 200px;
+    h2{
+      font-size: 36px;
+    }
+    ul{
+        display: inline-block;
+        text-align: left;
+    }
+  }
 }
 
 footer {

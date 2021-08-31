@@ -9,6 +9,7 @@ const SingleActivityPage= () => import('../pages/SingleActivity.vue') // Lazy Lo
 const SingleWorkshopPage= () => import('../pages/SingleWorkshop.vue') // Lazy Loading of Pages when using this syntax
 const SingleKidsActivityPage= () => import('../pages/SingleKidsActivity.vue') // Lazy Loading of Pages when using this syntax
 const KidsCampPage= () => import('../pages/KidsCamp.vue') // Lazy Loading of Pages when using this syntax
+const MissionPage= () => import('../pages/Mission.vue') // Lazy Loading of Pages when using this syntax
 
 const routes = [
    {
@@ -42,6 +43,11 @@ const routes = [
       path: '/centre-loisirs',
       name: 'CentreLoisirs',
       component: KidsCampPage,
+   },
+   {
+      path: '/mission',
+      name: 'Mission',
+      component: MissionPage,
    },
    { 
       path: '/onenagros',

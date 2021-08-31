@@ -98,8 +98,8 @@ export async function getKidsCamp () {
    return res.data
 }
 
-// // Get bottomheader info
-// export async function getBottomHeaderInfo () {
-//    const res = await instance.get('/bandeau-info')
+// // Get mission info
+// export async function getMissionInfo () {
+//    const res = await instance.get('/mission')
 //    return res.data
 // }
