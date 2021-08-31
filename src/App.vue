@@ -335,6 +335,9 @@ footer {
         width: 5%;
         margin: 50px auto;
       }
+      img {
+         max-width: 100%;
+      }
       @media screen and (max-width: 768px) {
         .hr {
             width: 15%;
