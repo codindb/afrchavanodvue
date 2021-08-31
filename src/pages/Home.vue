@@ -95,14 +95,14 @@
                   </template>
                   <div class="afr-info">
                      <router-link :to="{ name: 'Mission' }" >
-                        <p v-if="apiData.mission">{{ apiData.mission.titre }}</p>
-                     </router-link><router-link :to="{ name: 'UnderConstruction' }" >
+                        <p v-if="apiData.mission" v-loading="apiData.isMissionLoading">{{ apiData.mission.titre }}</p>
+                     </router-link><router-link :to="{ name: 'Equipe' }" >
                         <p>L'équipe</p>
                      </router-link>
                      <router-link :to="{ name: 'UnderConstruction' }" >
                         <p>FAQ</p>
                      </router-link>
-                     <router-link :to="{ name: 'UnderConstruction' }" >
+                     <router-link :to="{ name: 'Contacts' }" >
                         <p>Contact</p>
                      </router-link>
                   </div>

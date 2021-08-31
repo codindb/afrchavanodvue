@@ -97,9 +97,3 @@ export async function getKidsCamp () {
    const res = await instance.get('/centre-loisirs')
    return res.data
 }
-
-// // Get mission info
-// export async function getMissionInfo () {
-//    const res = await instance.get('/mission')
-//    return res.data
-// }

@@ -22,6 +22,10 @@ export default {
        isKidsCampLoading: false, 
        mission: null,
        isMissionLoading: false, 
+       members: null,
+       areMembersLoading: false,
+       contacts: null,
+       areContactsLoading: false,
      }
    },
    mutations: {
@@ -112,6 +116,28 @@ export default {
        },
        CLEAR_MISSION (state) {
           state.mission = null
+       },
+       
+      // MEMBERS
+      SET_MEMBERS (state, members) {
+         state.members = members
+       },
+       SET_ARE_MEMBERS_LOADING (state, bool) {
+         state.areMembersLoading = bool
+       },
+       CLEAR_MEMBERS (state) {
+          state.members = null
+       },
+      
+       // CONTACTS
+      SET_CONTACTS (state, contacts) {
+         state.contacts = contacts
+       },
+       SET_ARE_CONTACTS_LOADING (state, bool) {
+         state.areContactsLoading = bool
+       },
+       CLEAR_CONTACTS (state) {
+          state.contacts = null
        },
     },
    actions: {
@@ -253,6 +279,32 @@ export default {
             commit('SET_IS_MISSION_LOADING', false)
          } catch (e) {
             commit('SET_IS_MISSION_LOADING', false)
+            throw e
+         }
+      },
+      
+      // MEMBERS
+      async fetchMembers ({ commit }) {
+         commit('SET_ARE_MEMBERS_LOADING', true)
+         try {
+            const members = await ApiService.getallMembers()
+            commit('SET_MEMBERS', members)
+            commit('SET_ARE_MEMBERS_LOADING', false)
+         } catch (e) {
+            commit('SET_ARE_MEMBERS_LOADING', false)
+            throw e
+         }
+      },
+      
+      // CONTACTS
+      async fetchContacts ({ commit }) {
+         commit('SET_ARE_CONTACTS_LOADING', true)
+         try {
+            const contacts = await ApiService.getAllContacts()
+            commit('SET_CONTACTS', contacts)
+            commit('SET_ARE_CONTACTS_LOADING', false)
+         } catch (e) {
+            commit('SET_ARE_CONTACTS_LOADING', false)
             throw e
          }
       },

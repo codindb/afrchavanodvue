@@ -67,13 +67,13 @@
                   <a @click="drawer = false" :href="'/mission'">
                      <p v-if="apiData.mission">{{ apiData.mission.titre }}</p>
                   </a>
-                  <a @click="drawer = false" :href="'/construction'">
+                  <a @click="drawer = false" :href="'/equipe'">
                      <p>L'équipe</p>
                   </a>
                   <a @click="drawer = false" :href="'/construction'">
                      <p>FAQ</p>
                   </a>
-                  <a @click="drawer = false" :href="'/construction'">
+                  <a @click="drawer = false" :href="'/contacts'">
                      <p>Contact</p>
                   </a>
                </div>
