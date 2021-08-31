@@ -17,10 +17,13 @@ export default {
        areKidsActivitiesLoading: false,
        singleKidsActivity: null,
        bottomHeaderInfo: null,
-       isBottomHeaderInfoLoading: false, 
+       isBottomHeaderInfoLoading: false,
+       kidsCamp: null,
+       isKidsCampLoading: false, 
      }
    },
    mutations: {
+      // NEWS
       SET_NEWS (state, news) {
         state.news = news
       },
@@ -33,6 +36,8 @@ export default {
       CLEAR_SINGLE_NEWS (state) {
          state.singleNews = null
       },
+
+      // ACTIVITIES
       SET_ACTIVITIES (state, activities) {
         state.activities = activities
       },
@@ -45,6 +50,8 @@ export default {
       CLEAR_SINGLE_ACTIVITY (state) {
          state.singleActivity = null
       },
+
+      // WORKSHOPS
       SET_WORKSHOPS (state, workshops) {
         state.workshops = workshops
       },
@@ -57,6 +64,8 @@ export default {
       CLEAR_SINGLE_WORKSHOP (state) {
          state.singleWorkshop = null
       },
+
+      // KIDS ACTIVITIES
       SET_KIDS_ACTIVITIES (state, kidsActivities) {
         state.kidsActivities = kidsActivities
       },
@@ -69,6 +78,8 @@ export default {
       CLEAR_SINGLE_KIDS_ACTIVITY (state) {
          state.singleKidsActivity = null
       },
+
+      // BOTTOM HEADER
       SET_BOTTOMHEADER_INFO (state, bottomHeaderInfo) {
         state.bottomHeaderInfo = bottomHeaderInfo
       },
@@ -78,8 +89,21 @@ export default {
       CLEAR_BOTTOMHEADER_INFO (state) {
          state.bottomHeaderInfo = null
       },
+
+      // KIDS CAMP
+      SET_KIDSCAMP (state, kidsCamp) {
+         state.kidsCamp = kidsCamp
+       },
+       SET_IS_KIDSCAMP_LOADING (state, bool) {
+         state.isKidsCampLoading = bool
+       },
+       CLEAR_KIDSCAMP (state) {
+          state.kidsCamp = null
+       },
     },
    actions: {
+
+      // NEWS
       async fetchAllNews ({ commit }) {
          commit('SET_ARE_NEWS_LOADING', true)
          try {
@@ -103,6 +127,8 @@ export default {
             throw e
          }
       },
+
+      // ACTIVITIES
       async fetchAllActivities ({ commit }) {
          commit('SET_ARE_ACTIVITIES_LOADING', true)
          try {
@@ -126,6 +152,8 @@ export default {
             throw e
          }
       },
+
+      // WORKSHOPS
       async fetchAllWorkshops ({ commit }) {
          commit('SET_ARE_WORKSHOPS_LOADING', true)
          try {
@@ -149,6 +177,8 @@ export default {
             throw e
          }
       },
+
+      // KIDS ACTIVITIES
       async fetchAllKidsActivities ({ commit }) {
          commit('SET_ARE_KIDS_ACTIVITIES_LOADING', true)
          try {
@@ -172,6 +202,8 @@ export default {
             throw e
          }
       },
+
+      // BOTTOM HEADER
       async fetchBottomHeaderInfo ({ commit }) {
          commit('CLEAR_BOTTOMHEADER_INFO')
          commit('SET_IS_BOTTOMHEADER_INFO_LOADING', true)
@@ -181,6 +213,20 @@ export default {
             commit('SET_IS_BOTTOMHEADER_INFO_LOADING', false)
          } catch (e) {
             commit('SET_IS_BOTTOMHEADER_INFO_LOADING', false)
+            throw e
+         }
+      },
+      
+      // KIDS CAMP
+      async fetchKidsCamp ({ commit }) {
+         commit('CLEAR_KIDSCAMP')
+         commit('SET_IS_KIDSCAMP_LOADING', true)
+         try {
+            const kidsCamp = await ApiService.getKidsCamp()
+            commit('SET_KIDSCAMP', kidsCamp)
+            commit('SET_IS_KIDSCAMP_LOADING', false)
+         } catch (e) {
+            commit('SET_IS_KIDSCAMP_LOADING', false)
             throw e
          }
       },

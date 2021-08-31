@@ -77,8 +77,11 @@
                            </div>
                         </router-link>
                      </div>
-                     <router-link :to="{ name: 'UnderConstruction'}">
-                        <p>Centre de Loisirs</p>
+                     <router-link :to="{ name: 'CentreLoisirs'}">
+                        <div class="title" v-if="apiData.kidsCamp">
+                           <el-image :src="apiData.kidsCamp.icone.url"></el-image>
+                           <p>{{ apiData.kidsCamp.titre }}</p>
+                        </div>
                      </router-link>
                   </div>
                </el-collapse-item>
@@ -191,7 +194,7 @@
       } catch(e) {
          store.dispatch('notifications/sendError', {
          title: "Erreur",
-         message: "Impossible de charger les données",
+         message: "Impossible de charger les actualités",
          duration: 5000
          });
       }
@@ -205,7 +208,7 @@
       } catch(e) {
          store.dispatch('notifications/sendError', {
          title: "Erreur",
-         message: "Impossible de charger les données",
+         message: "Impossible de charger l'actualité",
          duration: 3000
          });
       }
@@ -217,7 +220,7 @@
       } catch(e) {
          store.dispatch('notifications/sendError', {
          title: "Erreur",
-         message: "Impossible de charger les données",
+         message: "Impossible de charger les activités",
          duration: 5000
          });
       }
@@ -231,7 +234,7 @@
       } catch(e) {
          store.dispatch('notifications/sendError', {
          title: "Erreur",
-         message: "Impossible de charger les données",
+         message: "Impossible de charger les ateliers",
          duration: 5000
          });
       }
@@ -245,12 +248,25 @@
       } catch(e) {
          store.dispatch('notifications/sendError', {
          title: "Erreur",
-         message: "Impossible de charger les données",
+         message: "Impossible de charger les activités enfants",
          duration: 5000
          });
       }
    }
    loadKidsActivities()
+
+   const loadKidsCamp = async () => {
+      try {
+            await store.dispatch('apiData/fetchKidsCamp')
+      } catch(e) {
+            store.dispatch('notifications/sendError', {
+            title: "Erreur",
+            message: "Impossible de charger le centre de loisirs",
+            duration: 5000
+         });
+      }
+   }
+   loadKidsCamp()
 
     // for the bottom header
    const loadBottomHeaderInfo = async () => {
@@ -259,7 +275,7 @@
       } catch(e) {
          store.dispatch('notifications/sendError', {
          title: "Erreur",
-         message: "Impossible de charger les données",
+         message: "Impossible de charger la une",
          duration: 5000
          });
       }

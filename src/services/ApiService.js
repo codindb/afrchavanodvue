@@ -56,8 +56,50 @@ export async function getSingleKidsActivity (id) {
    return res.data
 }
 
+// Get all members
+export async function getAllMembers () {
+   const res = await instance.get('/membres')
+   return res.data
+}
+
+// Get one member
+export async function getSingleMember (id) {
+   const res = await instance.get('/membres/' + id)
+   return res.data
+}
+
+// Get all contacts
+export async function getAllContacts () {
+   const res = await instance.get('/contacts')
+   return res.data
+}
+
+// Get one contact
+export async function getSingleContact (id) {
+   const res = await instance.get('/contacts/' + id)
+   return res.data
+}
+
 // Get bottomheader info
 export async function getBottomHeaderInfo () {
    const res = await instance.get('/bandeau-info')
    return res.data
 }
+
+// Get mission data
+export async function getMission () {
+   const res = await instance.get('/mission')
+   return res.data
+}
+
+// Get Kids camp data
+export async function getKidsCamp () {
+   const res = await instance.get('/centre-loisirs')
+   return res.data
+}
+
+// // Get bottomheader info
+// export async function getBottomHeaderInfo () {
+//    const res = await instance.get('/bandeau-info')
+//    return res.data
+// }

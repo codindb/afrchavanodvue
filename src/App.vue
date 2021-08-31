@@ -51,8 +51,11 @@
                       </div>
                     </a>
                   </div>
-                  <a @click="drawer = false" :href="'/construction'">
-                     <p>Centre de loisirs</p>
+                  <a @click="drawer = false" :href="'/centre-loisirs'">
+                     <div class="title">
+                        <el-image :src="apiData.kidsCamp.icone.url"></el-image>
+                        <p>{{ apiData.kidsCamp.titre }}</p>
+                      </div>
                   </a>
                </div>
             </el-collapse-item>
@@ -164,6 +167,15 @@ const loadKidsActivities = async () => {
   }
 }
 loadKidsActivities()
+
+const loadKidsCamp = async () => {
+  try {
+      await store.dispatch('apiData/fetchKidsCamp')
+  } catch(e) {
+      console.warn(e);
+  }
+}
+loadKidsCamp()
 
 </script>
 
