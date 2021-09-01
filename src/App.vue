@@ -86,7 +86,8 @@
     </el-main>
 
     <el-footer class="footer">
-        <p> Made by codindb with Vue.js</p>
+      <a href="https://codindb.com" target="_blank"><el-image class="codindb" :src="codindb"></el-image></a> 
+      <p> Made by codindb with Vue.js</p>
     </el-footer>
   </el-container>
 </template>
@@ -99,8 +100,9 @@ import { ref, watch } from 'vue';
 import { useStore } from 'vuex'
 import { ElNotification } from 'element-plus';
 
-// Logo Url
+// Images
 import logoAfr from './assets/logoafr.jpg'
+import codindb from './assets/codindb.png'
 
 // To handle responsiveness
 import { useWindowSize } from 'vue-window-size';
@@ -306,6 +308,12 @@ footer {
   color: #fff;
   z-index: 9;
   height: $topHeaderHeight !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .codindb {
+    width: 80px;
+  }
 }
 
 
