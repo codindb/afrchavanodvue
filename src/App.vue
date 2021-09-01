@@ -355,12 +355,17 @@ footer {
         margin: 50px auto;
       }
       img {
-         max-width: 100%;
+        max-width: 100%;
+        width: 40%;
       }
       @media screen and (max-width: 768px) {
         .hr {
             width: 15%;
             margin: 30px auto;
+        }
+        img {
+          max-width: 100%;
+          width: 80%;
         }
       }
     }
