@@ -213,48 +213,7 @@
          });
       }
    }
-   // For the activities collapse
-   const loadActivities = async () => {
-      try {
-         await store.dispatch('apiData/fetchAllActivities')
-      } catch(e) {
-         store.dispatch('notifications/sendError', {
-         title: "Erreur",
-         message: "Impossible de charger les activités",
-         duration: 5000
-         });
-      }
-   }
-   loadActivities()
-   
-   // for the workshops collapse
-   const loadWorkshops = async () => {
-      try {
-         await store.dispatch('apiData/fetchAllWorkshops')
-      } catch(e) {
-         store.dispatch('notifications/sendError', {
-         title: "Erreur",
-         message: "Impossible de charger les ateliers",
-         duration: 5000
-         });
-      }
-   }
-   loadWorkshops()
-   
-   // for the kids activities collapse
-   const loadKidsActivities = async () => {
-      try {
-         await store.dispatch('apiData/fetchAllKidsActivities')
-      } catch(e) {
-         store.dispatch('notifications/sendError', {
-         title: "Erreur",
-         message: "Impossible de charger les activités enfants",
-         duration: 5000
-         });
-      }
-   }
-   loadKidsActivities()
-
+   // For the kids collapse
    const loadKidsCamp = async () => {
       try {
             await store.dispatch('apiData/fetchKidsCamp')
@@ -268,7 +227,7 @@
    }
    loadKidsCamp()
 
-   // for the afr collapse
+   // For the afr collapse
    const loadMission = async () => {
       try {
          await store.dispatch('apiData/fetchMission')
