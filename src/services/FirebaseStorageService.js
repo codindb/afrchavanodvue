@@ -3,15 +3,21 @@ import { getStorage, ref, getDownloadURL  } from "firebase/storage";
 
 import axios from "axios";
 
+const APIKEY = import.meta.env.VITE_APIKEY
+const AUTHDOMAIN = import.meta.env.VITE_AUTHDOMAIN
+const PROJECTID = import.meta.env.VITE_PROJECTID
+const STORAGEBUCKET = import.meta.env.VITE_STORAGEBUCKET
+const SENDERID = import.meta.env.VITE_SENDERID
+const APPID = import.meta.env.VITE_APPID
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCgn7dLXWlpIrdsL-lIuUM2aHUjCkYGsog",
-  authDomain: "afrchavanod74.firebaseapp.com",
-  projectId: "afrchavanod74",
-  storageBucket: "afrchavanod74.appspot.com",
-  messagingSenderId: "469038692770",
-  appId: "1:469038692770:web:97fe381128d5bd5396dafb"
+  apiKey: APIKEY,
+  authDomain: AUTHDOMAIN,
+  projectId: PROJECTID,
+  storageBucket: STORAGEBUCKET,
+  messagingSenderId: SENDERID,
+  appId: APPID
 };
 
 // Initialize Firebase
