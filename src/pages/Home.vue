@@ -97,13 +97,10 @@
                      <router-link :to="{ name: 'Mission' }" >
                         <p v-if="apiData.mission" v-loading="apiData.isMissionLoading">{{ apiData.mission.titre }}</p>
                      </router-link><router-link :to="{ name: 'Equipe' }" >
-                        <p>L'équipe</p>
+                        <p>L'équipe / Contacts</p>
                      </router-link>
                      <router-link :to="{ name: 'UnderConstruction' }" >
                         <p>FAQ</p>
-                     </router-link>
-                     <router-link :to="{ name: 'Contacts' }" >
-                        <p>Contact</p>
                      </router-link>
                   </div>
                </el-collapse-item>
