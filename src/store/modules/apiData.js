@@ -287,7 +287,7 @@ export default {
       async fetchMembers ({ commit }) {
          commit('SET_ARE_MEMBERS_LOADING', true)
          try {
-            const members = await ApiService.getallMembers()
+            const members = await ApiService.getAllMembers()
             commit('SET_MEMBERS', members)
             commit('SET_ARE_MEMBERS_LOADING', false)
          } catch (e) {
