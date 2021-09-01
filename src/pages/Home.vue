@@ -32,7 +32,7 @@
                <el-collapse>
                <el-collapse-item v-loading="apiData.areActivitiesLoading">
                   <template #title>
-                     <span>🧩</span> ACTIVITES
+                     <span>🥏</span> ACTIVITES
                   </template>
                   <div class="activity" v-for="activity in apiData.activities" :key="activity">
                      <router-link :to="{ name: 'Activite', params: {id: activity.id } }" >
@@ -49,7 +49,7 @@
                <el-collapse>
                <el-collapse-item v-loading="apiData.areWorkshopsLoading">
                   <template #title>
-                     <span>🎟</span> ATELIERS
+                     <span>🧩</span> ATELIERS
                   </template>
                   <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
                      <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" >
@@ -126,7 +126,7 @@
             <el-button round v-for="file in apiData.singleNews.fichiers" :key="file" @click="downloadFile(file.url, file.name)">{{ 'Telecharger ' + file.name }}</el-button>
          </div>
          <div v-if="apiData.singleNews">
-            <div class="tags" v-if="apiData.singleNews.bouton_lien && apiData.singleNews.activites.length > 0 || apiData.singleNews.ateliers.length > 0 || apiData.singleNews.enfants.length > 0">
+            <div class="tags" v-if="apiData.singleNews.activites.length > 0 || apiData.singleNews.ateliers.length > 0 || apiData.singleNews.enfants.length > 0">
                <el-tag v-for="activite in apiData.singleNews.activites" :key="activite"><a :href="'/activites/' + activite.id">{{ activite.titre }}</a></el-tag>
                <el-tag type="success" v-for="atelier in apiData.singleNews.ateliers" :key="atelier"><a :href="'/ateliers/' + atelier.id">{{ atelier.titre }}</a></el-tag>
                <el-tag type="warning" v-for="enfant in apiData.singleNews.enfants" :key="enfant"><a :href="'/enfants/' + enfant.id">{{ enfant.titre }}</a></el-tag>

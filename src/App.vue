@@ -14,7 +14,7 @@
             <el-collapse>
             <el-collapse-item v-loading="apiData.areActivitiesLoading">
                <template #title>
-                  <span>🧩</span> ACTIVITES
+                  <span>🥏</span> ACTIVITES
                </template>
                <div class="activity" v-for="activity in apiData.activities" :key="activity">
                   <a @click="drawer = false" :href="'/activites/' + activity.id">
@@ -27,7 +27,7 @@
             </el-collapse-item>
             <el-collapse-item v-loading="apiData.areWorkshopsLoading">
                <template #title>
-                  <span>🎟</span> ATELIERS
+                  <span>🧩</span> ATELIERS
                </template>
                <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
                   <a @click="drawer = false" :href="'/ateliers/' + workshop.id">
