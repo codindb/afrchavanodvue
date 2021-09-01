@@ -373,8 +373,9 @@
             .tags {
                margin: 30px 0;
                .el-tag {
-                  margin: 10px 20px;
+                  margin: 10px 5px;
                   font-size: 12px;
+                  border-radius: 30px;
                }
                a {
                   text-decoration: none;
