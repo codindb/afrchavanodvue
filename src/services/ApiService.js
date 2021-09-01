@@ -22,7 +22,7 @@ export async function getSingleNews (id) {
 
 // Get all Activities
 export async function getAllActivities () {
-   const res = await instance.get('/activites')
+   const res = await instance.get('/activites?_sort=titre:ASC')
    return res.data
 }
 
@@ -34,7 +34,7 @@ export async function getSingleActivity (id) {
 
 // Get all Workshops
 export async function getAllWorkshops () {
-   const res = await instance.get('/ateliers')
+   const res = await instance.get('/ateliers?_sort=titre:ASC')
    return res.data
 }
 
@@ -46,7 +46,7 @@ export async function getSingleWorkshop (id) {
 
 // Get all Kids Activities
 export async function getAllKidsActivities () {
-   const res = await instance.get('/enfants')
+   const res = await instance.get('/enfants?_sort=titre:ASC')
    return res.data
 }
 
