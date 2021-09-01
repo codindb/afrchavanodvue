@@ -122,9 +122,15 @@
          <h2 v-if="apiData.singleNews">{{ apiData.singleNews.titre }}</h2>
          <el-image v-if="apiData.singleNews" :src="apiData.singleNews.photo.url"></el-image>
          <div v-if="apiData.singleNews" v-html="markdownToHtml(apiData.singleNews.description)"></div>
+         <div v-if="apiData.singleNews && apiData.singleNews.fichiers.length > 0">
+            <el-button round v-for="file in apiData.singleNews.fichiers" :key="file" @click="downloadFile(file.url, file.name)">{{ 'Telecharger ' + file.name }}</el-button>
+         </div>
          <div v-if="apiData.singleNews">
-            <el-button round v-if="apiData.singleNews.bouton_lien && apiData.singleNews.activite"><a :href="'/activites/' + apiData.singleNews.activite.id">{{ apiData.singleNews.activite.titre }}</a></el-button>
-            <el-button round v-if="apiData.singleNews.bouton_lien && apiData.singleNews.atelier"><a :href="'/ateliers/' + apiData.singleNews.atelier.id">{{ apiData.singleNews.atelier.titre }}</a></el-button>
+            <div class="tags" v-if="apiData.singleNews.bouton_lien && apiData.singleNews.activites.length > 0 || apiData.singleNews.ateliers.length > 0 || apiData.singleNews.enfants.length > 0">
+               <el-tag v-for="activite in apiData.singleNews.activites" :key="activite"><a :href="'/activites/' + activite.id">{{ activite.titre }}</a></el-tag>
+               <el-tag type="success" v-for="atelier in apiData.singleNews.ateliers" :key="atelier"><a :href="'/ateliers/' + atelier.id">{{ atelier.titre }}</a></el-tag>
+               <el-tag type="warning" v-for="enfant in apiData.singleNews.enfants" :key="enfant"><a :href="'/enfants/' + enfant.id">{{ enfant.titre }}</a></el-tag>
+            </div>
          </div>
       </div>
    </el-dialog>
@@ -144,6 +150,13 @@
    // Images imports
    import sectionLogo from '../assets/afrChavanod.png'
    import news from '../assets/actualites.png'
+
+   // To access the downloadFile function from firebase service
+   import * as FirebaseStorageService from '../services/FirebaseStorageService.js'
+
+   const downloadFile = (url, filename) => {
+      FirebaseStorageService.downloadFile(url, filename)
+   }
 
    const store = useStore()
 
@@ -349,10 +362,23 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            word-break: break-word;
+            text-align: center;
             .el-button {
                font-size: 14px;
-               padding: 8px 40px;
+               margin: 10px;
                box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+               a {
+                  text-decoration: none;
+                  color: #2c3e50;
+               }
+            }
+            .tags {
+               margin: 30px 0;
+               .el-tag {
+                  margin: 10px 20px;
+                  font-size: 12px;
+               }
                a {
                   text-decoration: none;
                   color: #2c3e50;
@@ -367,6 +393,11 @@
                }
                .el-button {
                   font-size: 24px;
+               }
+               .tags {
+                  .el-tag {
+                     font-size: 20px;
+                  }
                }
             }
          }
