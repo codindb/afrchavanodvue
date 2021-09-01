@@ -64,7 +64,7 @@
             </el-col>
             <el-col :span="20" :md="10">
                <el-collapse>
-               <el-collapse-item v-loading="apiData.areKidsActivitiesLoading || isKidsCampLoading">
+               <el-collapse-item v-loading="apiData.areKidsActivitiesLoading">
                   <template #title>
                      <span>🚸</span> ENFANTS
                   </template>
@@ -80,7 +80,7 @@
                      <router-link :to="{ name: 'CentreLoisirs'}">
                         <div class="title" v-if="apiData.kidsCamp">
                            <el-image :src="apiData.kidsCamp.icone.url"></el-image>
-                           <p>{{ apiData.kidsCamp.titre }}</p>
+                           <p v-loading="apiData.isKidsCampLoading">{{ apiData.kidsCamp.titre }}</p>
                         </div>
                      </router-link>
                   </div>
