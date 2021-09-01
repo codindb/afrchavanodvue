@@ -420,7 +420,7 @@
                   }
                   p {
                      color: black;
-                     font-size: 30px;
+                     font-size: 26px;
                      margin: 5px 0;
                   }
                   .title {
@@ -451,12 +451,6 @@
                   .activity, .workshop, .kids, .afr-info {
                      p {
                         font-size: 18px;
-                     }
-                     .title {
-                        .el-image {
-                           height: 24px;
-                           width: 24px;
-                        }
                      }
                   }
                }

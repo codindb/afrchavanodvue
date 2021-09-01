@@ -277,8 +277,8 @@ body {
             align-items: center;
             justify-content: center;
             .el-image {
-              height: 26px;
-              width: 26px;
+              height: 30px;
+              width: 30px;
               margin-right: 5px;
             }
           }
