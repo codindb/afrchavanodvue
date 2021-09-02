@@ -11,7 +11,7 @@
     <el-main class="overlapping">
       <el-image :src="news" class="news-logo"></el-image>
       <div class="newsCards" v-loading="apiData.areNewsLoading">
-         <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="380px">
+         <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="300px">
             <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
                   <el-image v-if="item.photo" :src="item.photo.url" @click="newsDialogVisible = true; loadSingleNews(item.id)" class="image"></el-image>
                   <div class="newsTitle"> {{ item.titre }}</div>
@@ -283,9 +283,15 @@
       .bottom-header-title {
          margin-top: -50px;
          text-align: center;
+         :first-child {
+            font-size: 30px;
+         }
       }
       .bottom-header-desc {
-         font-size: 26px;
+         margin: 20px 0;
+         :first-child {
+            font-size: 26px;
+         }
       }
       .el-button {
          font-size: 26px;
@@ -298,9 +304,14 @@
          height: $bottomHeaderHeightMobile;
          .bottom-header-title {
             margin-top: -40px;
+            :first-child {
+               font-size: 20px;
+            }
          }
          .bottom-header-desc {
-            font-size: 16px;
+            :first-child {
+               font-size: 18px;
+            }
          }
          .el-button {
             font-size: 16px;
@@ -325,16 +336,14 @@
       }
 
       .newsCards {
-         // position: relative;
-         // top: $topHeaderHeight + $bottomHeaderHeight;
          .desktop-carousel {
             padding-top: 20px;
+            width: 80%;
+            margin: 0 auto;
             .el-carousel__item {
-               width: 49%;
-               margin-left: 13px;
                border-radius: 30px;
                background-color: white;
-               box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+               box-shadow: rgba(0, 0, 0, 0.19) 0px -10px 20px -10px, rgba(0, 0, 0, 0.23) 0px -6px 6px -2px;
             }
          }
          .mobile-carousel {
