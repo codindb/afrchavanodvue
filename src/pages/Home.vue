@@ -313,7 +313,7 @@
          }
          .bottom-header-desc {
             :nth-child(even) {
-            font-size: 16px;
+               font-size: 16px;
             }
             :nth-child(odd) {
                font-size: 16px;
