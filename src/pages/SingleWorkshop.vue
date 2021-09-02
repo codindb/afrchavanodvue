@@ -7,7 +7,7 @@
       <el-main class="overlapping page-main">
          <div class="overlapping-content" v-loading="apiData.areWorkshopsLoading">
             <el-image v-if="apiData.singleWorkshop" :src="apiData.singleWorkshop.photo.url"></el-image>
-            <h3>Description</h3>
+            <!-- <h3>Description</h3> -->
             <div v-if="apiData.singleWorkshop" v-html="markdownToHtml(apiData.singleWorkshop.description)"></div>
             <div class="hr"><hr></div>
             <h3>Animateur / Animatrice</h3>

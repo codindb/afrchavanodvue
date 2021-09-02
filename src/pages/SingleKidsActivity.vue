@@ -7,7 +7,7 @@
       <el-main class="overlapping page-main">
          <div class="overlapping-content" v-loading="apiData.areKidsActivitiesLoading">
             <el-image v-if="apiData.singleKidsActivity" :src="apiData.singleKidsActivity.photo.url"></el-image>
-            <h3>Description</h3>
+            <!-- <h3>Description</h3> -->
             <div v-if="apiData.singleKidsActivity" v-html="markdownToHtml(apiData.singleKidsActivity.description)"></div>
             <div class="hr"><hr></div>
             <h3>Animateur / Animatrice</h3>
