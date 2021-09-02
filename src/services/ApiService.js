@@ -62,6 +62,18 @@ export async function getAllMembers () {
    return res.data
 }
 
+// Get office members
+export async function getOffice () {
+   const res = await instance.get('/membres?bureau=true')
+   return res.data
+}
+
+// Get activities' managers
+export async function getManagers () {
+   const res = await instance.get('/membres?responsable_activite=true')
+   return res.data
+}
+
 // Get one member
 export async function getSingleMember (id) {
    const res = await instance.get('/membres/' + id)

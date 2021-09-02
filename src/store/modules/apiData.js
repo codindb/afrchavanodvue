@@ -24,6 +24,8 @@ export default {
        isMissionLoading: false, 
        members: null,
        areMembersLoading: false,
+       office: null,
+       managers: null,
        contacts: null,
        areContactsLoading: false,
      }
@@ -127,6 +129,12 @@ export default {
        },
        CLEAR_MEMBERS (state) {
           state.members = null
+       },
+       SET_OFFICE (state, office) {
+          state.office = office
+       },
+       SET_MANAGERS (state, managers) {
+          state.managers = managers
        },
       
        // CONTACTS
@@ -289,6 +297,28 @@ export default {
          try {
             const members = await ApiService.getAllMembers()
             commit('SET_MEMBERS', members)
+            commit('SET_ARE_MEMBERS_LOADING', false)
+         } catch (e) {
+            commit('SET_ARE_MEMBERS_LOADING', false)
+            throw e
+         }
+      },
+      async fetchOffice ({ commit }) {
+         commit('SET_ARE_MEMBERS_LOADING', true)
+         try {
+            const office = await ApiService.getOffice()
+            commit('SET_OFFICE', office)
+            commit('SET_ARE_MEMBERS_LOADING', false)
+         } catch (e) {
+            commit('SET_ARE_MEMBERS_LOADING', false)
+            throw e
+         }
+      },
+      async fetchManagers ({ commit }) {
+         commit('SET_ARE_MEMBERS_LOADING', true)
+         try {
+            const managers = await ApiService.getManagers()
+            commit('SET_MANAGERS', managers)
             commit('SET_ARE_MEMBERS_LOADING', false)
          } catch (e) {
             commit('SET_ARE_MEMBERS_LOADING', false)
