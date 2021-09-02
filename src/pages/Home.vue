@@ -5,7 +5,7 @@
          <div class="bottom-header-title" v-if="apiData.bottomHeaderInfo" v-html="markdownToHtml(apiData.bottomHeaderInfo.titre)"></div>
          <div class="bottom-header-desc" v-if="apiData.bottomHeaderInfo" v-html="markdownToHtml(apiData.bottomHeaderInfo.sous_titre)"></div>
       </div>
-      <router-link :to="{ name: 'OnEnAGros' }"><el-button v-if="apiData.bottomHeaderInfo && apiData.bottomHeaderInfo.bouton_lien" round>Je m'inscris!</el-button></router-link>
+      <router-link :to="{ name: 'Inscription' }"><el-button v-if="apiData.bottomHeaderInfo && apiData.bottomHeaderInfo.bouton_lien" round>Je m'inscris!</el-button></router-link>
     </el-header>
     
     <el-main class="overlapping">
