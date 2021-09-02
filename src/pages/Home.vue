@@ -289,8 +289,11 @@
       }
       .bottom-header-desc {
          margin: 20px 0;
-         :first-child {
-            font-size: 26px;
+         :nth-child(even) {
+            font-size: 24px;
+         }
+         :nth-child(odd) {
+            font-size: 24px;
          }
       }
       .el-button {
@@ -309,8 +312,11 @@
             }
          }
          .bottom-header-desc {
-            :first-child {
-               font-size: 18px;
+            :nth-child(even) {
+            font-size: 16px;
+            }
+            :nth-child(odd) {
+               font-size: 16px;
             }
          }
          .el-button {
