@@ -3,83 +3,83 @@
       <h2>L'Equipe / Contacts</h2>
       <el-image :src="team"></el-image>
       <h4>Le Bureau</h4>
-      <!-- <div v-for="member in apiData.members" :key="member">{{ member.nom }}</div> -->
-      <el-table
-         v-if="apiData.office"
-         :data="apiData.office"
-         :default-sort = "{prop: 'fonction_ou_activite', order: 'ascending'}"
-         fit
-         v-loading="apiData.areMembersLoading">
-         <el-table-column
-            prop="fonction_ou_activite"
-            label="Fonction"
-            fixed
-            min-width="120"
-            sortable>
-         </el-table-column>
-         <el-table-column
-            prop="nom"
-            label="Nom"
-            min-width="220"
-            sortable>
-         </el-table-column>
-         <el-table-column
-            label="Téléphone"
-            min-width="150">
-            <template #default="scope">
-               <a :href="'tel:+33' + scope.row.telephone">{{ scope.row.telephone }}</a>
-            </template>
-         </el-table-column>
-         <el-table-column
-            prop="email"
-            label="e-mail"
-            min-width="250">
-         </el-table-column>
-         <el-table-column
-            prop="adresse"
-            label="Adresse"
-            min-width="300">
-         </el-table-column>
-      </el-table>
+      <div class="members-table" v-loading="apiData.areMembersLoading">
+         <el-table
+            v-if="apiData.office"
+            :data="apiData.office"
+            :default-sort = "{prop: 'fonction_ou_activite', order: 'ascending'}"
+            fit>
+            <el-table-column
+               prop="fonction_ou_activite"
+               label="Fonction"
+               fixed
+               min-width="120"
+               sortable>
+            </el-table-column>
+            <el-table-column
+               prop="nom"
+               label="Nom"
+               min-width="220"
+               sortable>
+            </el-table-column>
+            <el-table-column
+               label="Téléphone"
+               min-width="150">
+               <template #default="scope">
+                  <a :href="'tel:+33' + scope.row.telephone">{{ scope.row.telephone }}</a>
+               </template>
+            </el-table-column>
+            <el-table-column
+               prop="email"
+               label="e-mail"
+               min-width="250">
+            </el-table-column>
+            <el-table-column
+               prop="adresse"
+               label="Adresse"
+               min-width="300">
+            </el-table-column>
+         </el-table>
+      </div>
       <h4>Les Responsables d'Activités</h4>
-      <el-table
-         v-if="apiData.managers"
-         :data="apiData.managers"
-         :default-sort = "{prop: 'fonction_ou_activite', order: 'ascending'}"
-         fit
-         v-loading="apiData.areMembersLoading">
-         <el-table-column
-            prop="fonction_ou_activite"
-            label="Activité"
-            fixed
-            min-width="170"
-            sortable>
-         </el-table-column>
-         <el-table-column
-            prop="nom"
-            label="Nom"
-            min-width="220"
-            sortable>
-         </el-table-column>
-         <el-table-column
-            label="Téléphone"
-            min-width="150">
-            <template #default="scope">
-               <a :href="'tel:+33' + scope.row.telephone">{{ scope.row.telephone }}</a>
-            </template>
-         </el-table-column>
-         <el-table-column
-            prop="email"
-            label="e-mail"
-            min-width="250">
-         </el-table-column>
-         <el-table-column
-            prop="adresse"
-            label="Adresse"
-            min-width="300">
-         </el-table-column>
-      </el-table>
-      
+      <div class="members-table" v-loading="apiData.areMembersLoading">
+         <el-table
+            v-if="apiData.managers"
+            :data="apiData.managers"
+            :default-sort = "{prop: 'fonction_ou_activite', order: 'ascending'}"
+            fit>
+            <el-table-column
+               prop="fonction_ou_activite"
+               label="Activité"
+               fixed
+               min-width="170"
+               sortable>
+            </el-table-column>
+            <el-table-column
+               prop="nom"
+               label="Nom"
+               min-width="220"
+               sortable>
+            </el-table-column>
+            <el-table-column
+               label="Téléphone"
+               min-width="150">
+               <template #default="scope">
+                  <a :href="'tel:+33' + scope.row.telephone">{{ scope.row.telephone }}</a>
+               </template>
+            </el-table-column>
+            <el-table-column
+               prop="email"
+               label="e-mail"
+               min-width="250">
+            </el-table-column>
+            <el-table-column
+               prop="adresse"
+               label="Adresse"
+               min-width="300">
+            </el-table-column>
+         </el-table>
+      </div>
    </div>
    <div class="bottomGap"></div>
 </template>
@@ -130,6 +130,9 @@ loadManagers()
    margin-bottom: 50px;
    .el-image {
       max-width: 90%;
+   }
+   .members-table {
+      min-height: 100px;
    }
    .el-table {
       width: 75%;
