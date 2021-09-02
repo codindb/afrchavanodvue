@@ -7,7 +7,5 @@
 </script>
 
 <style lang="scss" scoped>
-h2 {
-   font-size: 36px;
-}
+
 </style>
