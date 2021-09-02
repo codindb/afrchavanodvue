@@ -25,7 +25,7 @@
             <p v-if="apiData.singleWorkshop">{{ apiData.singleWorkshop.email}}</p>
             <div class="hr"><hr></div>
             <div v-if="apiData.singleWorkshop">
-               <p v-if="apiData.singleWorkshop.adhesion">Nécessite l’adhésion ‘Familles Rurales’ : 22 € par famille</p>
+               <p v-if="apiData.singleWorkshop.adhesion">Nécessite l’adhésion Familles Rurales : 22 € par famille</p>
             </div>
          </div>
          <div class="bottomGap"></div>
