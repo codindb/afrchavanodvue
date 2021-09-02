@@ -357,7 +357,7 @@ footer {
       }
       .hr {
         width: 5%;
-        margin: 50px auto;
+        margin: 20px auto;
       }
       img {
         max-width: 100%;
@@ -365,8 +365,7 @@ footer {
       }
       @media screen and (max-width: 768px) {
         .hr {
-            width: 15%;
-            margin: 30px auto;
+            width: 30%;
         }
         img {
           max-width: 100%;
@@ -385,9 +384,11 @@ footer {
   @media screen and (min-width: 768px) {
       p {
           font-size: 16px;
+          margin: 5px 0;
       }
       h3 {
         font-size: 22px;
+        margin: 8px 0;
       }
     }
 
