@@ -399,11 +399,11 @@
                   font-size: 30px
                }
                .el-button {
-                  font-size: 24px;
+                  font-size: 16px;
                }
                .tags {
                   .el-tag {
-                     font-size: 20px;
+                     font-size: 14px;
                   }
                }
             }
