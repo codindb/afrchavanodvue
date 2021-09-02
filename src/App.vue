@@ -361,7 +361,7 @@ footer {
       }
       img {
         max-width: 100%;
-        width: 40%;
+        width: 20%;
       }
       @media screen and (max-width: 768px) {
         .hr {
@@ -370,7 +370,7 @@ footer {
         }
         img {
           max-width: 100%;
-          width: 80%;
+          width: 60%;
         }
       }
     }
@@ -384,10 +384,10 @@ footer {
 
   @media screen and (min-width: 768px) {
       p {
-          font-size: 24px;
+          font-size: 16px;
       }
       h3 {
-        font-size: 32px;
+        font-size: 22px;
       }
     }
 
