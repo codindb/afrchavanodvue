@@ -18,14 +18,14 @@
             <div v-if="apiData.kidsCamp" v-html="markdownToHtml(apiData.kidsCamp.tarif)"></div>
             <h3>Inscriptions</h3>
             <div v-if="apiData.kidsCamp" v-html="markdownToHtml(apiData.kidsCamp.inscriptions)"></div>
-            <h3>Informations</h3>
+            <h3>Informations supplémentaires</h3>
             <div v-if="apiData.kidsCamp" v-html="markdownToHtml(apiData.kidsCamp.info_supplementaire)"></div>
             <h3>Contact</h3>
             <p v-if="apiData.kidsCamp"><a :href="'tel:+33' + apiData.kidsCamp.telephone">{{ apiData.kidsCamp.telephone}}</a></p>
             <p v-if="apiData.kidsCamp">{{ apiData.kidsCamp.email}}</p>
             <div class="hr"><hr></div>
             <div v-if="apiData.kidsCamp">
-               <p v-if="apiData.kidsCamp.adhesion">Nécessite l’adhésion ‘Familles Rurales’ : 22 € par famille</p>
+               <p v-if="apiData.kidsCamp.adhesion">Nécessite l’adhésion Familles Rurales : 22 € par famille</p>
             </div>
          </div>
          <div class="bottomGap"></div>

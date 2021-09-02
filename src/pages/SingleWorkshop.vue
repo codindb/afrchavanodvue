@@ -18,7 +18,7 @@
             <p v-if="apiData.singleWorkshop">{{ apiData.singleWorkshop.lieu}}</p>
             <h3>Tarif</h3>
             <div v-if="apiData.singleWorkshop" v-html="markdownToHtml(apiData.singleWorkshop.tarif)"></div>
-            <h3 v-if="apiData.singleWorkshop && apiData.singleWorkshop.info_supplementaire">Informations</h3>
+            <h3 v-if="apiData.singleWorkshop && apiData.singleWorkshop.info_supplementaire">Informations supplémentaires</h3>
             <div v-if="apiData.singleWorkshop" v-html="markdownToHtml(apiData.singleWorkshop.info_supplementaire? apiData.singleWorkshop.info_supplementaire : ' ')"></div>
             <h3>Contact</h3>
             <p v-if="apiData.singleWorkshop"><a :href="'tel:+33' + apiData.singleWorkshop.telephone">{{ apiData.singleWorkshop.telephone}}</a></p>

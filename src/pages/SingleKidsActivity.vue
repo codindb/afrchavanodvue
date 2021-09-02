@@ -18,7 +18,7 @@
             <p v-if="apiData.singleKidsActivity">{{ apiData.singleKidsActivity.lieu}}</p>
             <h3>Tarif</h3>
             <div v-if="apiData.singleKidsActivity" v-html="markdownToHtml(apiData.singleKidsActivity.tarif)"></div>
-            <h3 v-if="apiData.singleKidsActivity && apiData.singleKidsActivity.info_supplementaire">Informations</h3>
+            <h3 v-if="apiData.singleKidsActivity && apiData.singleKidsActivity.info_supplementaire">Informations supplémentaires</h3>
             <div v-if="apiData.singleKidsActivity" v-html="markdownToHtml(apiData.singleKidsActivity.info_supplementaire? apiData.singleKidsActivity.info_supplementaire : ' ')"></div>
             <h3>Contact</h3>
             <p v-if="apiData.singleKidsActivity"><a :href="'tel:+33' + apiData.singleKidsActivity.telephone">{{ apiData.singleKidsActivity.telephone}}</a></p>
