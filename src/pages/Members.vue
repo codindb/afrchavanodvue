@@ -2,7 +2,7 @@
    <div class="team-main-container">
       <h2>L'Equipe / Contacts</h2>
       <el-image :src="team"></el-image>
-      <h4>Le Bureau</h4>
+      <h3>Le Bureau</h3>
       <div class="members-table" v-loading="apiData.areMembersLoading">
          <el-table
             v-if="apiData.office"
@@ -41,7 +41,7 @@
             </el-table-column>
          </el-table>
       </div>
-      <h4>Les Responsables d'Activités</h4>
+      <h3>Les Responsables d'Activités</h3>
       <div class="members-table" v-loading="apiData.areMembersLoading">
          <el-table
             v-if="apiData.managers"
@@ -128,11 +128,15 @@ loadManagers()
 <style lang="scss" scoped>
 .team-main-container {
    margin-bottom: 50px;
+   h2 {
+      font-size: 36px;
+   }
    .el-image {
       max-width: 90%;
    }
    .members-table {
       min-height: 100px;
+      margin: 30px 0;
    }
    .el-table {
       width: 75%;
