@@ -145,7 +145,7 @@
    import { useWindowSize } from 'vue-window-size';
 
    // Images imports
-   import sectionLogo from '../assets/afrChavanod.png'
+   import sectionLogo from '../assets/logoafr.jpg'
    import news from '../assets/actualites.png'
 
    // To access the downloadFile function from firebase service
@@ -418,10 +418,11 @@
 
       .section-logo {
          margin: 30px 0;
+         width: 70%
       }
       @media screen and (min-width: 768px) {
          .section-logo {
-            width: 30%;
+            width: 15%;
          }
       }
 
