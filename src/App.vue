@@ -215,7 +215,7 @@ body {
   width: 100%;
   background-color: white;
   z-index: 99;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; //#
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
   .logo-afr {
     float: left;
@@ -312,13 +312,14 @@ body {
 }
 
 footer {
-  background-color: #2c3e50;
-  color: #fff;
+  background-color: #FFF;
+  color: #2c3e50;
   z-index: 9;
   height: $topHeaderHeight !important;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px -5px 10px, rgba(0, 0, 0, 0.23) 0px -3px 3px;
   .codindb {
     width: 80px;
   }
