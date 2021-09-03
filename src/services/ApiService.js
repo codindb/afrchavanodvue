@@ -80,18 +80,6 @@ export async function getSingleMember (id) {
    return res.data
 }
 
-// Get all contacts
-export async function getAllContacts () {
-   const res = await instance.get('/contacts')
-   return res.data
-}
-
-// Get one contact
-export async function getSingleContact (id) {
-   const res = await instance.get('/contacts/' + id)
-   return res.data
-}
-
 // Get bottomheader info
 export async function getBottomHeaderInfo () {
    const res = await instance.get('/bandeau-info')

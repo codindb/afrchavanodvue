@@ -26,8 +26,6 @@ export default {
        areMembersLoading: false,
        office: null,
        managers: null,
-       contacts: null,
-       areContactsLoading: false,
      }
    },
    mutations: {
@@ -135,17 +133,6 @@ export default {
        },
        SET_MANAGERS (state, managers) {
           state.managers = managers
-       },
-      
-       // CONTACTS
-      SET_CONTACTS (state, contacts) {
-         state.contacts = contacts
-       },
-       SET_ARE_CONTACTS_LOADING (state, bool) {
-         state.areContactsLoading = bool
-       },
-       CLEAR_CONTACTS (state) {
-          state.contacts = null
        },
     },
    actions: {
@@ -322,19 +309,6 @@ export default {
             commit('SET_ARE_MEMBERS_LOADING', false)
          } catch (e) {
             commit('SET_ARE_MEMBERS_LOADING', false)
-            throw e
-         }
-      },
-      
-      // CONTACTS
-      async fetchContacts ({ commit }) {
-         commit('SET_ARE_CONTACTS_LOADING', true)
-         try {
-            const contacts = await ApiService.getAllContacts()
-            commit('SET_CONTACTS', contacts)
-            commit('SET_ARE_CONTACTS_LOADING', false)
-         } catch (e) {
-            commit('SET_ARE_CONTACTS_LOADING', false)
             throw e
          }
       },
