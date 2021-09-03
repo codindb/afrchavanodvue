@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="logo">
-        <el-image :src="logo" ></el-image>
+        <el-image :src="logo" alt="logo kaamelott"></el-image>
     </div>
     <div class="kaamelott">
-        <el-image :src="kaamelott"></el-image>  
+        <el-image :src="kaamelott" alt="logo kaamelott"></el-image>  
     </div>
     <el-container class="quote" direction="vertical">
         <p v-loading="loading">{{ quote }}</p>

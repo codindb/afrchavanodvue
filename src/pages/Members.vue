@@ -1,7 +1,7 @@
 <template>
    <div class="team-main-container">
       <h2>L'Equipe / Contacts</h2>
-      <el-image :src="team"></el-image>
+      <el-image :src="team" alt="equipe"></el-image>
       <h3>Le Bureau</h3>
       <div class="members-table" v-loading="apiData.areMembersLoading">
          <el-table

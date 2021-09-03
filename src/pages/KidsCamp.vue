@@ -6,7 +6,7 @@
 
       <el-main class="overlapping page-main">
          <div class="overlapping-content" v-loading="apiData.isKidsCampLoading">
-            <el-image v-if="apiData.kidsCamp" :src="apiData.kidsCamp.photo.url"></el-image>
+            <el-image v-if="apiData.kidsCamp" :src="apiData.kidsCamp.photo.url" alt="image centre de loisirs"></el-image>
             <!-- <h3>Description</h3> -->
             <div v-if="apiData.kidsCamp" v-html="markdownToHtml(apiData.kidsCamp.description)"></div>
             <div class="hr"><hr></div>

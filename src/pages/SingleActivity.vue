@@ -6,7 +6,7 @@
 
       <el-main class="overlapping page-main">
          <div class="overlapping-content" v-loading="apiData.areActivitiesLoading">
-            <el-image v-if="apiData.singleActivity" :src="apiData.singleActivity.photo.url"></el-image>
+            <el-image v-if="apiData.singleActivity" :src="apiData.singleActivity.photo.url" alt="logo activité"></el-image>
             <!-- <h3>Description</h3> -->
             <div v-if="apiData.singleActivity" v-html="markdownToHtml(apiData.singleActivity.description)"></div>
             <div class="hr"><hr></div>

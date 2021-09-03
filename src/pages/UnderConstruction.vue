@@ -1,6 +1,6 @@
 <template>
    <h2>🚧 En cours de construction 🚧</h2>
-   <el-image :src="underConstruction"></el-image>
+   <el-image :src="underConstruction" alt="en cours de construction"></el-image>
    <h2>🚧 En cours de construction 🚧</h2>
    <el-row justify="center">
       <el-col @click="router.back()" :span="8" :sm="4"><h3>🔙</h3></el-col>

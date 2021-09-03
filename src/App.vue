@@ -19,7 +19,7 @@
                <div class="activity" v-for="activity in apiData.activities" :key="activity">
                   <a @click="drawer = false" :href="'/activites/' + activity.id">
                   <div class="title">
-                    <el-image :src="activity.icone.url"></el-image>
+                    <el-image :src="activity.icone.url" alt="logo activité"></el-image>
                     <p>{{ activity.titre }}</p>
                   </div>
                   </a>
@@ -32,7 +32,7 @@
                <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
                   <a @click="drawer = false" :href="'/ateliers/' + workshop.id">
                     <div class="title">
-                      <el-image :src="workshop.icone.url"></el-image>
+                      <el-image :src="workshop.icone.url" alt="logo atelier"></el-image>
                       <p>{{ workshop.titre }}</p>
                     </div>
                   </a>
@@ -53,7 +53,7 @@
                   </div>
                   <a @click="drawer = false" :href="'/centre-loisirs'">
                      <div class="title">
-                        <el-image :src="apiData.kidsCamp.icone.url"></el-image>
+                        <el-image :src="apiData.kidsCamp.icone.url" alt="logo centre loisirs"></el-image>
                         <p>{{ apiData.kidsCamp.titre }}</p>
                       </div>
                   </a>
@@ -86,9 +86,9 @@
     </el-main>
 
     <el-footer class="footer">
-      <a href="https://codindb.com" target="_blank"><el-image class="codindb" :src="codindb"></el-image></a> 
+      <a href="https://codindb.com" target="_blank"><el-image class="codindb" :src="codindb" alt="avatar codindb"></el-image></a> 
       <p> Made by codindb with</p>
-      <el-image class="vue-logo" :src="vueLogo"></el-image>
+      <el-image class="vue-logo" :src="vueLogo" alt="logo Vue.js"></el-image>
     </el-footer>
   </el-container>
 </template>

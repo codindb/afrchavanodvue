@@ -9,23 +9,23 @@
     </el-header>
     
     <el-main class="overlapping">
-      <el-image :src="news" class="news-logo"></el-image>
+      <el-image :src="news" class="news-logo" alt="logo actualités"></el-image>
       <div class="newsCards" v-loading="apiData.areNewsLoading">
          <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="300px">
             <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
-                  <el-image v-if="item.photo" :src="item.photo.url" @click="newsDialogVisible = true; loadSingleNews(item.id)" class="image"></el-image>
+                  <el-image v-if="item.photo" :src="item.photo.url" @click="newsDialogVisible = true; loadSingleNews(item.id)" class="image" alt="image actualité"></el-image>
                   <div class="newsTitle"> {{ item.titre }}</div>
             </el-carousel-item>
          </el-carousel>
 
          <el-carousel class="mobile-carousel" v-if="displayMobile()" ref="carousel" indicator-position="outside" arrow="always" trigger="click" :interval="4000" height="250px">
             <el-carousel-item v-for="item in apiData.news" :key="item">
-                  <el-image v-if="item.photo" :src="item.photo.url" @click="newsDialogVisible = true; loadSingleNews(item.id)" class="image"></el-image>
+                  <el-image v-if="item.photo" :src="item.photo.url" @click="newsDialogVisible = true; loadSingleNews(item.id)" class="image" alt="image actualité"></el-image>
                   <div class="newsTitle">{{ item.titre }}</div>
             </el-carousel-item>
          </el-carousel>
       </div>
-      <el-image :src="sectionLogo" class="section-logo"></el-image>
+      <el-image :src="sectionLogo" class="section-logo" alt="logo AFR Chavanod"></el-image>
       <div class="sections">
          <el-row justify="space-around">
             <el-col :span="20" :md="10">
@@ -37,7 +37,7 @@
                   <div class="activity" v-for="activity in apiData.activities" :key="activity">
                      <router-link :to="{ name: 'Activite', params: {id: activity.id } }" >
                         <div class="title">
-                           <el-image :src="activity.icone.url"></el-image>
+                           <el-image :src="activity.icone.url" alt="logo activité"></el-image>
                            <p>{{ activity.titre }}</p>
                         </div>
                      </router-link>
@@ -54,7 +54,7 @@
                   <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
                      <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" >
                         <div class="title">
-                           <el-image :src="workshop.icone.url"></el-image>
+                           <el-image :src="workshop.icone.url" alt="logo atelier"></el-image>
                            <p>{{ workshop.titre }}</p>
                         </div>
                      </router-link>
@@ -79,7 +79,7 @@
                      </div>
                      <router-link :to="{ name: 'CentreLoisirs'}">
                         <div class="title" v-if="apiData.kidsCamp">
-                           <el-image :src="apiData.kidsCamp.icone.url"></el-image>
+                           <el-image :src="apiData.kidsCamp.icone.url" alt="logo centre loisirs"></el-image>
                            <p v-loading="apiData.isKidsCampLoading">{{ apiData.kidsCamp.titre }}</p>
                         </div>
                      </router-link>
@@ -117,7 +117,7 @@
       center>
       <div v-loading="apiData.areNewsLoading" class="news-dialog-content">
          <h2 v-if="apiData.singleNews">{{ apiData.singleNews.titre }}</h2>
-         <el-image v-if="apiData.singleNews" :src="apiData.singleNews.photo.url"></el-image>
+         <el-image v-if="apiData.singleNews" :src="apiData.singleNews.photo.url" alt="actualité"></el-image>
          <div v-if="apiData.singleNews" v-html="markdownToHtml(apiData.singleNews.description)"></div>
          <div v-if="apiData.singleNews && apiData.singleNews.fichiers.length > 0">
             <el-button round v-for="file in apiData.singleNews.fichiers" :key="file" @click="downloadFile(file.url, file.name)">{{ 'Telecharger ' + file.name }}</el-button>
