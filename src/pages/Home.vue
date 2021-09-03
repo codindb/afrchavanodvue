@@ -418,13 +418,18 @@
 
       .section-logo {
          margin: 30px 0;
-         width: 70%
+         width: 20%
       }
-      @media screen and (min-width: 768px) {
+      @media screen and (max-width: 1780px) {
          .section-logo {
-            width: 15%;
+            width: 30%;
          }
       }
+      @media screen and (max-width: 768px) {
+               .section-logo {
+                  width: 60%;
+               }
+            }
 
       .sections {
          margin-bottom: 30px;
