@@ -8,6 +8,8 @@
             v-if="apiData.office"
             :data="apiData.office"
             :default-sort = "{prop: 'fonction_ou_activite', order: 'ascending'}"
+            stripe
+            highlight-current-row
             fit>
             <el-table-column
                prop="fonction_ou_activite"
@@ -47,6 +49,8 @@
             v-if="apiData.managers"
             :data="apiData.managers"
             :default-sort = "{prop: 'fonction_ou_activite', order: 'ascending'}"
+            stripe
+            highlight-current-row
             fit>
             <el-table-column
                prop="fonction_ou_activite"
