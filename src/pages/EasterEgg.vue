@@ -7,7 +7,7 @@
         <el-image :src="kaamelott" alt="logo kaamelott"></el-image>  
     </div>
     <el-container class="quote" direction="vertical">
-        <p v-loading="loading">{{ quote }}</p>
+        <p v-loading="data.loading">{{ data.quote }}</p>
         <el-button @click="refreshQuote()" type="info" round>
             Nouvelle citation
         </el-button>
@@ -16,37 +16,29 @@
   <div class="bottomGap"></div>
 </template>
 
-<script>
-    import axios from 'axios';
-    import { defineComponent } from 'vue';
-    import logo from '../assets/kaamelottLogo.png'
-    import kaamelott from '../assets/kaamelott.png'
+<script setup>
 
-    export default defineComponent ({
-        name: 'EasterEgg',
-        data() {
-        return {
-            loading: false,
-            quote: '',
-            logo,
-            kaamelott,
-        }
-        },
-        methods: {
-            refreshQuote() {
-                this.loading = true;
-                setTimeout(() => {
-                    axios.get('https://kaamelott.hotentic.com/api/random').then((resp) => {
-                    this.quote = resp.data.citation.citation;
-                    this.loading = false;
-                    });
-                }, 500);
-            }
-        },
-        created() {
-        this.refreshQuote();
-        }
-    })
+import { reactive } from 'vue';
+import axios from 'axios';
+import logo from '../assets/kaamelottLogo.png'
+import kaamelott from '../assets/kaamelott.png'
+
+const data = reactive({
+    loading: false,
+    quote:""
+})
+
+const refreshQuote = () => {
+    data.loading = true;
+    setTimeout(() => {
+        axios.get('https://kaamelott.hotentic.com/api/random').then((resp) => {
+            data.quote = resp.data.citation.citation
+            data.loading = false
+        });
+    }, 500)
+}
+refreshQuote();
+
 </script>
 
 <style scoped lang="scss">
