@@ -193,7 +193,7 @@
    })
 
    // To handle the news dialog
-   const newsIndex = null
+   const newsIndex = ref(null)
 
    // For the carousel display
    const loadNews = async () => {
@@ -209,33 +209,33 @@
    }
    loadNews()
 
-   // For the kids collapse
-   const loadKidsCamp = async () => {
-      try {
-            await store.dispatch('apiData/fetchKidsCamp')
-      } catch(e) {
-            store.dispatch('notifications/sendError', {
-            title: "Erreur",
-            message: "Impossible de charger le centre de loisirs",
-            duration: 5000
-         });
-      }
-   }
-   loadKidsCamp()
+   // // For the kids collapse
+   // const loadKidsCamp = async () => {
+   //    try {
+   //          await store.dispatch('apiData/fetchKidsCamp')
+   //    } catch(e) {
+   //          store.dispatch('notifications/sendError', {
+   //          title: "Erreur",
+   //          message: "Impossible de charger le centre de loisirs",
+   //          duration: 5000
+   //       });
+   //    }
+   // }
+   // loadKidsCamp()
 
-   // For the afr collapse
-   const loadMission = async () => {
-      try {
-         await store.dispatch('apiData/fetchMission')
-      } catch(e) {
-         store.dispatch('notifications/sendError', {
-         title: "Erreur",
-         message: "Impossible de charger la mission",
-         duration: 5000
-         });
-      }
-   }
-   loadMission()
+   // // For the afr collapse
+   // const loadMission = async () => {
+   //    try {
+   //       await store.dispatch('apiData/fetchMission')
+   //    } catch(e) {
+   //       store.dispatch('notifications/sendError', {
+   //       title: "Erreur",
+   //       message: "Impossible de charger la mission",
+   //       duration: 5000
+   //       });
+   //    }
+   // }
+   // loadMission()
 
     // for the bottom header
    const loadBottomHeaderInfo = async () => {
