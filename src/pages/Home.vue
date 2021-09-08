@@ -11,9 +11,10 @@
     <el-main class="overlapping">
       <el-image :src="news" class="news-logo" alt="logo actualités"></el-image>
       <div class="newsCards" v-loading="apiData.areNewsLoading">
+
          <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="300px">
             <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
-                  <el-image v-if="item.photo" :src="item.photo.url" @click="newsDialogVisible = true; loadSingleNews(item.id)" class="image" alt="image actualité"></el-image>
+                  <el-image v-if="item.photo" :src="item.photo.url" @click="newsDialogVisible = true; newsIndex = index" class="image" alt="image actualité"></el-image>
                   <div class="newsTitle"> {{ item.titre }}</div>
             </el-carousel-item>
          </el-carousel>
@@ -115,18 +116,18 @@
       width="90%"
       destroy-on-close
       center>
-      <div v-loading="apiData.areNewsLoading" class="news-dialog-content">
-         <h2 v-if="apiData.singleNews">{{ apiData.singleNews.titre }}</h2>
-         <el-image v-if="apiData.singleNews" :src="apiData.singleNews.photo.url" alt="actualité"></el-image>
-         <div v-if="apiData.singleNews" v-html="markdownToHtml(apiData.singleNews.description)"></div>
-         <div v-if="apiData.singleNews && apiData.singleNews.fichiers.length > 0">
-            <el-button round v-for="file in apiData.singleNews.fichiers" :key="file" @click="downloadFile(file.url, file.name)">{{ 'Telecharger ' + file.name }}</el-button>
+      <div class="news-dialog-content">
+         <h2>{{ apiData.news[newsIndex].titre }}</h2>
+         <el-image :src="apiData.news[newsIndex].photo.url" alt="actualité"></el-image>
+         <div v-html="markdownToHtml(apiData.news[newsIndex].description)"></div>
+         <div v-if="apiData.news[newsIndex].fichiers.length > 0">
+            <el-button round v-for="file in apiData.news[newsIndex].fichiers" :key="file" @click="downloadFile(file.url, file.name)">{{ 'Telecharger ' + file.name }}</el-button>
          </div>
-         <div v-if="apiData.singleNews">
-            <div class="tags" v-if="apiData.singleNews.activites.length > 0 || apiData.singleNews.ateliers.length > 0 || apiData.singleNews.enfants.length > 0">
-               <el-tag v-for="activite in apiData.singleNews.activites" :key="activite"><a :href="'/activites/' + activite.id">{{ activite.titre }}</a></el-tag>
-               <el-tag type="success" v-for="atelier in apiData.singleNews.ateliers" :key="atelier"><a :href="'/ateliers/' + atelier.id">{{ atelier.titre }}</a></el-tag>
-               <el-tag type="warning" v-for="enfant in apiData.singleNews.enfants" :key="enfant"><a :href="'/enfants/' + enfant.id">{{ enfant.titre }}</a></el-tag>
+         <div v-if="apiData.news">
+            <div class="tags" v-if="apiData.news[newsIndex].activites.length > 0 || apiData.news[newsIndex].ateliers.length > 0 || apiData.news[newsIndex].enfants.length > 0">
+               <el-tag v-for="activite in apiData.news[newsIndex].activites" :key="activite"><a :href="'/activites/' + activite.id">{{ activite.titre }}</a></el-tag>
+               <el-tag type="success" v-for="atelier in apiData.news[newsIndex].ateliers" :key="atelier"><a :href="'/ateliers/' + atelier.id">{{ atelier.titre }}</a></el-tag>
+               <el-tag type="warning" v-for="enfant in apiData.news[newsIndex].enfants" :key="enfant"><a :href="'/enfants/' + enfant.id">{{ enfant.titre }}</a></el-tag>
             </div>
          </div>
       </div>
@@ -191,12 +192,8 @@
       displayMobile()
    })
 
-   // const sendNotification = () => {
-   //    store.dispatch('notifications/sendSuccess', {
-   //       title: "Bravo",
-   //       message: "Site AFR Chavanod v1"
-   //    });
-   // }
+   // To handle the news dialog
+   const newsIndex = null
 
    // For the carousel display
    const loadNews = async () => {
@@ -212,18 +209,6 @@
    }
    loadNews()
 
-   // For the news dialog
-   const loadSingleNews = async (itemId) => {
-      try {
-         await store.dispatch('apiData/fetchSingleNews', {id: itemId})
-      } catch(e) {
-         store.dispatch('notifications/sendError', {
-         title: "Erreur",
-         message: "Impossible de charger l'actualité",
-         duration: 3000
-         });
-      }
-   }
    // For the kids collapse
    const loadKidsCamp = async () => {
       try {
