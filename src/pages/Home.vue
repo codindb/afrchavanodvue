@@ -11,20 +11,7 @@
     <el-main class="overlapping">
       <el-image :src="news" class="news-logo" alt="logo actualités"></el-image>
       <div class="newsCards" v-loading="apiData.areNewsLoading">
-
-         <el-carousel class="desktop-carousel" v-if="!displayMobile()" ref="carousel" arrow="always" trigger="click" :interval="4000" type="card" height="300px">
-            <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
-                  <el-image v-if="item.photo" :src="item.photo.url" @click="newsDialogVisible = true; newsIndex = index" class="image" alt="image actualité"></el-image>
-                  <div class="newsTitle"> {{ item.titre }}</div>
-            </el-carousel-item>
-         </el-carousel>
-
-         <el-carousel class="mobile-carousel" v-if="displayMobile()" ref="carousel" indicator-position="outside" arrow="always" trigger="click" :interval="4000" height="250px">
-            <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
-                  <el-image v-if="item.photo" :src="item.photo.url" @click="newsDialogVisible = true; newsIndex = index" class="image" alt="image actualité"></el-image>
-                  <div class="newsTitle">{{ item.titre }}</div>
-            </el-carousel-item>
-         </el-carousel>
+         <Carousel />
       </div>
       <el-image :src="sectionLogo" class="section-logo" alt="logo AFR Chavanod"></el-image>
       <div class="sections">
@@ -112,22 +99,22 @@
       <div class="bottomGap"></div>
     </el-main>
     <el-dialog
-      v-model="newsDialogVisible"
+      v-model="data.newsDialogVisibility"
       width="90%"
       destroy-on-close
       center>
       <div class="news-dialog-content">
-         <h2>{{ apiData.news[newsIndex].titre }}</h2>
-         <el-image :src="apiData.news[newsIndex].photo.url" alt="actualité"></el-image>
-         <div v-html="markdownToHtml(apiData.news[newsIndex].description)"></div>
-         <div v-if="apiData.news[newsIndex].fichiers.length > 0">
-            <el-button round v-for="file in apiData.news[newsIndex].fichiers" :key="file" @click="downloadFile(file.url, file.name)">{{ 'Telecharger ' + file.name }}</el-button>
+         <h2>{{ apiData.news[data.newsIndex].titre }}</h2>
+         <el-image :src="apiData.news[data.newsIndex].photo.url" alt="actualité"></el-image>
+         <div v-html="markdownToHtml(apiData.news[data.newsIndex].description)"></div>
+         <div v-if="apiData.news[data.newsIndex].fichiers.length > 0">
+            <el-button round v-for="file in apiData.news[data.newsIndex].fichiers" :key="file" @click="downloadFile(file.url, file.name)">{{ 'Telecharger ' + file.name }}</el-button>
          </div>
          <div v-if="apiData.news">
-            <div class="tags" v-if="apiData.news[newsIndex].activites.length > 0 || apiData.news[newsIndex].ateliers.length > 0 || apiData.news[newsIndex].enfants.length > 0">
-               <el-tag v-for="activite in apiData.news[newsIndex].activites" :key="activite"><a :href="'/activites/' + activite.id">{{ activite.titre }}</a></el-tag>
-               <el-tag type="success" v-for="atelier in apiData.news[newsIndex].ateliers" :key="atelier"><a :href="'/ateliers/' + atelier.id">{{ atelier.titre }}</a></el-tag>
-               <el-tag type="warning" v-for="enfant in apiData.news[newsIndex].enfants" :key="enfant"><a :href="'/enfants/' + enfant.id">{{ enfant.titre }}</a></el-tag>
+            <div class="tags" v-if="apiData.news[data.newsIndex].activites.length > 0 || apiData.news[data.newsIndex].ateliers.length > 0 || apiData.news[data.newsIndex].enfants.length > 0">
+               <el-tag v-for="activite in apiData.news[data.newsIndex].activites" :key="activite"><a :href="'/activites/' + activite.id">{{ activite.titre }}</a></el-tag>
+               <el-tag type="success" v-for="atelier in apiData.news[data.newsIndex].ateliers" :key="atelier"><a :href="'/ateliers/' + atelier.id">{{ atelier.titre }}</a></el-tag>
+               <el-tag type="warning" v-for="enfant in apiData.news[data.newsIndex].enfants" :key="enfant"><a :href="'/enfants/' + enfant.id">{{ enfant.titre }}</a></el-tag>
             </div>
          </div>
       </div>
@@ -136,11 +123,10 @@
 </template>
 
 <script setup>
-   import { ref, watch , onMounted, inject} from 'vue'
+   import { ref, inject} from 'vue'
    import { useStore } from 'vuex'
 
-   // To handle responsiveness
-   import { useWindowSize } from 'vue-window-size';
+   import Carousel from '../components/Carousel.vue'
 
    // Images imports
    import sectionLogo from '../assets/logoafr.jpg'
@@ -160,84 +146,16 @@
    const store = useStore()
 
    const apiData = store.state.apiData
-
-   const carousel = ref("")
    
-   // To fix a carousel display issue
-   onMounted(() => {
-      carousel.value.setActiveItem(0)
-    });
-
-   // To handle news dialog
-   const newsDialogVisible = ref(false)
+   const data = store.state.data
     
    // method used by marked to parse markdown
    const markdownToHtml = (markdown) => {
       return marked(markdown)
    }
 
-   // Initialize window size check
-   const { width, height } = useWindowSize();
 
-   // Handle news responsive display
-   const displayMobile = () => {
-      if(width.value <= 768) {
-         return true
-      } else {
-         return false
-      }
-   }
-
-   watch(width, () => {
-      displayMobile()
-   })
-
-   // To handle the news dialog
-   const newsIndex = ref(null)
-
-   // For the carousel display
-   const loadNews = async () => {
-      try {
-         await store.dispatch('apiData/fetchAllNews')
-      } catch(e) {
-         store.dispatch('notifications/sendError', {
-         title: "Erreur",
-         message: "Impossible de charger les actualités",
-         duration: 5000
-         });
-      }
-   }
-   loadNews()
-
-   // // For the kids collapse
-   // const loadKidsCamp = async () => {
-   //    try {
-   //          await store.dispatch('apiData/fetchKidsCamp')
-   //    } catch(e) {
-   //          store.dispatch('notifications/sendError', {
-   //          title: "Erreur",
-   //          message: "Impossible de charger le centre de loisirs",
-   //          duration: 5000
-   //       });
-   //    }
-   // }
-   // loadKidsCamp()
-
-   // // For the afr collapse
-   // const loadMission = async () => {
-   //    try {
-   //       await store.dispatch('apiData/fetchMission')
-   //    } catch(e) {
-   //       store.dispatch('notifications/sendError', {
-   //       title: "Erreur",
-   //       message: "Impossible de charger la mission",
-   //       duration: 5000
-   //       });
-   //    }
-   // }
-   // loadMission()
-
-    // for the bottom header
+   // for the bottom header
    const loadBottomHeaderInfo = async () => {
       try {
          await store.dispatch('apiData/fetchBottomHeaderInfo')
@@ -327,33 +245,6 @@
          }
       }
 
-      .newsCards {
-         .desktop-carousel {
-            padding-top: 20px;
-            width: 80%;
-            margin: 0 auto;
-            .el-carousel__item {
-               border-radius: 30px;
-               background-color: white;
-               box-shadow: rgba(0, 0, 0, 0.19) 0px -10px 20px -10px, rgba(0, 0, 0, 0.23) 0px -6px 6px -2px;
-            }
-         }
-         .mobile-carousel {
-            .newsTitle {
-               font-size: 24px;
-            }
-         }
-         .newsTitle {
-            position: absolute;
-            bottom: 0;
-            font-size: 40px;
-            font-weight: bold;
-            width: 100%;
-            color: white;
-            background: rgb(0,0,0);
-            background: linear-gradient(0deg, rgba(0,0,0,1) -20%, rgba(255,255,255,0) 130%);
-         }
-      }
       .el-dialog {
          .news-dialog-content {
             min-height: 500px;
