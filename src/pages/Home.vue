@@ -135,11 +135,8 @@
 </template>
 
 <script setup>
-   import { ref, watch , onMounted} from 'vue'
+   import { ref, watch , onMounted, inject} from 'vue'
    import { useStore } from 'vuex'
-
-   // To parse markdown from api (rich text fields) into html
-   import marked from 'marked'
 
    // To handle responsiveness
    import { useWindowSize } from 'vue-window-size';
@@ -151,9 +148,13 @@
    // To access the downloadFile function from firebase service
    import * as FirebaseStorageService from '../services/FirebaseStorageService.js'
 
+   // Use firebase service to download file
    const downloadFile = (url, filename) => {
       FirebaseStorageService.downloadFile(url, filename)
    }
+
+   // To use marked (provided globally in main.js)
+   const marked = inject('marked')
 
    const store = useStore()
 
