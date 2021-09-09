@@ -4,14 +4,15 @@
          <span>👥</span> L'AFR
       </template>
       <div class="afr-info">
-         <router-link :to="{ name: 'Mission' }" >
+         <a @click="drawer = false" :href="'/mission'">
             <p v-if="apiData.mission" v-loading="apiData.isMissionLoading">{{ apiData.mission.titre }}</p>
-         </router-link><router-link :to="{ name: 'Equipe' }" >
+         </a>
+         <a @click="drawer = false" :href="'/equipe'">
             <p>L'équipe / Contacts</p>
-         </router-link>
-         <router-link :to="{ name: 'UnderConstruction' }" >
+         </a>
+         <a @click="drawer = false" :href="'/construction'">
             <p>FAQ</p>
-         </router-link>
+         </a>
       </div>
    </el-collapse-item>
 </template>

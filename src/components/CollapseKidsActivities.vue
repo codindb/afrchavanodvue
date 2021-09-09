@@ -5,19 +5,19 @@
       </template>
       <div class="kids">
          <div class="kids" v-for="kidsActivity in apiData.kidsActivities" :key="kidsActivity">
-            <router-link :to="{ name: 'Enfants', params: {id: kidsActivity.id } }" >
+            <a @click="drawer = false" :href="'/enfants/' + kidsActivity.id">
                <div class="title">
-                  <el-image :src="kidsActivity.icone.url"></el-image>
-                  <p>{{ kidsActivity.titre }}</p>
+               <el-image :src="kidsActivity.icone.url"></el-image>
+               <p>{{ kidsActivity.titre }}</p>
                </div>
-            </router-link>
+            </a>
          </div>
-         <router-link :to="{ name: 'CentreLoisirs'}">
+         <a @click="drawer = false" :href="'/centre-loisirs'">
             <div class="title" v-if="apiData.kidsCamp">
                <el-image :src="apiData.kidsCamp.icone.url" alt="logo centre loisirs"></el-image>
                <p v-loading="apiData.isKidsCampLoading">{{ apiData.kidsCamp.titre }}</p>
-            </div>
-         </router-link>
+               </div>
+         </a>
       </div>
    </el-collapse-item>
 </template>

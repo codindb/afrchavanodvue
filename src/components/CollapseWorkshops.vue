@@ -4,12 +4,12 @@
          <span>🧩</span> ATELIERS
       </template>
       <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
-         <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" >
+         <a @click="drawer = false" :href="'/ateliers/' + workshop.id">
             <div class="title">
                <el-image :src="workshop.icone.url" alt="logo atelier"></el-image>
                <p>{{ workshop.titre }}</p>
             </div>
-         </router-link>
+         </a>
       </div>
    </el-collapse-item>
 </template>
