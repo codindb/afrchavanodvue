@@ -52,15 +52,6 @@ const markdownToHtml = (markdown) => {
    return marked(markdown)
 }
 
-const loadKidsCamp = async () => {
-   try {
-      await store.dispatch('apiData/fetchKidsCamp')
-   } catch(e) {
-      router.push({ name: 'NotFound' })
-   }
-}
-loadKidsCamp()
-
 </script>
 
 <style lang="scss" scoped>

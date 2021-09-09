@@ -26,15 +26,6 @@ const markdownToHtml = (markdown) => {
    return marked(markdown)
 }
 
-const loadMission = async () => {
-   try {
-      await store.dispatch('apiData/fetchMission')
-   } catch(e) {
-      router.push({ name: 'NotFound' })
-   }
-}
-loadMission()
-
 </script>
 
 <style lang="scss" scoped>
