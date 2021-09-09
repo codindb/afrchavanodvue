@@ -35,22 +35,16 @@
 
 <script setup>
 
+// markdownToHtml method comes from markedPlugin
+
 import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
-
-// To parse markdown from api (rich text fields) into html
-import marked from 'marked'
 
 const store = useStore()
 const route = useRoute()
 const router = useRouter()
 
 const apiData = store.state.apiData
-
-// method used by marked to parse markdown
-const markdownToHtml = (markdown) => {
-   return marked(markdown)
-}
 
 </script>
 

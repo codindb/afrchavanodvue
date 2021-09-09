@@ -9,7 +9,7 @@
 
 <script setup>
 
-import { ref, watch , onMounted, inject} from 'vue'
+import { ref, watch , onMounted } from 'vue'
 import { useStore } from 'vuex'
 
 // To handle responsiveness

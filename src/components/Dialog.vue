@@ -24,7 +24,8 @@
 
 <script setup>
 
-import { inject } from 'vue'
+// markdownToHtml method comes from markedPlugin
+
 import { useStore } from 'vuex'
 
 // To access the downloadFile function from firebase service
@@ -35,19 +36,11 @@ const downloadFile = (url, filename) => {
    FirebaseStorageService.downloadFile(url, filename)
 }
 
-// To use marked (provided globally in main.js)
-const marked = inject('marked')
-
 const store = useStore()
 
 const apiData = store.state.apiData
 
 const data = store.state.data
-   
-// method used by marked to parse markdown
-const markdownToHtml = (markdown) => {
-   return marked(markdown)
-}
 
 </script>
 

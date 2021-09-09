@@ -10,23 +10,16 @@
 
 <script setup>
 
-import { inject } from 'vue'
+// markdownToHtml method comes from markedPlugin
+
 import { useStore } from 'vuex'
 
-// To use marked (provided globally in main.js)
-const marked = inject('marked')
-
-//Use of vuex store
+// Use of vuex store
 const store = useStore()
 
 const apiData = store.state.apiData
-   
-// method used by marked to parse markdown
-const markdownToHtml = (markdown) => {
-   return marked(markdown)
-}
 
-// for the bottom header
+// Method to call the subheader info from API
 const loadSubheaderInfo = async () => {
    try {
       await store.dispatch('apiData/fetchSubheaderInfo')
