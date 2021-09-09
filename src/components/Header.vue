@@ -69,7 +69,7 @@ watch(width, () => {
   drawerSize()
 })
 
-// Load data from API
+// Load data from API to display drawer
 const loadActivities = async () => {
   try {
       await store.dispatch('apiData/fetchAllActivities')
