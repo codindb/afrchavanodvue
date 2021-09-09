@@ -19,7 +19,7 @@ const loadSingleKidsActivity = async () => {
    try {
       await store.dispatch('apiData/fetchSingleKidsActivity', {id: route.params.id})
    } catch(e) {
-      router.push({ name: 'NotFound' })
+      console.log(e);
    }
 }
 loadSingleKidsActivity()
