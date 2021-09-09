@@ -1,11 +1,11 @@
 <template>
    <el-container>
-    <el-header class="bottom-header fixed-header">
-      <div v-loading="apiData.isBottomHeaderInfoLoading">
-         <div class="bottom-header-title" v-if="apiData.bottomHeaderInfo" v-html="markdownToHtml(apiData.bottomHeaderInfo.titre)"></div>
-         <div class="bottom-header-desc" v-if="apiData.bottomHeaderInfo" v-html="markdownToHtml(apiData.bottomHeaderInfo.sous_titre)"></div>
+    <el-header class="subheader fixed-header">
+      <div v-loading="apiData.isSubheaderInfoLoading">
+         <div class="subheader-title" v-if="apiData.subheaderInfo" v-html="markdownToHtml(apiData.subheaderInfo.titre)"></div>
+         <div class="subheader-desc" v-if="apiData.subheaderInfo" v-html="markdownToHtml(apiData.subheaderInfo.sous_titre)"></div>
       </div>
-      <router-link :to="{ name: 'Inscription' }"><el-button v-if="apiData.bottomHeaderInfo && apiData.bottomHeaderInfo.bouton_lien" round>Je m'inscris!</el-button></router-link>
+      <router-link :to="{ name: 'Inscription' }"><el-button v-if="apiData.subheaderInfo && apiData.subheaderInfo.bouton_lien" round>Je m'inscris!</el-button></router-link>
     </el-header>
     
     <el-main class="overlapping">
@@ -130,9 +130,9 @@ const markdownToHtml = (markdown) => {
 
 
 // for the bottom header
-const loadBottomHeaderInfo = async () => {
+const loadSubheaderInfo = async () => {
    try {
-      await store.dispatch('apiData/fetchBottomHeaderInfo')
+      await store.dispatch('apiData/fetchSubheaderInfo')
    } catch(e) {
       store.dispatch('notifications/sendError', {
       title: "Erreur",
@@ -141,15 +141,15 @@ const loadBottomHeaderInfo = async () => {
       });
    }
 }
-loadBottomHeaderInfo()
+loadSubheaderInfo()
 
 </script>
 
 <style lang="scss" scoped>
 
-   .bottom-header {
+   .subheader {
 	   /* for positioning */
-      height: $bottomHeaderHeightDesktop;
+      height: $subheaderHeightDesktop;
 	   background: linear-gradient(180deg, #98cbff, #ffffff);
 
       /* for content alignment */
@@ -158,14 +158,14 @@ loadBottomHeaderInfo()
       justify-content: center;
       align-items: center;
 
-      .bottom-header-title {
+      .subheader-title {
          margin-top: -50px;
          text-align: center;
          :first-child {
             font-size: 30px;
          }
       }
-      .bottom-header-desc {
+      .subheader-desc {
          margin: 20px 0;
          :nth-child(even) {
             font-size: 24px;
@@ -181,15 +181,15 @@ loadBottomHeaderInfo()
       }
    }
    @media screen and (max-width: 768px) {
-      .bottom-header {
-         height: $bottomHeaderHeightMobile;
-         .bottom-header-title {
+      .subheader {
+         height: $subheaderHeightMobile;
+         .subheader-title {
             margin-top: -40px;
             :first-child {
                font-size: 20px;
             }
          }
-         .bottom-header-desc {
+         .subheader-desc {
             :nth-child(even) {
                font-size: 16px;
             }
@@ -204,10 +204,10 @@ loadBottomHeaderInfo()
       }
    }
    .el-main {
-      margin-top: ($bottomHeaderHeightDesktop - 30px);
+      margin-top: ($subheaderHeightDesktop - 30px);
       padding: 0 !important;
       @media screen and (max-width: 768px) {
-         margin-top: ($bottomHeaderHeightMobile - 30px);
+         margin-top: ($subheaderHeightMobile - 30px);
       }
       .news-logo {
          padding: 20px;

@@ -80,8 +80,8 @@ export async function getSingleMember (id) {
    return res.data
 }
 
-// Get bottomheader info
-export async function getBottomHeaderInfo () {
+// Get subheader info
+export async function getSubheaderInfo () {
    const res = await instance.get('/bandeau-info')
    return res.data
 }

@@ -16,8 +16,8 @@ export default {
        kidsActivities: null,
        areKidsActivitiesLoading: false,
        singleKidsActivity: null,
-       bottomHeaderInfo: null,
-       isBottomHeaderInfoLoading: false,
+       subheaderInfo: null,
+       isSubheaderInfoLoading: false,
        kidsCamp: null,
        isKidsCampLoading: false, 
        mission: null,
@@ -86,14 +86,14 @@ export default {
       },
 
       // BOTTOM HEADER
-      SET_BOTTOMHEADER_INFO (state, bottomHeaderInfo) {
-        state.bottomHeaderInfo = bottomHeaderInfo
+      SET_SUBHEADER_INFO (state, subheaderInfo) {
+        state.subheaderInfo = subheaderInfo
       },
-      SET_IS_BOTTOMHEADER_INFO_LOADING (state, bool) {
-        state.isBottomHeaderInfoLoading = bool
+      SET_IS_SUBHEADER_INFO_LOADING (state, bool) {
+        state.isSubheaderInfoLoading = bool
       },
-      CLEAR_BOTTOMHEADER_INFO (state) {
-         state.bottomHeaderInfo = null
+      CLEAR_SUBHEADER_INFO (state) {
+         state.subheaderInfo = null
       },
 
       // KIDS CAMP
@@ -238,15 +238,15 @@ export default {
       },
 
       // BOTTOM HEADER
-      async fetchBottomHeaderInfo ({ commit }) {
-         commit('CLEAR_BOTTOMHEADER_INFO')
-         commit('SET_IS_BOTTOMHEADER_INFO_LOADING', true)
+      async fetchSubheaderInfo ({ commit }) {
+         commit('CLEAR_SUBHEADER_INFO')
+         commit('SET_IS_SUBHEADER_INFO_LOADING', true)
          try {
-            const bottomHeaderInfo = await ApiService.getBottomHeaderInfo()
-            commit('SET_BOTTOMHEADER_INFO', bottomHeaderInfo)
-            commit('SET_IS_BOTTOMHEADER_INFO_LOADING', false)
+            const subheaderInfo = await ApiService.getSubheaderInfo()
+            commit('SET_SUBHEADER_INFO', subheaderInfo)
+            commit('SET_IS_SUBHEADER_INFO_LOADING', false)
          } catch (e) {
-            commit('SET_IS_BOTTOMHEADER_INFO_LOADING', false)
+            commit('SET_IS_SUBHEADER_INFO_LOADING', false)
             throw e
          }
       },
