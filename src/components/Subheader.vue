@@ -1,5 +1,5 @@
 <template>
-   <el-header class="subheader fixed-header">
+   <el-header class="subheader">
       <div v-loading="apiData.isSubheaderInfoLoading">
          <div class="subheader-title" v-if="apiData.subheaderInfo" v-html="markdownToHtml(apiData.subheaderInfo.titre)"></div>
          <div class="subheader-desc" v-if="apiData.subheaderInfo" v-html="markdownToHtml(apiData.subheaderInfo.sous_titre)"></div>
@@ -39,6 +39,9 @@ loadSubheaderInfo()
 
 .subheader {
    /* for positioning */
+   position: fixed;
+   width: 100%;
+   z-index: 0;
    height: $subheaderHeightDesktop;
    background: linear-gradient(180deg, #98cbff, #ffffff);
 
