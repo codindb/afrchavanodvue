@@ -1,7 +1,7 @@
 <template>
    <el-container>
       <Subheader />
-      <el-main class="overlapping">
+      <el-main class="home-main overlapping">
          <el-image :src="news" class="news-logo" alt="logo actualités"></el-image>
          <div class="newsCards" v-loading="apiData.areNewsLoading">
             <Carousel />
@@ -89,7 +89,6 @@
                </el-col>
             </el-row>
          </div>
-         <div class="bottomGap"></div>
       </el-main>
       <Dialog />
    </el-container>
@@ -116,7 +115,8 @@ const apiData = store.state.apiData
 </script>
 
 <style lang="scss" scoped>
-   .el-main {
+
+   .home-main {
       margin-top: ($subheaderHeightDesktop - 30px);
       padding: 0 !important;
       @media screen and (max-width: 768px) {

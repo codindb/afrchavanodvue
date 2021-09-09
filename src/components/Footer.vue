@@ -17,8 +17,9 @@ import vueLogo from '../assets/logo.png'
 
 <style lang="scss" scoped>
 
-footer {
-  background-color: #FFF;
+.footer {
+  background-color: white;
+  margin-top: 20px;
   color: #2c3e50;
   z-index: 9;
   height: $topHeaderHeight !important;
