@@ -11,69 +11,10 @@
           :size="drawerSize()">
           <div class="drawer-content">
             <el-collapse>
-            <el-collapse-item v-loading="apiData.areActivitiesLoading">
-               <template #title>
-                  <span>🥏</span> ACTIVITES
-               </template>
-               <div class="activity" v-for="activity in apiData.activities" :key="activity">
-                  <a @click="drawer = false" :href="'/activites/' + activity.id">
-                  <div class="title">
-                    <el-image :src="activity.icone.url" alt="logo activité"></el-image>
-                    <p>{{ activity.titre }}</p>
-                  </div>
-                  </a>
-               </div>
-            </el-collapse-item>
-            <el-collapse-item v-loading="apiData.areWorkshopsLoading">
-               <template #title>
-                  <span>🧩</span> ATELIERS
-               </template>
-               <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
-                  <a @click="drawer = false" :href="'/ateliers/' + workshop.id">
-                    <div class="title">
-                      <el-image :src="workshop.icone.url" alt="logo atelier"></el-image>
-                      <p>{{ workshop.titre }}</p>
-                    </div>
-                  </a>
-               </div>
-            </el-collapse-item>
-            <el-collapse-item>
-               <template #title>
-                  <span>🚸</span> ENFANTS
-               </template>
-               <div class="kids">
-                  <div class="kids" v-for="kidActivity in apiData.kidsActivities" :key="kidActivity">
-                    <a @click="drawer = false" :href="'/enfants/' + kidActivity.id">
-                      <div class="title">
-                        <el-image :src="kidActivity.icone.url"></el-image>
-                        <p>{{ kidActivity.titre }}</p>
-                      </div>
-                    </a>
-                  </div>
-                  <a @click="drawer = false" :href="'/centre-loisirs'">
-                     <div class="title">
-                        <el-image :src="apiData.kidsCamp.icone.url" alt="logo centre loisirs"></el-image>
-                        <p>{{ apiData.kidsCamp.titre }}</p>
-                      </div>
-                  </a>
-               </div>
-            </el-collapse-item>
-            <el-collapse-item>
-               <template #title>
-                  <span>👥</span> L'AFR
-               </template>
-               <div class="afr-info">
-                  <a @click="drawer = false" :href="'/mission'">
-                     <p v-if="apiData.mission">{{ apiData.mission.titre }}</p>
-                  </a>
-                  <a @click="drawer = false" :href="'/equipe'">
-                     <p>L'équipe / Contacts</p>
-                  </a>
-                  <a @click="drawer = false" :href="'/construction'">
-                     <p>FAQ</p>
-                  </a>
-               </div>
-            </el-collapse-item>
+            <CollapseActivities/>
+            <CollapseWorkshops/>
+            <CollapseKidsActivities/>
+            <CollapseAfr/>
             </el-collapse>
           </div>
         </el-drawer>
@@ -85,6 +26,12 @@
 
 import { ref, watch } from 'vue';
 import { useStore } from 'vuex'
+
+// Components
+import CollapseActivities from './CollapseActivities.vue'
+import CollapseWorkshops from './CollapseWorkshops.vue'
+import CollapseKidsActivities from './CollapseKidsActivities.vue'
+import CollapseAfr from './CollapseAfr.vue'
 
 // Images
 import logoAfr from '../assets/afrChavanod.png'
@@ -226,28 +173,11 @@ loadMission()
         >:first-child {
             >:first-child {
               font-size: 30px;
-              font-weight: bold;
-              display: block;
             }
         }
         .activity, .workshop, .kids, .afr-info {
-          a{
-            text-decoration: none;
-          }
           p {
-            color: black;
             font-size: 22px;
-            margin: 5px 0;
-          }
-          .title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            .el-image {
-              height: 30px;
-              width: 30px;
-              margin-right: 5px;
-            }
           }
         }
       }

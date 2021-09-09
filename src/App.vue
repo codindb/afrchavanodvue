@@ -125,5 +125,32 @@ body {
     }
   }
 
+.el-collapse-item {
+  >:first-child {
+    >:first-child {
+      font-weight: bold;
+      display: block;
+    }
+  }
+  .activity, .workshop, .kids, .afr-info {
+    a{
+        text-decoration: none;
+    }
+    p {
+        color: #2c3e50;
+        margin: 5px 0;
+    }
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .el-image {
+      height: 30px;
+      width: 30px;
+      margin-right: 5px;
+      }
+    }
+  }
+}
 
 </style>
