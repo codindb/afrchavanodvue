@@ -92,16 +92,18 @@ body {
         width: 5%;
         margin: 20px auto;
       }
-      img {
+      .title-image {
         max-width: 100%;
         width: 20%;
+      }
+      img {
+        max-width: 100%;
       }
       @media screen and (max-width: 768px) {
         .hr {
             width: 30%;
         }
-        img {
-          max-width: 100%;
+        .title-image {
           width: 60%;
         }
       }
