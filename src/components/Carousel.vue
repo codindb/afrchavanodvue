@@ -15,15 +15,16 @@ import { useStore } from 'vuex'
 // To handle responsiveness
 import { useWindowSize } from 'vue-window-size';
 
+//Use of vuex store
 const store = useStore()
 
 const apiData = store.state.apiData
 
 const data = store.state.data
 
+// To fix a carousel display issue
 const carousel = ref("")
 
-// To fix a carousel display issue
 onMounted(() => {
    carousel.value.setActiveItem(0)
 });
