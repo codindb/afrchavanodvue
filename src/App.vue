@@ -43,15 +43,12 @@ body {
   // margin-top: 60px;
 }
 
-// .base-container {
-//   min-height: 100vh;
-// }
-
 .main {
   position: relative;
   top: $topHeaderHeight;
   padding: 0 !important;
 }
+
 // GLOBAL STYLE //
   .fixed-header {
     position: fixed;
