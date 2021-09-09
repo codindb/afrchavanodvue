@@ -4,85 +4,11 @@
       <el-image :src="team" alt="equipe"></el-image>
       <h3>Le Bureau</h3>
       <div class="members-table" v-loading="apiData.areMembersLoading">
-         <el-table
-            v-if="apiData.office"
-            :data="apiData.office"
-            :default-sort = "{prop: 'fonction_ou_activite', order: 'ascending'}"
-            stripe
-            highlight-current-row
-            fit>
-            <el-table-column
-               prop="fonction_ou_activite"
-               label="Fonction"
-               fixed
-               min-width="120"
-               sortable>
-            </el-table-column>
-            <el-table-column
-               prop="nom"
-               label="Nom"
-               min-width="220"
-               sortable>
-            </el-table-column>
-            <el-table-column
-               label="Téléphone"
-               min-width="150">
-               <template #default="scope">
-                  <a :href="'tel:+33' + scope.row.telephone">{{ scope.row.telephone }}</a>
-               </template>
-            </el-table-column>
-            <el-table-column
-               prop="email"
-               label="e-mail"
-               min-width="250">
-            </el-table-column>
-            <el-table-column
-               prop="adresse"
-               label="Adresse"
-               min-width="300">
-            </el-table-column>
-         </el-table>
+         <Table :data="apiData.office" label="Fonction"/>
       </div>
       <h3>Les Responsables d'Activités</h3>
       <div class="members-table" v-loading="apiData.areMembersLoading">
-         <el-table
-            v-if="apiData.managers"
-            :data="apiData.managers"
-            :default-sort = "{prop: 'fonction_ou_activite', order: 'ascending'}"
-            stripe
-            highlight-current-row
-            fit>
-            <el-table-column
-               prop="fonction_ou_activite"
-               label="Activité"
-               fixed
-               min-width="170"
-               sortable>
-            </el-table-column>
-            <el-table-column
-               prop="nom"
-               label="Nom"
-               min-width="220"
-               sortable>
-            </el-table-column>
-            <el-table-column
-               label="Téléphone"
-               min-width="150">
-               <template #default="scope">
-                  <a :href="'tel:+33' + scope.row.telephone">{{ scope.row.telephone }}</a>
-               </template>
-            </el-table-column>
-            <el-table-column
-               prop="email"
-               label="e-mail"
-               min-width="250">
-            </el-table-column>
-            <el-table-column
-               prop="adresse"
-               label="Adresse"
-               min-width="300">
-            </el-table-column>
-         </el-table>
+         <Table :data="apiData.managers" label="Activité"/>
       </div>
    </div>
 </template>
@@ -90,13 +16,12 @@
 <script setup>
 
 import { useStore } from 'vuex'
-import { useRoute, useRouter } from 'vue-router'
 
 import team from '../assets/team.png'
 
+import Table from '../components/Table.vue'
+
 const store = useStore()
-const route = useRoute()
-const router = useRouter()
 
 const apiData = store.state.apiData
 
@@ -128,7 +53,7 @@ loadManagers()
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .team-main-container {
    margin-bottom: 50px;
    h2 {
