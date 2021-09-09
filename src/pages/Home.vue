@@ -1,208 +1,121 @@
 <template>
    <el-container>
-    <el-header class="subheader fixed-header">
-      <div v-loading="apiData.isSubheaderInfoLoading">
-         <div class="subheader-title" v-if="apiData.subheaderInfo" v-html="markdownToHtml(apiData.subheaderInfo.titre)"></div>
-         <div class="subheader-desc" v-if="apiData.subheaderInfo" v-html="markdownToHtml(apiData.subheaderInfo.sous_titre)"></div>
-      </div>
-      <router-link :to="{ name: 'Inscription' }"><el-button v-if="apiData.subheaderInfo && apiData.subheaderInfo.bouton_lien" round>Je m'inscris!</el-button></router-link>
-    </el-header>
-    
-    <el-main class="overlapping">
-      <el-image :src="news" class="news-logo" alt="logo actualités"></el-image>
-      <div class="newsCards" v-loading="apiData.areNewsLoading">
-         <Carousel />
-      </div>
-      <el-image :src="sectionLogo" class="section-logo" alt="logo AFR Chavanod"></el-image>
-      <div class="sections">
-         <el-row justify="space-around">
-            <el-col :span="20" :md="10">
-               <el-collapse>
-               <el-collapse-item v-loading="apiData.areActivitiesLoading">
-                  <template #title>
-                     <span>🥏</span> ACTIVITES
-                  </template>
-                  <div class="activity" v-for="activity in apiData.activities" :key="activity">
-                     <router-link :to="{ name: 'Activite', params: {id: activity.id } }" >
-                        <div class="title">
-                           <el-image :src="activity.icone.url" alt="logo activité"></el-image>
-                           <p>{{ activity.titre }}</p>
-                        </div>
-                     </router-link>
-                  </div>
-               </el-collapse-item>
-               </el-collapse>
-            </el-col>
-            <el-col :span="20" :md="10">
-               <el-collapse>
-               <el-collapse-item v-loading="apiData.areWorkshopsLoading">
-                  <template #title>
-                     <span>🧩</span> ATELIERS
-                  </template>
-                  <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
-                     <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" >
-                        <div class="title">
-                           <el-image :src="workshop.icone.url" alt="logo atelier"></el-image>
-                           <p>{{ workshop.titre }}</p>
-                        </div>
-                     </router-link>
-                  </div>
-               </el-collapse-item>
-               </el-collapse>
-            </el-col>
-            <el-col :span="20" :md="10">
-               <el-collapse>
-               <el-collapse-item v-loading="apiData.areKidsActivitiesLoading">
-                  <template #title>
-                     <span>🚸</span> ENFANTS
-                  </template>
-                  <div class="kids">
-                     <div class="kids" v-for="kidsActivity in apiData.kidsActivities" :key="kidsActivity">
-                        <router-link :to="{ name: 'Enfants', params: {id: kidsActivity.id } }" >
+      <Subheader />
+      <el-main class="overlapping">
+         <el-image :src="news" class="news-logo" alt="logo actualités"></el-image>
+         <div class="newsCards" v-loading="apiData.areNewsLoading">
+            <Carousel />
+         </div>
+         <el-image :src="sectionLogo" class="section-logo" alt="logo AFR Chavanod"></el-image>
+         <div class="sections">
+            <el-row justify="space-around">
+               <el-col :span="20" :md="10">
+                  <el-collapse>
+                  <el-collapse-item v-loading="apiData.areActivitiesLoading">
+                     <template #title>
+                        <span>🥏</span> ACTIVITES
+                     </template>
+                     <div class="activity" v-for="activity in apiData.activities" :key="activity">
+                        <router-link :to="{ name: 'Activite', params: {id: activity.id } }" >
                            <div class="title">
-                              <el-image :src="kidsActivity.icone.url"></el-image>
-                              <p>{{ kidsActivity.titre }}</p>
+                              <el-image :src="activity.icone.url" alt="logo activité"></el-image>
+                              <p>{{ activity.titre }}</p>
                            </div>
                         </router-link>
                      </div>
-                     <router-link :to="{ name: 'CentreLoisirs'}">
-                        <div class="title" v-if="apiData.kidsCamp">
-                           <el-image :src="apiData.kidsCamp.icone.url" alt="logo centre loisirs"></el-image>
-                           <p v-loading="apiData.isKidsCampLoading">{{ apiData.kidsCamp.titre }}</p>
+                  </el-collapse-item>
+                  </el-collapse>
+               </el-col>
+               <el-col :span="20" :md="10">
+                  <el-collapse>
+                  <el-collapse-item v-loading="apiData.areWorkshopsLoading">
+                     <template #title>
+                        <span>🧩</span> ATELIERS
+                     </template>
+                     <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
+                        <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" >
+                           <div class="title">
+                              <el-image :src="workshop.icone.url" alt="logo atelier"></el-image>
+                              <p>{{ workshop.titre }}</p>
+                           </div>
+                        </router-link>
+                     </div>
+                  </el-collapse-item>
+                  </el-collapse>
+               </el-col>
+               <el-col :span="20" :md="10">
+                  <el-collapse>
+                  <el-collapse-item v-loading="apiData.areKidsActivitiesLoading">
+                     <template #title>
+                        <span>🚸</span> ENFANTS
+                     </template>
+                     <div class="kids">
+                        <div class="kids" v-for="kidsActivity in apiData.kidsActivities" :key="kidsActivity">
+                           <router-link :to="{ name: 'Enfants', params: {id: kidsActivity.id } }" >
+                              <div class="title">
+                                 <el-image :src="kidsActivity.icone.url"></el-image>
+                                 <p>{{ kidsActivity.titre }}</p>
+                              </div>
+                           </router-link>
                         </div>
-                     </router-link>
-                  </div>
-               </el-collapse-item>
-               </el-collapse>
-            </el-col>
-            <el-col :span="20" :md="10">
-               <el-collapse>
-               <el-collapse-item>
-                  <template #title>
-                     <span>👥</span> L'AFR
-                  </template>
-                  <div class="afr-info">
-                     <router-link :to="{ name: 'Mission' }" >
-                        <p v-if="apiData.mission" v-loading="apiData.isMissionLoading">{{ apiData.mission.titre }}</p>
-                     </router-link><router-link :to="{ name: 'Equipe' }" >
-                        <p>L'équipe / Contacts</p>
-                     </router-link>
-                     <router-link :to="{ name: 'UnderConstruction' }" >
-                        <p>FAQ</p>
-                     </router-link>
-                  </div>
-               </el-collapse-item>
-               </el-collapse>
-            </el-col>
-         </el-row>
-      </div>
-      <div class="bottomGap"></div>
-    </el-main>
-    <Dialog />
+                        <router-link :to="{ name: 'CentreLoisirs'}">
+                           <div class="title" v-if="apiData.kidsCamp">
+                              <el-image :src="apiData.kidsCamp.icone.url" alt="logo centre loisirs"></el-image>
+                              <p v-loading="apiData.isKidsCampLoading">{{ apiData.kidsCamp.titre }}</p>
+                           </div>
+                        </router-link>
+                     </div>
+                  </el-collapse-item>
+                  </el-collapse>
+               </el-col>
+               <el-col :span="20" :md="10">
+                  <el-collapse>
+                  <el-collapse-item>
+                     <template #title>
+                        <span>👥</span> L'AFR
+                     </template>
+                     <div class="afr-info">
+                        <router-link :to="{ name: 'Mission' }" >
+                           <p v-if="apiData.mission" v-loading="apiData.isMissionLoading">{{ apiData.mission.titre }}</p>
+                        </router-link><router-link :to="{ name: 'Equipe' }" >
+                           <p>L'équipe / Contacts</p>
+                        </router-link>
+                        <router-link :to="{ name: 'UnderConstruction' }" >
+                           <p>FAQ</p>
+                        </router-link>
+                     </div>
+                  </el-collapse-item>
+                  </el-collapse>
+               </el-col>
+            </el-row>
+         </div>
+         <div class="bottomGap"></div>
+      </el-main>
+      <Dialog />
    </el-container>
 </template>
 
 <script setup>
-import { ref, inject} from 'vue'
+import { ref } from 'vue'
 import { useStore } from 'vuex'
 
+// Components
 import Carousel from '../components/Carousel.vue'
 import Dialog from '../components/Dialog.vue'
+import Subheader from '../components/Subheader.vue'
 
 // Images imports
 import sectionLogo from '../assets/logoafr.jpg'
 import news from '../assets/actualites.png'
-
-// To use marked (provided globally in main.js)
-const marked = inject('marked')
 
 //Use of vuex store
 const store = useStore()
 
 const apiData = store.state.apiData
 
-const data = store.state.data
-   
-// method used by marked to parse markdown
-const markdownToHtml = (markdown) => {
-   return marked(markdown)
-}
-
-
-// for the bottom header
-const loadSubheaderInfo = async () => {
-   try {
-      await store.dispatch('apiData/fetchSubheaderInfo')
-   } catch(e) {
-      store.dispatch('notifications/sendError', {
-      title: "Erreur",
-      message: "Impossible de charger la une",
-      duration: 5000
-      });
-   }
-}
-loadSubheaderInfo()
-
 </script>
 
 <style lang="scss" scoped>
-
-   .subheader {
-	   /* for positioning */
-      height: $subheaderHeightDesktop;
-	   background: linear-gradient(180deg, #98cbff, #ffffff);
-
-      /* for content alignment */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      .subheader-title {
-         margin-top: -50px;
-         text-align: center;
-         :first-child {
-            font-size: 30px;
-         }
-      }
-      .subheader-desc {
-         margin: 20px 0;
-         :nth-child(even) {
-            font-size: 24px;
-         }
-         :nth-child(odd) {
-            font-size: 24px;
-         }
-      }
-      .el-button {
-         font-size: 26px;
-         padding: 8px 40px;
-         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-      }
-   }
-   @media screen and (max-width: 768px) {
-      .subheader {
-         height: $subheaderHeightMobile;
-         .subheader-title {
-            margin-top: -40px;
-            :first-child {
-               font-size: 20px;
-            }
-         }
-         .subheader-desc {
-            :nth-child(even) {
-               font-size: 16px;
-            }
-            :nth-child(odd) {
-               font-size: 16px;
-            }
-         }
-         .el-button {
-            font-size: 16px;
-            padding: 8px 40px;
-         }
-      }
-   }
    .el-main {
       margin-top: ($subheaderHeightDesktop - 30px);
       padding: 0 !important;
