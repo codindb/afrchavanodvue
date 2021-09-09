@@ -28,7 +28,6 @@
                <p v-if="apiData.kidsCamp.adhesion">Nécessite l’adhésion Familles Rurales : 22 € par famille</p>
             </div>
          </div>
-         <div class="bottomGap"></div>
       </el-main>
    </el-container>
 </template>

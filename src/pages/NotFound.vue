@@ -5,7 +5,6 @@
       <el-col @click="router.back()" :span="8" :sm="4"><h3>🔙</h3></el-col>
       <el-col :span="8" :sm="4"><router-link :to="{ name: 'Home' }"><h3>🏠</h3></router-link></el-col>
    </el-row>
-   <div class="bottomGap"></div>
 </template>
 
 <script setup>

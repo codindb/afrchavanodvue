@@ -85,7 +85,6 @@
          </el-table>
       </div>
    </div>
-   <div class="bottomGap"></div>
 </template>
 
 <script setup>
