@@ -3,13 +3,13 @@
       <template #title>
          <span>🧩</span> ATELIERS
       </template>
-      <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
-         <a @click="drawer = false" :href="'/ateliers/' + workshop.id">
+      <div class="workshop" @click="setDrawer(false)" v-for="workshop in apiData.workshops" :key="workshop">
+         <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" >
             <div class="title">
                <el-image :src="workshop.icone.url" alt="logo atelier"></el-image>
                <p>{{ workshop.titre }}</p>
             </div>
-         </a>
+         </router-link>
       </div>
    </el-collapse-item>
 </template>
@@ -21,6 +21,12 @@ import { useStore } from 'vuex'
 //Use of vuex store
 const store = useStore()
 const apiData = store.state.apiData
+const data = store.state.data
+
+// Set drawer visibility
+const setDrawer = (boolean) => {
+  store.dispatch('data/setDrawer', boolean)
+}
 
 </script>
 

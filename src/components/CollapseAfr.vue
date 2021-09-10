@@ -4,15 +4,15 @@
          <span>👥</span> L'AFR
       </template>
       <div class="afr-info">
-         <a @click="drawer = false" :href="'/mission'">
+         <router-link @click="setDrawer(false)" :to="{ name: 'Mission' }" >
             <p v-if="apiData.mission" v-loading="apiData.isMissionLoading">{{ apiData.mission.titre }}</p>
-         </a>
-         <a @click="drawer = false" :href="'/equipe'">
+         </router-link>
+         <router-link @click="setDrawer(false)" :to="{ name: 'Equipe' }" >
             <p>L'équipe / Contacts</p>
-         </a>
-         <a @click="drawer = false" :href="'/construction'">
+         </router-link>
+         <router-link @click="setDrawer(false)" :to="{ name: 'UnderConstruction' }" >
             <p>FAQ</p>
-         </a>
+         </router-link>
       </div>
    </el-collapse-item>
 </template>
@@ -24,6 +24,12 @@ import { useStore } from 'vuex'
 //Use of vuex store
 const store = useStore()
 const apiData = store.state.apiData
+const data = store.state.data
+
+// Set drawer visibility
+const setDrawer = (boolean) => {
+  store.dispatch('data/setDrawer', boolean)
+}
 
 </script>
 
