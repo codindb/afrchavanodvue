@@ -5,7 +5,7 @@
       </template>
       <div class="kids">
          <div class="kids" v-for="kidsActivity in apiData.kidsActivities" :key="kidsActivity">
-            <router-link @click="setDrawer(false)" :to="{ name: 'Enfants', params: {id: kidsActivity.id } }" >
+            <router-link @click="setDrawer(false); loadSingleKidsActivity(kidsActivity.id)" :to="{ name: 'Enfants', params: {id: kidsActivity.id } }" >
                <div class="title">
                <el-image :src="kidsActivity.icone.url"></el-image>
                <p>{{ kidsActivity.titre }}</p>
@@ -34,6 +34,13 @@ const data = store.state.data
 // Set drawer visibility
 const setDrawer = (boolean) => {
   store.dispatch('data/setDrawer', boolean)
+}
+const loadSingleKidsActivity = async (id) => {
+   try {
+      await store.dispatch('apiData/fetchSingleKidsActivity', {id:id})
+   } catch(e) {
+      console.log(e);
+   }
 }
 
 </script>

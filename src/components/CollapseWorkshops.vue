@@ -3,8 +3,8 @@
       <template #title>
          <span>🧩</span> ATELIERS
       </template>
-      <div class="workshop" @click="setDrawer(false)" v-for="workshop in apiData.workshops" :key="workshop">
-         <router-link :to="{ name: 'Atelier', params: {id: workshop.id } }" >
+      <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
+         <router-link @click="setDrawer(false); loadSingleWorkshop(workshop.id)" :to="{ name: 'Atelier', params: {id: workshop.id } }" >
             <div class="title">
                <el-image :src="workshop.icone.url" alt="logo atelier"></el-image>
                <p>{{ workshop.titre }}</p>
@@ -26,6 +26,14 @@ const data = store.state.data
 // Set drawer visibility
 const setDrawer = (boolean) => {
   store.dispatch('data/setDrawer', boolean)
+}
+
+const loadSingleWorkshop = async (id) => {
+   try {
+      await store.dispatch('apiData/fetchSingleWorkshop', {id:id})
+   } catch(e) {
+      console.log(e)
+   }
 }
 
 </script>
