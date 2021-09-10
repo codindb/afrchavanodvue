@@ -1,11 +1,11 @@
 <template>
    <el-header class="top-header">
-      <a href="/"><img class="logo-afr" :src="logoAfr" alt="logo afr chavanod"></a>
+       <router-link :to="{ name: 'Home' }" ><img class="logo-afr" :src="logoAfr" alt="logo afr chavanod"></router-link>
       <div class="menu-container">
-        <el-button @click="drawer = true" size="medium" icon="el-icon-s-fold">
+        <el-button @click="setDrawer(true)" size="medium" icon="el-icon-s-fold">
         </el-button>
         <el-drawer
-          v-model="drawer"
+          v-model="data.drawer"
           :with-header="true"
           :direction="direction()"
           :size="drawerSize()">
@@ -42,9 +42,7 @@ import { useWindowSize } from 'vue-window-size';
 // Use of vuex store
 const store = useStore()
 const apiData = store.state.apiData
-
-// Initialize menu drawer
-let drawer = ref(false)
+const data = store.state.data
 
 // Initialize window size check
 const { width, height } = useWindowSize();
@@ -69,51 +67,10 @@ watch(width, () => {
   drawerSize()
 })
 
-// Load data from API to display drawer
-const loadActivities = async () => {
-  try {
-      await store.dispatch('apiData/fetchAllActivities')
-  } catch(e) {
-      console.warn(e);
-  }
+// Set drawer visibility
+const setDrawer = (boolean) => {
+  store.dispatch('data/setDrawer', boolean)
 }
-loadActivities()
-
-const loadWorkshops = async () => {
-  try {
-      await store.dispatch('apiData/fetchAllWorkshops')
-  } catch(e) {
-      console.warn(e);
-  }
-}
-loadWorkshops()
-
-const loadKidsActivities = async () => {
-  try {
-      await store.dispatch('apiData/fetchAllKidsActivities')
-  } catch(e) {
-      console.warn(e);
-  }
-}
-loadKidsActivities()
-
-const loadKidsCamp = async () => {
-  try {
-      await store.dispatch('apiData/fetchKidsCamp')
-  } catch(e) {
-      console.warn(e);
-  }
-}
-loadKidsCamp()
-
-const loadMission = async () => {
-  try {
-      await store.dispatch('apiData/fetchMission')
-  } catch(e) {
-      console.warn(e);
-  }
-}
-loadMission()
 
 </script>
 

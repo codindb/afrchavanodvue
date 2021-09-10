@@ -24,6 +24,52 @@ const store = useStore()
 // Activation of notification system
 store.commit('notifications/SET_NOTIFIER', ElNotification)
 
+// Load data from API for the entire application used at first load to display drawer and collapses
+const loadActivities = async () => {
+  try {
+      await store.dispatch('apiData/fetchAllActivities')
+  } catch(e) {
+      console.warn(e);
+  }
+}
+loadActivities()
+
+const loadWorkshops = async () => {
+  try {
+      await store.dispatch('apiData/fetchAllWorkshops')
+  } catch(e) {
+      console.warn(e);
+  }
+}
+loadWorkshops()
+
+const loadKidsActivities = async () => {
+  try {
+      await store.dispatch('apiData/fetchAllKidsActivities')
+  } catch(e) {
+      console.warn(e);
+  }
+}
+loadKidsActivities()
+
+const loadKidsCamp = async () => {
+  try {
+      await store.dispatch('apiData/fetchKidsCamp')
+  } catch(e) {
+      console.warn(e);
+  }
+}
+loadKidsCamp()
+
+const loadMission = async () => {
+  try {
+      await store.dispatch('apiData/fetchMission')
+  } catch(e) {
+      console.warn(e);
+  }
+}
+loadMission()
+
 </script>
 
 <style lang="scss">
