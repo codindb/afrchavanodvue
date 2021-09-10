@@ -24,7 +24,22 @@ const store = useStore()
 // Activation of notification system
 store.commit('notifications/SET_NOTIFIER', ElNotification)
 
-// Load data from API for the entire application used at first load to display drawer and collapses
+// Load data from API for the entire application used at first load to display news, subheader, drawer and collapses
+
+// For the carousel data
+const loadNews = async () => {
+   try {
+      await store.dispatch('apiData/fetchAllNews')
+   } catch(e) {
+      store.dispatch('notifications/sendError', {
+      title: "Erreur",
+      message: "Impossible de charger les actualités",
+      duration: 5000
+      });
+   }
+}
+loadNews()
+
 const loadActivities = async () => {
   try {
       await store.dispatch('apiData/fetchAllActivities')

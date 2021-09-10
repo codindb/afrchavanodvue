@@ -63,20 +63,6 @@ watch(width, () => {
    carouselClass()
 })
 
-// For the carousel data
-const loadNews = async () => {
-   try {
-      await store.dispatch('apiData/fetchAllNews')
-   } catch(e) {
-      store.dispatch('notifications/sendError', {
-      title: "Erreur",
-      message: "Impossible de charger les actualités",
-      duration: 5000
-      });
-   }
-}
-loadNews()
-
 // To handle news dialog
 const setNewsDialogVisibility = (boolean) => {
    store.dispatch('data/setNewsDialogVisibility', boolean)
