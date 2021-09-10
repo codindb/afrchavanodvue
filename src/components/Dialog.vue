@@ -13,9 +13,9 @@
          </div>
          <div v-if="apiData.news">
             <div class="tags" v-if="apiData.news[data.newsIndex].activites.length > 0 || apiData.news[data.newsIndex].ateliers.length > 0 || apiData.news[data.newsIndex].enfants.length > 0">
-               <el-tag v-for="activite in apiData.news[data.newsIndex].activites" :key="activite"><a :href="'/activites/' + activite.id">{{ activite.titre }}</a></el-tag>
-               <el-tag type="success" v-for="atelier in apiData.news[data.newsIndex].ateliers" :key="atelier"><a :href="'/ateliers/' + atelier.id">{{ atelier.titre }}</a></el-tag>
-               <el-tag type="warning" v-for="enfant in apiData.news[data.newsIndex].enfants" :key="enfant"><a :href="'/enfants/' + enfant.id">{{ enfant.titre }}</a></el-tag>
+               <el-tag v-for="activite in apiData.news[data.newsIndex].activites" :key="activite"><router-link :to="{ name: 'Activite', params: {id: activite.id}}" @click="setNewsDialogVisibility(false)">{{ activite.titre }}</router-link></el-tag>
+               <el-tag type="success" v-for="atelier in apiData.news[data.newsIndex].ateliers" :key="atelier"><router-link :to="{ name: 'Atelier', params: {id: atelier.id}}" @click="setNewsDialogVisibility(false)">{{ atelier.titre }}</router-link></el-tag>
+               <el-tag type="warning" v-for="enfant in apiData.news[data.newsIndex].enfants" :key="enfant"><router-link :to="{ name: 'Enfants', params: {id: enfant.id}}" @click="setNewsDialogVisibility(false)">{{ enfant.titre }}</router-link></el-tag>
             </div>
          </div>
       </div>
@@ -37,10 +37,13 @@ const downloadFile = (url, filename) => {
 }
 
 const store = useStore()
-
 const apiData = store.state.apiData
-
 const data = store.state.data
+
+// To handle news dialog
+const setNewsDialogVisibility = (boolean) => {
+   store.dispatch('data/setNewsDialogVisibility', boolean)
+}
 
 </script>
 
