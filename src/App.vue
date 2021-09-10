@@ -40,6 +40,7 @@ const loadNews = async () => {
 }
 loadNews()
 
+// For the menu and the home page collapses
 const loadActivities = async () => {
   try {
       await store.dispatch('apiData/fetchAllActivities')
@@ -84,6 +85,20 @@ const loadMission = async () => {
   }
 }
 loadMission()
+
+// For the subheader info
+const loadSubheaderInfo = async () => {
+   try {
+      await store.dispatch('apiData/fetchSubheaderInfo')
+   } catch(e) {
+      store.dispatch('notifications/sendError', {
+      title: "Erreur",
+      message: "Impossible de charger la une",
+      duration: 5000
+      });
+   }
+}
+loadSubheaderInfo()
 
 </script>
 

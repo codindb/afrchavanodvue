@@ -16,22 +16,7 @@ import { useStore } from 'vuex'
 
 // Use of vuex store
 const store = useStore()
-
 const apiData = store.state.apiData
-
-// Method to call the subheader info from API
-const loadSubheaderInfo = async () => {
-   try {
-      await store.dispatch('apiData/fetchSubheaderInfo')
-   } catch(e) {
-      store.dispatch('notifications/sendError', {
-      title: "Erreur",
-      message: "Impossible de charger la une",
-      duration: 5000
-      });
-   }
-}
-loadSubheaderInfo()
 
 </script>
 
