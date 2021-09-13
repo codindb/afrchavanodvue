@@ -11,22 +11,22 @@
             <el-row justify="space-around">
                <el-col :span="20" :md="10">
                   <el-collapse>
-                  <CollapseActivities/>
+                  <CollapseActivities :closeItem="close"/>
                   </el-collapse>
                </el-col>
                <el-col :span="20" :md="10">
                   <el-collapse>
-                  <CollapseWorkshops/>
+                  <CollapseWorkshops :closeItem="close"/>
                   </el-collapse>
                </el-col>
                <el-col :span="20" :md="10">
                   <el-collapse>
-                  <CollapseKidsActivities/>
+                  <CollapseKidsActivities :closeItem="close"/>
                   </el-collapse>
                </el-col>
                <el-col :span="20" :md="10">
                   <el-collapse>
-                  <CollapseAfr/>
+                  <CollapseAfr :closeItem="close"/>
                   </el-collapse>
                </el-col>
             </el-row>
@@ -56,6 +56,11 @@ import news from '../assets/actualites.png'
 //Use of vuex store
 const store = useStore()
 const apiData = store.state.apiData
+
+// To fix error since we use the closeItem prop on the collapse components (for the drawer menu)
+const close = () => {
+  return ''
+}
 
 </script>
 
