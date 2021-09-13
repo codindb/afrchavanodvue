@@ -1,7 +1,7 @@
 <template>
    <el-collapse-item v-loading="apiData.areActivitiesLoading">
       <template #title>
-         <span>🥏</span> ACTIVITES
+         <el-image class="collapse-icon" :src="activityIcon"></el-image> ACTIVITES
       </template>
       <div class="activity" v-for="(activity, index) in apiData.activities" :key="activity">
          <router-link @click="setDrawer(false); closeItem(); loadSingleActivity(activity.id)" :to="{ name: 'Activite', params: {id: activity.id } }" >
@@ -17,6 +17,8 @@
 <script setup>
 
 import { useStore } from 'vuex'
+
+import activityIcon from '../assets/activity.png'
 
 //Use of vuex store
 const store = useStore()
@@ -44,5 +46,15 @@ const loadSingleActivity = async (id) => {
 </script>
 
 <style lang="scss" scoped>
+
+.collapse-icon {
+   height: 65px;
+   margin-bottom: -12px;
+}
+@media screen and (max-width: 768px) {
+   .collapse-icon {
+      height: 45px;
+   }
+}
 
 </style>

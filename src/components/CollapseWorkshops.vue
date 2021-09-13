@@ -1,7 +1,7 @@
 <template>
    <el-collapse-item v-loading="apiData.areWorkshopsLoading">
       <template #title>
-         <span>🧩</span> ATELIERS
+         <el-image class="collapse-icon" :src="workshopIcon"></el-image> ATELIERS
       </template>
       <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
          <router-link @click="setDrawer(false); closeItem(); loadSingleWorkshop(workshop.id)" :to="{ name: 'Atelier', params: {id: workshop.id } }" >
@@ -17,6 +17,8 @@
 <script setup>
 
 import { useStore } from 'vuex'
+
+import workshopIcon from '../assets/workshop.png'
 
 //Use of vuex store
 const store = useStore()
@@ -44,5 +46,15 @@ const loadSingleWorkshop = async (id) => {
 </script>
 
 <style lang="scss" scoped>
+
+.collapse-icon {
+   height: 70px;
+   margin-bottom: -5px;
+}
+@media screen and (max-width: 768px) {
+   .collapse-icon {
+      height: 50px;
+   }
+}
 
 </style>

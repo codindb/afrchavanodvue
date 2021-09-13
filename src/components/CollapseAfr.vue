@@ -1,7 +1,7 @@
 <template>
    <el-collapse-item>
       <template #title>
-         <span>👥</span> L'AFR
+         <el-image class="collapse-icon" :src="afrIcon"></el-image> L'AFR
       </template>
       <div class="afr-info">
          <router-link @click="setDrawer(false); closeItem()" :to="{ name: 'Mission' }" >
@@ -21,6 +21,8 @@
 
 import { useStore } from 'vuex'
 
+import afrIcon from '../assets/afr.png'
+
 //Use of vuex store
 const store = useStore()
 const apiData = store.state.apiData
@@ -39,5 +41,15 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
+
+.collapse-icon {
+   height: 70px;
+   margin-bottom: -12px;
+}
+@media screen and (max-width: 768px) {
+   .collapse-icon {
+      height: 50px;
+   }
+}
 
 </style>

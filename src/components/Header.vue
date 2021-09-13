@@ -139,6 +139,10 @@ const close = () => {
         >:first-child {
             >:first-child {
               font-size: 30px;
+              .el-image {
+                height: 40px;
+                margin-bottom: -8px;
+              }
             }
         }
         .activity, .workshop, .kids, .afr-info {

@@ -1,7 +1,7 @@
 <template>
    <el-collapse-item v-loading="apiData.areKidsActivitiesLoading">
       <template #title>
-         <span>🚸</span> ENFANTS
+         <el-image class="collapse-icon" :src="kidsIcon"></el-image> ENFANTS
       </template>
       <div class="kids">
          <div class="kids" v-for="kidsActivity in apiData.kidsActivities" :key="kidsActivity">
@@ -25,6 +25,8 @@
 <script setup>
 
 import { useStore } from 'vuex'
+
+import kidsIcon from '../assets/kids.png'
 
 //Use of vuex store
 const store = useStore()
@@ -52,5 +54,15 @@ const loadSingleKidsActivity = async (id) => {
 </script>
 
 <style lang="scss" scoped>
+
+.collapse-icon {
+   height: 70px;
+   margin-bottom: -20px;
+}
+@media screen and (max-width: 768px) {
+   .collapse-icon {
+      height: 50px;
+   }
+}
 
 </style>
