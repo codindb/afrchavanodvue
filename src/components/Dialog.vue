@@ -6,7 +6,7 @@
       center>
       <div class="news-dialog-content">
          <h2>{{ apiData.news[data.newsIndex].titre }}</h2>
-         <el-image :src="apiData.news[data.newsIndex].photo.url" alt="actualité"></el-image>
+         <el-image :src="apiData.news[data.newsIndex].photo.url" alt="actualité" fit:cover></el-image>
          <div v-html="markdownToHtml(apiData.news[data.newsIndex].description)"></div>
          <div v-if="apiData.news[data.newsIndex].fichiers.length > 0">
             <el-button round v-for="file in apiData.news[data.newsIndex].fichiers" :key="file" @click="downloadFile(file.url, file.name)">{{ 'Telecharger ' + file.name }}</el-button>
@@ -77,6 +77,10 @@ const setNewsDialogVisibility = (boolean) => {
             text-decoration: none;
             color: #2c3e50;
          }
+      }
+      .el-image {
+         max-width: 400px;
+         margin-bottom: 30px;
       }
       @media screen and (min-width: 768px) {
          h2 {
