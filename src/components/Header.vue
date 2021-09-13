@@ -10,11 +10,11 @@
           :direction="direction()"
           :size="drawerSize()">
           <div class="drawer-content">
-            <el-collapse v-model="collapseData.activeName">
-            <CollapseActivities :closeItem="close"/>
-            <CollapseWorkshops :closeItem="close"/>
-            <CollapseKidsActivities :closeItem="close"/>
-            <CollapseAfr :closeItem="close"/>
+            <el-collapse v-model="collapseData.activeName" accordion>
+              <CollapseActivities :closeItem="close"/>
+              <CollapseWorkshops :closeItem="close"/>
+              <CollapseKidsActivities :closeItem="close"/>
+              <CollapseAfr :closeItem="close"/>
             </el-collapse>
           </div>
         </el-drawer>
@@ -24,7 +24,7 @@
 
 <script setup>
 
-import { ref, watch, reactive } from 'vue';
+import { watch, reactive } from 'vue';
 import { useStore } from 'vuex'
 
 // Components
