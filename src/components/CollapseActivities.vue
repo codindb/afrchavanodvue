@@ -6,7 +6,7 @@
       <div class="activity" v-for="(activity, index) in apiData.activities" :key="activity">
          <router-link @click="setDrawer(false); loadSingleActivity(activity.id)" :to="{ name: 'Activite', params: {id: activity.id } }" >
             <div class="title">
-               <el-image :src="activity.icone.url" alt="logo activité"></el-image>
+               <el-image :src="activity.icone.formats.thumbnail.url" alt="logo activité"></el-image>
                <p>{{ activity.titre }}</p>
             </div>
          </router-link>

@@ -7,14 +7,14 @@
          <div class="kids" v-for="kidsActivity in apiData.kidsActivities" :key="kidsActivity">
             <router-link @click="setDrawer(false); loadSingleKidsActivity(kidsActivity.id)" :to="{ name: 'Enfants', params: {id: kidsActivity.id } }" >
                <div class="title">
-               <el-image :src="kidsActivity.icone.url"></el-image>
+               <el-image :src="kidsActivity.icone.formats.thumbnail.url"></el-image>
                <p>{{ kidsActivity.titre }}</p>
                </div>
             </router-link>
          </div>
          <router-link @click="setDrawer(false)" :to="{ name: 'CentreLoisirs' }" >
             <div class="title" v-if="apiData.kidsCamp">
-               <el-image :src="apiData.kidsCamp.icone.url" alt="logo centre loisirs"></el-image>
+               <el-image :src="apiData.kidsCamp.icone.formats.thumbnail.url" alt="logo centre loisirs"></el-image>
                <p v-loading="apiData.isKidsCampLoading">{{ apiData.kidsCamp.titre }}</p>
                </div>
          </router-link>

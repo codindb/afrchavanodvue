@@ -6,7 +6,7 @@
       <div class="workshop" v-for="workshop in apiData.workshops" :key="workshop">
          <router-link @click="setDrawer(false); loadSingleWorkshop(workshop.id)" :to="{ name: 'Atelier', params: {id: workshop.id } }" >
             <div class="title">
-               <el-image :src="workshop.icone.url" alt="logo atelier"></el-image>
+               <el-image :src="workshop.icone.formats.thumbnail.url" alt="logo atelier"></el-image>
                <p>{{ workshop.titre }}</p>
             </div>
          </router-link>

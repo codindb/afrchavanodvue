@@ -6,7 +6,7 @@
 
       <el-main class="overlapping page-main">
          <div class="overlapping-content" v-loading="isDataLoading">
-            <el-image class="title-image" v-if="data" :src="data.photo.url" :alt="'logo ' + imageAlt"></el-image>
+            <el-image class="title-image" v-if="data" :src="data.photo.formats.small.url ? data.photo.formats.small.url : data.photo.url" :alt="'logo ' + imageAlt"></el-image>
             <div v-if="data" v-html="markdownToHtml(data.description)"></div>
             <div class="hr"><hr></div>
             <h3>Animateur / Animatrice</h3>

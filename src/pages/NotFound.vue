@@ -26,4 +26,7 @@ const router = useRouter()
       font-size: 60px;
       cursor: pointer;
    }
+   .el-image {
+      max-width: 500px;
+   }
 </style>
