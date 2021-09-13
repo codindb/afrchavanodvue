@@ -42,14 +42,4 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 
-.collapse-icon {
-   height: 70px;
-   margin-bottom: -12px;
-}
-@media screen and (max-width: 768px) {
-   .collapse-icon {
-      height: 50px;
-   }
-}
-
 </style>

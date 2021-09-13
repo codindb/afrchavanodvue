@@ -141,6 +141,7 @@ const close = () => {
               font-size: 30px;
               .el-image {
                 height: 40px;
+                width: 40px;
                 margin-bottom: -8px;
               }
             }

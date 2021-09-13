@@ -47,14 +47,4 @@ const loadSingleWorkshop = async (id) => {
 
 <style lang="scss" scoped>
 
-.collapse-icon {
-   height: 70px;
-   margin-bottom: -5px;
-}
-@media screen and (max-width: 768px) {
-   .collapse-icon {
-      height: 50px;
-   }
-}
-
 </style>

@@ -165,6 +165,17 @@ body {
       }
     }
   }
+  .collapse-icon {
+    height: 65px;
+    width: 65px;
+    margin-bottom: -12px;
+  }
+  @media screen and (max-width: 768px) {
+    .collapse-icon {
+        height: 45px;
+        width: 45px;
+    }
+  }
 }
 
 // For SingleElement and KidsCamp

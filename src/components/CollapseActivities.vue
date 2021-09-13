@@ -47,14 +47,4 @@ const loadSingleActivity = async (id) => {
 
 <style lang="scss" scoped>
 
-.collapse-icon {
-   height: 65px;
-   margin-bottom: -12px;
-}
-@media screen and (max-width: 768px) {
-   .collapse-icon {
-      height: 45px;
-   }
-}
-
 </style>
