@@ -1,7 +1,7 @@
 <template>
    <el-carousel :class="carouselClass()" ref="carousel" indicator-position="outside" arrow="always" trigger="click" :interval="4000" :type="carouselType()" :height="carouselHeight()">
       <el-carousel-item v-for="(item, index) in apiData.news" :key="item">
-            <el-image v-if="item.photo" :src="item.photo.url" @click="setNewsDialogVisibility(true); setNewsIndex(index)" class="image" alt="image actualité"></el-image>
+            <el-image v-if="item.photo" :src="item.photo.formats.small ? item.photo.formats.small.url : item.photo.url" @click="setNewsDialogVisibility(true); setNewsIndex(index)" class="image" alt="image actualité"></el-image>
             <div class="newsTitle"> {{ item.titre }}</div>
       </el-carousel-item>
    </el-carousel>
@@ -77,8 +77,10 @@ const setNewsIndex = (index) => {
 
 .desktop-carousel {
    padding-top: 20px;
-   width: 80%;
+   width: 70%;
    margin: 0 auto;
+   padding-left: 8px;
+   padding-right: 20px;
    .el-carousel__item {
       border-radius: 30px;
       background-color: white;
