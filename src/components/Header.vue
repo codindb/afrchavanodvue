@@ -10,11 +10,11 @@
           :direction="direction()"
           :size="drawerSize()">
           <div class="drawer-content">
-            <el-collapse>
-            <CollapseActivities/>
-            <CollapseWorkshops/>
-            <CollapseKidsActivities/>
-            <CollapseAfr/>
+            <el-collapse v-model="collapseData.activeName">
+            <CollapseActivities :closeItem="close"/>
+            <CollapseWorkshops :closeItem="close"/>
+            <CollapseKidsActivities :closeItem="close"/>
+            <CollapseAfr :closeItem="close"/>
             </el-collapse>
           </div>
         </el-drawer>
@@ -24,7 +24,7 @@
 
 <script setup>
 
-import { ref, watch } from 'vue';
+import { ref, watch, reactive } from 'vue';
 import { useStore } from 'vuex'
 
 // Components
@@ -70,6 +70,15 @@ watch(width, () => {
 // Set drawer visibility
 const setDrawer = (boolean) => {
   store.dispatch('data/setDrawer', boolean)
+}
+
+// To handle the closing of collapse-item on click
+const collapseData = reactive({
+    activeName: '',
+})
+
+const close = () => {
+  collapseData.activeName = ''
 }
 
 </script>

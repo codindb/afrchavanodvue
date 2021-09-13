@@ -4,13 +4,13 @@
          <span>👥</span> L'AFR
       </template>
       <div class="afr-info">
-         <router-link @click="setDrawer(false)" :to="{ name: 'Mission' }" >
+         <router-link @click="setDrawer(false); closeItem()" :to="{ name: 'Mission' }" >
             <p v-if="apiData.mission" v-loading="apiData.isMissionLoading">{{ apiData.mission.titre }}</p>
          </router-link>
-         <router-link @click="setDrawer(false)" :to="{ name: 'Equipe' }" >
+         <router-link @click="setDrawer(false); closeItem()" :to="{ name: 'Equipe' }" >
             <p>L'équipe / Contacts</p>
          </router-link>
-         <router-link @click="setDrawer(false)" :to="{ name: 'UnderConstruction' }" >
+         <router-link @click="setDrawer(false); closeItem()" :to="{ name: 'UnderConstruction' }" >
             <p>FAQ</p>
          </router-link>
       </div>
@@ -30,6 +30,11 @@ const data = store.state.data
 const setDrawer = (boolean) => {
   store.dispatch('data/setDrawer', boolean)
 }
+
+// To close the collapse-item (coming from Header.vue)
+const props = defineProps({
+  closeItem: Function,
+})
 
 </script>
 

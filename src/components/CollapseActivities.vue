@@ -4,7 +4,7 @@
          <span>🥏</span> ACTIVITES
       </template>
       <div class="activity" v-for="(activity, index) in apiData.activities" :key="activity">
-         <router-link @click="setDrawer(false); loadSingleActivity(activity.id)" :to="{ name: 'Activite', params: {id: activity.id } }" >
+         <router-link @click="setDrawer(false); closeItem(); loadSingleActivity(activity.id)" :to="{ name: 'Activite', params: {id: activity.id } }" >
             <div class="title">
                <el-image :src="activity.icone.formats.thumbnail.url" alt="logo activité"></el-image>
                <p>{{ activity.titre }}</p>
@@ -27,6 +27,11 @@ const data = store.state.data
 const setDrawer = (boolean) => {
   store.dispatch('data/setDrawer', boolean)
 }
+
+// To close the collapse-item (coming from Header.vue)
+const props = defineProps({
+  closeItem: Function,
+})
 
 const loadSingleActivity = async (id) => {
    try {

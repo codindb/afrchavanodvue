@@ -5,14 +5,14 @@
       </template>
       <div class="kids">
          <div class="kids" v-for="kidsActivity in apiData.kidsActivities" :key="kidsActivity">
-            <router-link @click="setDrawer(false); loadSingleKidsActivity(kidsActivity.id)" :to="{ name: 'Enfants', params: {id: kidsActivity.id } }" >
+            <router-link @click="setDrawer(false); closeItem(); loadSingleKidsActivity(kidsActivity.id)" :to="{ name: 'Enfants', params: {id: kidsActivity.id } }" >
                <div class="title">
                <el-image :src="kidsActivity.icone.formats.thumbnail.url"></el-image>
                <p>{{ kidsActivity.titre }}</p>
                </div>
             </router-link>
          </div>
-         <router-link @click="setDrawer(false)" :to="{ name: 'CentreLoisirs' }" >
+         <router-link @click="setDrawer(false); closeItem()" :to="{ name: 'CentreLoisirs' }" >
             <div class="title" v-if="apiData.kidsCamp">
                <el-image :src="apiData.kidsCamp.icone.formats.thumbnail.url" alt="logo centre loisirs"></el-image>
                <p v-loading="apiData.isKidsCampLoading">{{ apiData.kidsCamp.titre }}</p>
@@ -35,6 +35,12 @@ const data = store.state.data
 const setDrawer = (boolean) => {
   store.dispatch('data/setDrawer', boolean)
 }
+
+// To close the collapse-item (coming from Header.vue)
+const props = defineProps({
+  closeItem: Function,
+})
+
 const loadSingleKidsActivity = async (id) => {
    try {
       await store.dispatch('apiData/fetchSingleKidsActivity', {id:id})
