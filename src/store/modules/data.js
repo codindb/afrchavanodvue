@@ -5,9 +5,6 @@ export default {
        newsDialogVisibility: false,
        newsIndex: null,
        drawer: false,
-       activityIndex: null,
-       workshopIndex: null,
-       kidsActivityIndex: null,
      }
    },
    mutations: {
@@ -19,21 +16,6 @@ export default {
       // NEWS INDEX
       SET_NEWS_INDEX (state, index) {
          state.newsIndex = index
-      },
-      
-      // ACTIVITY INDEX
-      SET_ACTIVITY_INDEX (state, index) {
-         state.activityIndex = index
-      },
-      
-      // WORKSHOP INDEX
-      SET_WORKSHOP_INDEX (state, index) {
-         state.workshopIndex = index
-      },
-      
-      // KIDS ACTIVITY INDEX
-      SET_KIDS_ACTIVITY_INDEX (state, index) {
-         state.kidsActivityIndex = index
       },
 
       // DRAWER
@@ -51,11 +33,6 @@ export default {
       // NEWS INDEX
       setNewsIndex ({ commit }, index) {
          commit('SET_NEWS_INDEX', index)
-      },
-
-      // ACTIVITY INDEX
-      setActivityIndex ({ commit }, index) {
-         commit('SET_ACTIVITY_INDEX', index)
       },
 
       // DRAWER
