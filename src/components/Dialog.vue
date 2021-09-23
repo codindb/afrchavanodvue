@@ -9,7 +9,7 @@
          <el-image :src="imageSrc" alt="actualité"></el-image>
          <div v-html="markdownToHtml(apiData.news[data.newsIndex].description)"></div>
          <div v-if="apiData.news[data.newsIndex].fichiers.length > 0">
-            <el-button round v-for="file in apiData.news[data.newsIndex].fichiers" :key="file" @click="downloadFile(file.url, file.name)">{{ 'Telecharger ' + file.name }}</el-button>
+            <el-button round icon="el-icon-download" v-for="file in apiData.news[data.newsIndex].fichiers" :key="file" @click="downloadFile(file.url, file.name)">{{ file.name }}</el-button>
          </div>
          <div v-if="apiData.news">
             <div class="tags" v-if="apiData.news[data.newsIndex].activites.length > 0 || apiData.news[data.newsIndex].ateliers.length > 0 || apiData.news[data.newsIndex].enfants.length > 0">
