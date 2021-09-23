@@ -19,6 +19,11 @@
             <div v-if="data" v-html="markdownToHtml(data.tarif)"></div>
             <h3 v-if="data && data.info_supplementaire">Informations supplémentaires</h3>
             <div v-if="data" v-html="markdownToHtml(data.info_supplementaire? data.info_supplementaire : ' ')"></div>
+            <el-carousel v-if="data && data.galerie.length > 0" height="300px" :interval="3000" indicator-position="outside" arrow="always" trigger="click">
+              <el-carousel-item v-for="(item, index) in data.galerie" :key="item">
+                <el-image :src="item.formats && item.formats.medium ? item.formats.medium.url : item.url" style="width: 100%; height: 100%" fit="contain" alt="galerie d'image"></el-image>
+              </el-carousel-item>
+            </el-carousel>
             <h3>Contact</h3>
             <p v-if="data"><a :href="'tel:+33' + data.telephone">{{ data.telephone}}</a></p>
             <p v-if="data">{{ data.email}}</p>
@@ -90,12 +95,20 @@ const props = defineProps({
         max-width: 100%;
         width: 20%;
       }
+      .el-carousel {
+        width: 40%;
+        margin: 0 auto;
+        padding-top: 30px;
+      }
       @media screen and (max-width: 768px) {
         .hr {
             width: 30%;
         }
         .title-image {
           width: 60%;
+        }
+        .el-carousel{
+          width: 100%;
         }
       }
     }
