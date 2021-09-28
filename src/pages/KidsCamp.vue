@@ -14,9 +14,9 @@
             <h3>Lieu</h3>
             <div v-if="apiData.kidsCamp" v-html="markdownToHtml(apiData.kidsCamp.lieu)"></div>
             <h3>Tarif</h3>
-            <div v-if="apiData.kidsCamp" v-html="markdownToHtml(apiData.kidsCamp.tarif)"></div>
+            <div class="img-width" v-if="apiData.kidsCamp" v-html="markdownToHtml(apiData.kidsCamp.tarif)"></div>
             <h3>Inscriptions</h3>
-            <div v-if="apiData.kidsCamp" v-html="markdownToHtml(apiData.kidsCamp.inscriptions)"></div>
+            <div class="img-width" v-if="apiData.kidsCamp" v-html="markdownToHtml(apiData.kidsCamp.inscriptions)"></div>
             <h3 v-if="apiData.kidsCamp && apiData.kidsCamp.fichiers.length > 0">Documents à télécharger</h3>
             <div class="files" v-if="apiData.kidsCamp && apiData.kidsCamp.fichiers.length > 0">
                <el-button type="primary" plain round icon="el-icon-download" v-for="file in apiData.kidsCamp.fichiers" :key="file" @click="downloadFile(file.url, file.name)">{{ file.name }}</el-button>
@@ -102,6 +102,15 @@ const apiData = store.state.apiData
    box-shadow: rgba(0, 0, 0, 0.19) 0px -15px 20px, rgba(0, 0, 0, 0.23) 0px -6px 6px;
    .overlapping-content {
       min-height: 300px;
+      .img-width {
+         max-width: 60%;
+         margin: 0 auto;
+      }
+      @media screen and (max-width: 768px) {
+         .img-width {
+            max-width: 100%;
+         }
+      }
       a {
          text-decoration: none;
          color: #2c3e50;
