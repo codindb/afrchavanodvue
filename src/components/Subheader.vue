@@ -28,7 +28,7 @@ const apiData = store.state.apiData
    width: 100%;
    z-index: 0;
    height: $subheaderHeightDesktop;
-   background: linear-gradient(180deg, #98cbff, #ffffff);
+   background: linear-gradient(180deg, #F78F1E, #ffffff);
 
    /* for content alignment */
    display: flex;
