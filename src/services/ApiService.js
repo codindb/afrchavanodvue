@@ -8,7 +8,7 @@ const instance = axios.create({
 
 // Get all News
 export async function getAllNews () {
-   const res = await instance.get('/actualites')
+   const res = await instance.get('/actualites?_sort=updated_at:DESC')
    return res.data
 }
 
