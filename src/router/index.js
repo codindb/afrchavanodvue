@@ -12,6 +12,7 @@ const KidsCampPage= () => import('../pages/KidsCamp.vue') // Lazy Loading of Pag
 const MissionPage= () => import('../pages/Mission.vue') // Lazy Loading of Pages when using this syntax
 const MembersPage= () => import('../pages/Members.vue') // Lazy Loading of Pages when using this syntax
 const InscriptionPage= () => import('../pages/Inscription.vue') // Lazy Loading of Pages when using this syntax
+const InscriptionKidsCampPage= () => import('../pages/InscriptionKidsCamp.vue') // Lazy Loading of Pages when using this syntax
 
 const routes = [
    {
@@ -60,6 +61,11 @@ const routes = [
       path: '/inscription',
       name: 'Inscription',
       component: InscriptionPage,
+   },
+   {
+      path: '/inscription-centre-loisirs',
+      name: 'InscriptionCentreLoisirs',
+      component: InscriptionKidsCampPage,
    },
    { 
       path: '/onenagros',
