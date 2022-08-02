@@ -23,7 +23,7 @@
             </div>
             <h3>Informations supplémentaires</h3>
             <div v-if="apiData.kidsCamp" v-html="markdownToHtml(apiData.kidsCamp.info_supplementaire)"></div>
-            <router-link :to="{ name: 'InscriptionCentreLoisirs' }"><el-button class="subscribe" type="success" plain round>Inscription Centre de loisirs</el-button></router-link>
+            <!-- <router-link :to="{ name: 'InscriptionCentreLoisirs' }"><el-button class="subscribe" type="success" plain round>Inscription Centre de loisirs</el-button></router-link> -->
             <el-carousel v-if="apiData.kidsCamp && apiData.kidsCamp.galerie.length > 0" height="300px" :interval="3000" indicator-position="outside" arrow="always" trigger="click">
               <el-carousel-item v-for="(item, index) in apiData.kidsCamp.galerie" :key="item">
                 <el-image :src="item.formats && item.formats.medium ? item.formats.medium.url : item.url" style="width: 100%; height: 100%" fit="contain" alt="galerie d'image"></el-image>
