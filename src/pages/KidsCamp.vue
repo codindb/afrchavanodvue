@@ -34,7 +34,7 @@
             <p v-if="apiData.kidsCamp">{{ apiData.kidsCamp.email}}</p>
             <div class="hr"><hr></div>
             <div v-if="apiData.kidsCamp">
-               <p v-if="apiData.kidsCamp.adhesion">Nécessite l’adhésion Familles Rurales : 22 € par famille</p>
+               <p v-if="apiData.kidsCamp.adhesion">Nécessite l’adhésion Familles Rurales : 23 € par famille</p>
             </div>
          </div>
       </el-main>

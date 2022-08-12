@@ -29,7 +29,7 @@
             <p v-if="data">{{ data.email}}</p>
             <div class="hr"><hr></div>
             <div v-if="data">
-               <p v-if="data.adhesion">Nécessite l’adhésion Familles Rurales : 22 € par famille</p>
+               <p v-if="data.adhesion">Nécessite l’adhésion Familles Rurales : 23 € par famille</p>
             </div>
          </div>
       </el-main>
